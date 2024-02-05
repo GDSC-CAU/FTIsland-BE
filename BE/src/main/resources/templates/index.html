@@ -10,6 +10,8 @@
 <body>
 <h1>Welcome to the Index Page</h1>
 <p th:if="${userName}" th:text="'Hello, ' + ${userName} + '!'"></p>
+<p th:if="${userEmail}" th:text="'Hello, ' + ${userEmail} + '!'"></p>
+<img th:if="${userPicture}" th:src="${userPicture}" alt="Profile Picture">
 <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
 </body>
 </html>
