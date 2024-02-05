@@ -38,6 +38,37 @@ public class SecurityConfig {
 
                 .oauth2Login(
                         (oauth) ->
+                                oauth.userInfoEndpoint(
+                                        (endpoint) -> endpoint.userService(customOAuth2UserService)
+                                )
+                );
+
+
+        return http.build();
+    }
+
+    /*@Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf(
+                        (csrfConfig) -> csrfConfig.disable()
+                )
+                .headers(
+                        (headerConfig) -> headerConfig.frameOptions(
+                                frameOptionsConfig -> frameOptionsConfig.disable()
+                        )
+                )
+                .authorizeHttpRequests((authorizeRequest) -> authorizeRequest
+                        .requestMatchers("/posts/new", "/comments/save").hasRole(Role.USER.name())
+                        .requestMatchers("/", "/css/**", "images/**", "/js/**", "/login/*", "/logout/*", "/posts/**", "/comments/**").permitAll()
+                        .anyRequest().authenticated()
+                )
+                .logout( // 로그아웃 성공 시 / 주소로 이동
+                        (logoutConfig) -> logoutConfig.logoutSuccessUrl("/")
+                )
+
+                .oauth2Login(
+                        (oauth) ->
                             oauth.userInfoEndpoint(
                                     (endpoint) -> endpoint.userService(customOAuth2UserService)
                             )
@@ -45,5 +76,5 @@ public class SecurityConfig {
 
 
         return http.build();
-    }
+    }*/
 }
