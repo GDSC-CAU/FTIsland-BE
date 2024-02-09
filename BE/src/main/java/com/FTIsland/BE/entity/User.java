@@ -1,4 +1,4 @@
-package com.FTIsland.BE.domain;
+package com.FTIsland.BE.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;

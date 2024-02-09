@@ -1,6 +1,6 @@
 package com.FTIsland.BE.config.auth;
 
-import com.FTIsland.BE.domain.User;
+import com.FTIsland.BE.entity.User;
 import lombok.Getter;
 
 import java.io.Serializable;

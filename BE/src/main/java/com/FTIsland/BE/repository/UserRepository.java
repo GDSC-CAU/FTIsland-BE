@@ -1,6 +1,6 @@
 package com.FTIsland.BE.repository;
 
-import com.FTIsland.BE.domain.User;
+import com.FTIsland.BE.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

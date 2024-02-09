@@ -1,8 +1,6 @@
-package com.FTIsland.BE.domain;
+package com.FTIsland.BE.entity;
 
 import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
 @Getter
 public enum Role {
