@@ -1,5 +1,6 @@
 package com.FTIsland.BE.entity;
 
+import com.FTIsland.BE.dto.BookInfoDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,5 +32,17 @@ public class BookInfoEntity {
 
     @Column
     private String image;
+
+    public static BookInfoEntity toBookInfoEntity(BookInfoDTO bookInfoDTO){
+        BookInfoEntity bookInfoEntity = new BookInfoEntity();
+        bookInfoEntity.setId(bookInfoDTO.getId());
+        bookInfoEntity.setTitle(bookInfoDTO.getTitle());
+        bookInfoEntity.setDescription(bookInfoDTO.getDescription());
+        bookInfoEntity.setCategory(bookInfoDTO.getCategory());
+        bookInfoEntity.setCountry(bookInfoDTO.getCountry());
+        bookInfoEntity.setTotalPage(bookInfoDTO.getTotalPage());
+        bookInfoEntity.setImage(bookInfoDTO.getImage());
+        return bookInfoEntity;
+    }
 
 }
