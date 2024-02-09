@@ -6,7 +6,9 @@ import com.FTIsland.BE.repository.BookInfoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.net.BindException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,4 +27,14 @@ public class BookInfoService {
         }
     }
 
+    public BookInfoDTO findById(Integer id) {
+        Optional<BookInfoEntity> byId = bookInfoRepository.findById(id);
+        if(byId.isPresent()){
+            BookInfoEntity bookInfoEntity = byId.get();
+            BookInfoDTO bookInfoDTO = BookInfoDTO.toBookInfoDTO(bookInfoEntity);
+            return bookInfoDTO;
+        } else {
+            return null;
+        }
+    }
 }
