@@ -33,6 +33,8 @@ public class BookInfoEntity {
     @Column
     private String image;
 
+    // 나중에 islandId 추가
+
     public static BookInfoEntity toBookInfoEntity(BookInfoDTO bookInfoDTO){
         BookInfoEntity bookInfoEntity = new BookInfoEntity();
         bookInfoEntity.setId(bookInfoDTO.getId());

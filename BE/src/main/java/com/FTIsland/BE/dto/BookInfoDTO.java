@@ -30,4 +30,14 @@ public class BookInfoDTO {
         bookInfoDTO.setImage(bookInfoEntity.getImage());
         return bookInfoDTO;
     }
+
+    public BookInfoDTO(Integer id, String title, String description, String category, String country, Integer totalPage, String image){
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.category = category;
+        this.country = country;
+        this.totalPage = totalPage;
+        this.image = image;
+    }
 }
