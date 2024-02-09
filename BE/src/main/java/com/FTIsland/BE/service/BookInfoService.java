@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class BookInfoService {
     private final BookInfoRepository bookInfoRepository;
 
-    public void save(){
+    public void save(){ // 동화 정보 저장 (임시로 만든 method)
         ArrayList<BookInfoDTO> bookInfoDTOS = new ArrayList<>();
 
         bookInfoDTOS.add(new BookInfoDTO(1,"아기 돼지 삼형제","아기 돼지들이~~", "모험", "영국", 12, "qwer"));
