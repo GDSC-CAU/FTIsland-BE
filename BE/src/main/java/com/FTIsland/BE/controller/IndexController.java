@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 @RequiredArgsConstructor
-public class GoogleLoginController {
+public class IndexController {
     private final HttpSession httpSession;
 
     @GetMapping("/")
@@ -18,6 +18,8 @@ public class GoogleLoginController {
 
         if(user != null){
             model.addAttribute("userName", user.getName());
+            model.addAttribute("userEmail", user.getEmail());
+            model.addAttribute("userPicture", user.getPicture());
         }
         return "index";
     }
