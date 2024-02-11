@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+</head>
+<body>
+<h1>Welcome to the Index Page</h1>
+<p th:if="${userName}" th:text="'Hello, ' + ${userName} + '!'"></p>
+<p th:if="${userEmail}" th:text="'Hello, ' + ${userEmail} + '!'"></p>
+<img th:if="${userPicture}" th:src="${userPicture}" alt="Profile Picture">
+<a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+</body>
+</html>
