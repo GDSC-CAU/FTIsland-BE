@@ -7,8 +7,8 @@ spring:
     #    mysql에 생성한 사용자 계정 정보를 써야 합니다.
     username: root
     password: mdbswls4237@
-  thymeleaf:
-    cache: false
+#  thymeleaf:
+#    cache: false
 
   # spring data jpa 설정
   jpa:
@@ -19,5 +19,5 @@ spring:
       ddl-auto: create
 
   # oauth 설정
-  profile:
+  profiles:
     include: oauth
