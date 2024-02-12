@@ -3,6 +3,7 @@ package com.FTIsland.BE.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 @Getter
@@ -18,10 +19,12 @@ public class User {
     @Column(name = "id")
     private Long id;
 
-    private String name;
     private String email;
-    private String picture;
+    private String password;
+    private String name;
+    private String imageUrl; // 프로필 이미지
     private boolean isParent;
+    private String emailWithisParent; // email0, email1
 
     // 이후 OAuth2 로그인 성공 시 추가 정보를 입력하는 폼으로 이동하도록 구현
     private int level;
@@ -33,6 +36,12 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @Enumerated(EnumType.STRING)
+    private SocialType socialType; // KAKAO, NAVER, GOOGLE
+
+    private String socialId; // 로그인한 소셜 타입의 식별자 값 (일반 로그인인 경우 null)
+
+
     // JWT RefreshToken 필드
     // JWT를 이용해 로그인 성공 시 AccessToken, RefreshToken을 발행하는데
     // 발행된 RefreshToken을 User entity에 저장
@@ -41,6 +50,11 @@ public class User {
     // user 권한 설정
     public void authorizeUser() {
         this.role = Role.USER;
+    }
+
+    // 비밀번호 암호화 메소드
+    public void passwordEncode(PasswordEncoder passwordEncoder) {
+        this.password = passwordEncoder.encode(this.password);
     }
 
     public void updateRefreshToken(String updateRefreshToken) {
@@ -60,9 +74,9 @@ public class User {
 //        this.subLanguage = subLanguage;
 //    }
 
-    public User update(String name, String picture) {
+    public User update(String name, String imageUrl) {
         this.name = name;
-        this.picture = picture;
+        this.imageUrl = imageUrl;
 
         return this;
     }
