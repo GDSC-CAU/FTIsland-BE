@@ -21,3 +21,6 @@ spring:
   # oauth 설정
   profiles:
     include: oauth
+    group:
+      "local": "local, jwt, oauth"
+    active: local
