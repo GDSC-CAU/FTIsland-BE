@@ -16,7 +16,9 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -49,23 +51,37 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
          */
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
         SocialType socialType = getSocialType(registrationId);
+
         String userNameAttributeName = userRequest.getClientRegistration()
                 .getProviderDetails().getUserInfoEndpoint().getUserNameAttributeName(); // OAuth2 로그인 시 키(PK)가 되는 값
+
         Map<String, Object> attributes = oAuth2User.getAttributes(); // 소셜 로그인에서 API가 제공하는 userInfo의 Json 값(유저 정보들)
 
         // socialType에 따라 유저 정보를 통해 OAuthAttributes 객체 생성
         OAuthAttributes extractAttributes = OAuthAttributes.of(socialType, userNameAttributeName, attributes);
 
-        User createdUser = getUser(extractAttributes, socialType); // getUser() 메소드로 User 객체 생성 후 반환
+        List<User> createdUsers = getUser(extractAttributes, socialType);
 
-        // DefaultOAuth2User를 구현한 CustomOAuth2User 객체를 생성해서 반환
-        return new CustomOAuth2User(
-                Collections.singleton(new SimpleGrantedAuthority(createdUser.getRole().getKey())),
+        CustomOAuth2User customOAuth2UserKid = new CustomOAuth2User(
+                Collections.singleton(new SimpleGrantedAuthority(createdUsers.get(0).getRole().getKey())),
                 attributes,
                 extractAttributes.getNameAttributeKey(),
-                createdUser.getEmail(),
-                createdUser.getRole()
+                createdUsers.get(0).getEmail(),
+                createdUsers.get(0).getRole()
         );
+//        CustomOAuth2User customOAuth2UserParent = new CustomOAuth2User(
+//                Collections.singleton(new SimpleGrantedAuthority(createdUsers.get(1).getRole().getKey())),
+//                extractAttributesParent,
+//                extractAttributesParent.getNameAttributeKey(),
+//                createdUsers.get(1).getEmail(),
+//                createdUsers.get(1).getRole()
+//        );
+//
+//        List<OAuth2User> customOAuth2Users = new ArrayList<>();
+//        customOAuth2Users.add(customOAuth2UserKid);
+//        customOAuth2Users.add(customOAuth2UserParent);
+
+        return customOAuth2UserKid; // 하나 정보만 return해도 부모는 id만 다름
     }
 
     private SocialType getSocialType(String registrationId) {
@@ -76,22 +92,46 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
      * SocialType과 attributes에 들어있는 소셜 로그인의 식별값 id를 통해 회원을 찾아 반환하는 메소드
      * 만약 찾은 회원이 있다면, 그대로 반환하고 없다면 saveUser()를 호출하여 회원을 저장한다.
      */
-    private User getUser(OAuthAttributes attributes, SocialType socialType) {
-        User findUser = userRepository.findBySocialTypeAndSocialId(socialType,
-                attributes.getOauth2UserInfo().getId()).orElse(null);
+    private List<User> getUser(OAuthAttributes attributes, SocialType socialType) {
+//        User findUser = userRepository.findBySocialTypeAndSocialId(socialType,
+//                attributes.getOauth2UserInfo().getId()).orElse(null);
 
-        if(findUser == null) {
-            return saveUser(attributes, socialType);
+        User findUserKid = userRepository.findByEmailWithisParent(attributes.getOauth2UserInfo().getEmail() + "0").orElse(null); // email0이 없으면 null
+        User findUserParent = userRepository.findByEmailWithisParent(attributes.getOauth2UserInfo().getEmail() + "1").orElse(null);
+
+        if(findUserKid == null) {
+            return saveUsers(attributes, socialType);
         }
-        return findUser;
+
+        List<User> findUsers = new ArrayList<>();
+
+        findUsers.add(findUserKid);
+        findUsers.add(findUserParent);
+
+        return findUsers;
     }
 
     /**
      * OAuthAttributes의 toEntity() 메소드를 통해 빌더로 User 객체 생성 후 반환
      * 생성된 User 객체를 DB에 저장 : socialType, socialId, email, role 값만 있는 상태
      */
-    private User saveUser(OAuthAttributes attributes, SocialType socialType) {
-        User createdUser = attributes.toEntity(socialType, attributes.getOauth2UserInfo());
-        return userRepository.save(createdUser);
+//    private User saveUser(OAuthAttributes attributes, SocialType socialType) {
+//        User createdUser = attributes.toEntity(socialType, attributes.getOauth2UserInfo());
+//
+//        return userRepository.save(createdUser);
+//    }
+    private List<User> saveUsers(OAuthAttributes attributes, SocialType socialType) {
+
+
+        User createdUserKid = attributes.toEntityKid(socialType, attributes.getOauth2UserInfo());
+        User createdUserParent = attributes.toEntityParent(socialType, attributes.getOauth2UserInfo());
+
+        List<User> createdUsers = new ArrayList<>();
+
+        createdUsers.add(userRepository.save(createdUserKid));
+        createdUsers.add(userRepository.save(createdUserParent));
+
+        return createdUsers;
     }
+
 }

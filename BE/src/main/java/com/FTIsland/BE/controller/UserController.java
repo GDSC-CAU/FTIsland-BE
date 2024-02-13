@@ -14,7 +14,7 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("/sign-up")
+    @PostMapping("/sign-up-custom")
     public String signUp(@RequestBody UserSignUpDTO userSignUpDto) throws Exception {
         userService.signUp(userSignUpDto);
         return "회원가입 성공";

@@ -53,11 +53,27 @@ public class OAuthAttributes {
      * email에는 UUID로 중복 없는 랜덤 값 생성
      * role은 GUEST로 설정
      */
-    public User toEntity(SocialType socialType, OAuth2UserInfo oauth2UserInfo) {
+    public User toEntityKid(SocialType socialType, OAuth2UserInfo oauth2UserInfo) {
         return User.builder()
                 .socialType(socialType)
+                .isParent(false)
                 .socialId(oauth2UserInfo.getId())
-                .email(UUID.randomUUID() + "@socialUser.com")
+                .email(oauth2UserInfo.getEmail())
+                .emailWithisParent(oauth2UserInfo.getEmail() + "0")
+                .level(5)
+                .name(oauth2UserInfo.getName())
+                .imageUrl(oauth2UserInfo.getImageUrl())
+                .role(Role.GUEST)
+                .build();
+    }
+    public User toEntityParent(SocialType socialType, OAuth2UserInfo oauth2UserInfo) {
+        return User.builder()
+                .socialType(socialType)
+                .isParent(true)
+                .socialId(oauth2UserInfo.getId())
+                .email(oauth2UserInfo.getEmail())
+                .emailWithisParent(oauth2UserInfo.getEmail() + "1")
+                .level(5)
                 .name(oauth2UserInfo.getName())
                 .imageUrl(oauth2UserInfo.getImageUrl())
                 .role(Role.GUEST)
