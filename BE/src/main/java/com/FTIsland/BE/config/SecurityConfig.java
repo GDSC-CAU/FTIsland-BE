@@ -78,7 +78,7 @@ public class SecurityConfig  {
                         .failureHandler(oAuth2LoginFailureHandler)
                         .userInfoEndpoint(userInfoEndpoint -> userInfoEndpoint
                                 .userService(customOAuth2UserService))
-                        .defaultSuccessUrl("/", true));
+                        .defaultSuccessUrl("/sign-up", true));
         // defaultSuccesURl은 정하지 않았음
         http.addFilterAfter(customJsonUsernamePasswordAuthenticationFilter(), LogoutFilter.class);
         http.addFilterBefore(jwtAuthenticationProcessingFilter(), CustomJsonUsernamePasswordAuthenticationFilter.class);
