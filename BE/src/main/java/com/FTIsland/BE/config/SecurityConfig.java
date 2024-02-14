@@ -65,7 +65,9 @@ public class SecurityConfig  {
                                 new AntPathRequestMatcher("/images/**"),
                                 new AntPathRequestMatcher("/js/**"),
                                 new AntPathRequestMatcher("/h2-console/**"),
-                                new AntPathRequestMatcher("/sign-up")
+                                new AntPathRequestMatcher("/sign-up"),
+                                new AntPathRequestMatcher("/saveBookInfo"),
+                                new AntPathRequestMatcher("/book/info")
                         ).permitAll()
                         //.requestMatchers(new AntPathRequestMatcher("/api/v1/**")).hasRole(Role.USER.name())
                         .anyRequest().authenticated())
