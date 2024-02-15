@@ -13,6 +13,8 @@ import lombok.ToString;
 public class BookContentDTO {
     private Integer bookId; //bookName도 추가?
     private Integer page;
+    private String mainLan;
+    private String subLan;
     private String korContents;
     private String mainContents;
     private String subContents;
@@ -22,8 +24,8 @@ public class BookContentDTO {
         this.bookId = bookId;
         this.page = page;
         this.korContents = korContents;
-        this.mainContents = mainContents;
-        this.subContents = subContents;
+        this.mainContents = mainContents; //나중에 수정
+        this.subContents = subContents; //나중에 수정
         this.image = image;
     }
 

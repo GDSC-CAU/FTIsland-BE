@@ -5,10 +5,7 @@ import com.FTIsland.BE.dto.BookInfoDTO;
 import com.FTIsland.BE.service.BookContentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,9 +20,14 @@ public class BookContentController {
         bookContentService.save();
     }
 
-    @GetMapping("/book/content")
-    public List<BookContentDTO> getBookInfoById(@RequestParam Integer bookId){
-        return bookContentService.findByBookId(bookId); // 해당 id의 동화 내용 list
+    @PostMapping("/book/content")
+    public List<BookContentDTO> getBookInfoById(@RequestBody BookContentDTO bookContentDTO){
+        return bookContentService.findByBookId(bookContentDTO); // 해당 id의 동화 내용 list
+    }
+
+    @RequestMapping("/testTranslation")
+    public void testTranslation(){
+        bookContentService.test();
     }
 
 }
