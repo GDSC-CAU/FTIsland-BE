@@ -19,22 +19,22 @@ public class BookContentEntity {
     //private BookInfoEntity book;
 
     @Column
-    private String book;
+    private Integer bookId;
 
     @Column
     private Integer page;
 
     @Column
-    private String contents;
+    private String korContents;
 
     @Column
     private String image;
 
     public static BookContentEntity toBookContentEntity(BookContentDTO bookContentDTO) {
         BookContentEntity bookContentEntity = new BookContentEntity();
-        bookContentEntity.setBook(bookContentDTO.getBook());
+        bookContentEntity.setBookId(bookContentDTO.getBookId());
         bookContentEntity.setPage(bookContentDTO.getPage());
-        bookContentEntity.setContents(bookContentDTO.getMainContents()); //나중에 수정
+        bookContentEntity.setKorContents(bookContentDTO.getKorContents()); //나중에 수정
         bookContentEntity.setImage(bookContentDTO.getImage());
 
         return bookContentEntity;

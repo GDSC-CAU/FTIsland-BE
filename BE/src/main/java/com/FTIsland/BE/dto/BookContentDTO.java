@@ -1,5 +1,6 @@
 package com.FTIsland.BE.dto;
 
+import com.FTIsland.BE.entity.BookContentEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,18 +11,32 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class BookContentDTO {
-    private String book;
+    private Integer bookId; //bookName도 추가?
     private Integer page;
+    private String korContents;
     private String mainContents;
     private String subContents;
     private String image;
 
-    public BookContentDTO(String book, Integer page, String mainContents, String subContents, String image){
-        this.book = book;
+    public BookContentDTO(Integer bookId, Integer page, String korContents, String mainContents, String subContents, String image){
+        this.bookId = bookId;
         this.page = page;
+        this.korContents = korContents;
         this.mainContents = mainContents;
         this.subContents = subContents;
         this.image = image;
+    }
+
+    public static BookContentDTO toBookContentDTO(BookContentEntity bookContentEntity) {
+        BookContentDTO bookContentDTO = new BookContentDTO();
+        bookContentDTO.setBookId(bookContentEntity.getBookId());
+        bookContentDTO.setPage(bookContentEntity.getPage());
+        bookContentDTO.setKorContents(bookContentEntity.getKorContents());
+        bookContentDTO.setMainContents(bookContentEntity.getKorContents()); //나중에 수정
+        bookContentDTO.setSubContents(bookContentEntity.getKorContents()); //나중에 수정
+        bookContentDTO.setImage(bookContentEntity.getImage());
+
+        return bookContentDTO;
     }
 }
 
