@@ -3,12 +3,12 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     # 각자 PC에 만들어놓은 Database이름을 써야 합니다.
-    url: jdbc:mysql://127.0.0.1:3306/test?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    url: jdbc:mysql://127.0.0.1:3306/ft?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     #    mysql에 생성한 사용자 계정 정보를 써야 합니다.
     username: root
-    password: mdbswls4237@
-#  thymeleaf:
-#    cache: false
+    password: 0823
+  #  thymeleaf:
+  #    cache: false
 
   # spring data jpa 설정
   jpa:
@@ -16,7 +16,7 @@ spring:
     open-in-view: false
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update # table 계속 drop하지 않도록 create -> update로 바꿈.
 
   # oauth 설정
   profiles:
