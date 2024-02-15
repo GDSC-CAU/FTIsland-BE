@@ -40,6 +40,30 @@ public class BookContentDTO {
 
         return bookContentDTO;
     }
+
+    public static BookContentDTO toBookContentDTOWithMain(BookContentEntity bookContentEntity) {
+        BookContentDTO bookContentDTO = new BookContentDTO();
+        bookContentDTO.setBookId(bookContentEntity.getBookId());
+        bookContentDTO.setPage(bookContentEntity.getPage());
+        bookContentDTO.setKorContents(bookContentEntity.getKorContents());
+        bookContentDTO.setMainContents(bookContentEntity.getKorContents()); //나중에 수정
+        bookContentDTO.setSubContents(bookContentEntity.getKorContents()); //나중에 수정
+        bookContentDTO.setImage(bookContentEntity.getImage());
+
+        return bookContentDTO;
+    }
+
+    public static BookContentDTO toBookContentDTOWithSub(BookContentEntity bookContentEntity) {
+        BookContentDTO bookContentDTO = new BookContentDTO();
+        bookContentDTO.setBookId(bookContentEntity.getBookId());
+        bookContentDTO.setPage(bookContentEntity.getPage());
+        bookContentDTO.setKorContents(bookContentEntity.getKorContents());
+        bookContentDTO.setMainContents(bookContentEntity.getKorContents()); //나중에 수정
+        bookContentDTO.setSubContents(bookContentEntity.getKorContents()); //나중에 수정
+        bookContentDTO.setImage(bookContentEntity.getImage());
+
+        return bookContentDTO;
+    }
 }
 
 

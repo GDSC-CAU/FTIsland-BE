@@ -18,7 +18,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class BookContentService {
     private final BookContentRepository bookContentRepository;
-    private final BookInfoRepository bookInfoRepository;
+    private final TranslationService translationService;
 
     public void save() { // 동화 내용 저장 (임시로 만든 method)
         ArrayList<BookContentDTO> bookContentDTOS = new ArrayList<>();
@@ -38,28 +38,38 @@ public class BookContentService {
 
         List<BookContentEntity> byBookId = bookContentRepository.findByBookId(bookId);
         List<BookContentDTO> bookContentDTOS = new ArrayList<>();
+
+        String selectedLanguage = "ko";
+
         for(BookContentEntity ent : byBookId){
-            bookContentDTOS.add(BookContentDTO.toBookContentDTO(ent));
-            //번역 로직 추가
+            // 번역 로직
+
+            // 1. 주, 보조 언어 텍스트 둘 다 한국어를 기본으로 설정
+            String mainText = ent.getKorContents();
+            String subText = ent.getKorContents();
+
+            // 2. 요청한 언어에 맞게 번역
+            if (requestDTO.getMainLan().equals("ko")){ // 주 언어가 한국어가 아니라면 번역해서 저장
+                selectedLanguage = requestDTO.getSubLan();
+                subText = translationService.test(selectedLanguage, subText);
+            }
+            if (requestDTO.getSubLan().equals("ko")){ // 보조 언어가 한국어가 아니라면 번역해서 저장
+                selectedLanguage = requestDTO.getMainLan();
+                mainText = translationService.test(selectedLanguage, mainText);
+            }
+
+            // DTO List에 추가
+            bookContentDTOS.add(new BookContentDTO(
+                    ent.getBookId(),
+                    ent.getPage(),
+                    ent.getKorContents(),
+                    mainText,
+                    subText,
+                    ent.getImage()
+                    )
+            );
 
         }
         return bookContentDTOS;
-    }
-
-    public void test() {
-        String apiKey = "api key"; // 보안 문제로 github x
-
-        Translate translate = TranslateOptions.newBuilder().setApiKey(apiKey).build().getService(); // Translate 클라이언트를 빌드
-
-        String text = "Hello, world!";
-
-        String sourceLanguage = "en"; // 영어
-        String targetLanguage = "ko"; // 한국어
-
-        Translation translation = translate.translate(text, Translate.TranslateOption.sourceLanguage(sourceLanguage),
-                Translate.TranslateOption.targetLanguage(targetLanguage)); // 번역 실행
-
-        System.out.println("원본: " + text);
-        System.out.println("번역: " + translation.getTranslatedText());
     }
 }

@@ -25,9 +25,4 @@ public class BookContentController {
         return bookContentService.findByBookId(bookContentDTO); // 해당 id의 동화 내용 list
     }
 
-    @RequestMapping("/testTranslation")
-    public void testTranslation(){
-        bookContentService.test();
-    }
-
 }
