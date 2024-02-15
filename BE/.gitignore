@@ -8,6 +8,7 @@ build/
 /.gradle/
 application-oauth.yml
 application.yml
+application-API-KEY.yml
 
 ### STS ###
 .apt_generated
