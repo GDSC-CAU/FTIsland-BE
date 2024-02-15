@@ -11,8 +11,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -28,7 +30,6 @@ public class BookContentService {
 
         for (BookContentDTO bookContentDTO : bookContentDTOS) {
             BookContentEntity bookContentEntity = BookContentEntity.toBookContentEntity(bookContentDTO);
-            //bookContentEntity.setBook(findByBookName);
             bookContentRepository.save(bookContentEntity);
         }
     }
@@ -68,8 +69,11 @@ public class BookContentService {
                     ent.getImage()
                     )
             );
-
         }
+
+        // page 순으로 정렬
+        bookContentDTOS = bookContentDTOS.stream().sorted(Comparator.comparing(BookContentDTO::getPage)).collect(Collectors.toList());
+
         return bookContentDTOS;
     }
 }
