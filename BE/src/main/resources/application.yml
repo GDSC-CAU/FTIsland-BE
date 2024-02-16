@@ -20,7 +20,10 @@ spring:
 
   # oauth 설정
   profiles:
-    include: oauth
+    include:
+      - oauth
+      - API-KEY
+      - chatgpt
     group:
       "local": "local, jwt, oauth"
     active: local

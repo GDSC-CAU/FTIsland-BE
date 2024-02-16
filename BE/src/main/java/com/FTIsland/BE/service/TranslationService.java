@@ -5,13 +5,15 @@ import com.google.cloud.translate.Translate;
 import com.google.cloud.translate.TranslateOptions;
 import com.google.cloud.translate.Translation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class TranslationService {
+    @Value("${google.translation.api-key}")
+    private String apiKey;
     public String test(String selectedLanguage, String text) {
-        String apiKey = "api key"; // 보안 문제로 github x
 
         Translate translate = TranslateOptions.newBuilder().setApiKey(apiKey).build().getService(); // Translate 클라이언트를 빌드
 

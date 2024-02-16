@@ -37,4 +37,15 @@ public class BookInfoService {
             return null;
         }
     }
+
+    public String findNameById(Integer id) {
+        Optional<BookInfoEntity> byId = bookInfoRepository.findById(id);
+        if(byId.isPresent()){
+            BookInfoEntity bookInfoEntity = byId.get();
+            String bookTitle = bookInfoEntity.getTitle();
+            return bookTitle;
+        } else {
+            return null;
+        }
+    }
 }
