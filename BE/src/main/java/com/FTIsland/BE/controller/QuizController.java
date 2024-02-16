@@ -38,6 +38,10 @@ public class QuizController {
         String threeQuiz = chatGptResponse.getChoices().get(0).getMessage().getContent();
         System.out.println(threeQuiz);
 
-        return quizService.makeQuiz(threeQuiz);
+        // 생성된 퀴즈 3개를 파싱하고 해당 퀴즈 리스트를 주언어, 서브언어로 번역 후 반환
+        return quizService.translationQuiz(
+                quizService.makeQuiz(threeQuiz),
+                quizDTO.getMainLan(),
+                quizDTO.getSubLan());
     }
 }
