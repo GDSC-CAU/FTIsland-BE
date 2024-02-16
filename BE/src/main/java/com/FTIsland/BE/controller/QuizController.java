@@ -30,6 +30,6 @@ public class QuizController {
         String threeQuiz = chatGptResponse.getChoices().get(0).getMessage().getContent();
         System.out.println(threeQuiz);
 
-        return quizService.makeQuiz(userLevel);
+        return quizService.makeQuiz(threeQuiz);
     }
 }

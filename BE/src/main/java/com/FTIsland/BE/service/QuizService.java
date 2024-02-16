@@ -12,13 +12,17 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class QuizService {
-    public List<QuizDTO> makeQuiz(Integer userLevel){
-        // 퀴즈 생성
-
+    public List<QuizDTO> makeQuiz(String threeQuiz){
         // 리스트에 질문 3개 담기
+        // 1. parsing
+        String quizLine[] = threeQuiz.split("\n");
+
+        // 2. list에 추가
         List<QuizDTO> quizDTOS = new ArrayList<>();
-        quizDTOS.add(new QuizDTO("늑대는 어땠을까요?"));
-        quizDTOS.add(new QuizDTO("돼지 엄마는 어땠을까요?"));
+        quizDTOS.add(new QuizDTO(quizLine[0]));
+        quizDTOS.add(new QuizDTO(quizLine[1]));
+        quizDTOS.add(new QuizDTO(quizLine[2]));
+
         // QuizDTO List 반환
         return quizDTOS;
     }
