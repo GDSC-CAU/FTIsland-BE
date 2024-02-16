@@ -1,5 +1,7 @@
 package com.FTIsland.BE.service;
 
+import com.FTIsland.BE.dto.BookInfoDTO;
+import com.FTIsland.BE.dto.QuizDTO;
 import com.FTIsland.BE.dto.UserSignUpDTO;
 import com.FTIsland.BE.entity.Role;
 import com.FTIsland.BE.entity.User;
@@ -8,6 +10,8 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -39,6 +43,16 @@ public class UserService { // 자체 로그인 회원 가입 시 사용하는 �
 
         user.passwordEncode(passwordEncoder);
         userRepository.save(user);
+    }
+
+    public Integer findLevelById(Long userId){
+        Optional<User> byId = userRepository.findById(userId);
+        if(byId.isPresent()){
+            User userInfo = byId.get();
+            return userInfo.getLevel();
+        } else { // 해당 유저가 존재하지 않을 때
+            return null;
+        }
     }
 
 }
