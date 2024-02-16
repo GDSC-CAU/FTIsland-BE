@@ -23,6 +23,7 @@ spring:
     include:
       - oauth
       - API-KEY
+      - chatgpt
     group:
       "local": "local, jwt, oauth"
     active: local
