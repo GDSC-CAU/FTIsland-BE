@@ -25,8 +25,8 @@ public class BookContentService {
     public void save() { // 동화 내용 저장 (임시로 만든 method)
         ArrayList<BookContentDTO> bookContentDTOS = new ArrayList<>();
 
-        bookContentDTOS.add(new BookContentDTO(1, 1, "어느 숲 속 마을에 엄마돼지와 아기돼지 삼 형제가 살고 있었어요.","", "", "qwe"));
-        bookContentDTOS.add(new BookContentDTO(1, 2, "어느 날 엄마돼지는 아기돼지 삼 형제를 불러 모았어요.","", "", "asd"));
+        bookContentDTOS.add(new BookContentDTO(1, 1, "어느 숲 속 마을에 엄마돼지와 아기돼지 삼 형제가 살고 있었어요.","", "", "https://storage.googleapis.com/ft-island-image/mango.jpg"));
+        bookContentDTOS.add(new BookContentDTO(1, 2, "어느 날 엄마돼지는 아기돼지 삼 형제를 불러 모았어요.","", "", "https://storage.googleapis.com/ft-island-image/mango.jpg"));
 
         for (BookContentDTO bookContentDTO : bookContentDTOS) {
             BookContentEntity bookContentEntity = BookContentEntity.toBookContentEntity(bookContentDTO);
