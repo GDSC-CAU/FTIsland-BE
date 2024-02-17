@@ -20,9 +20,11 @@ public class BookContentDTO {
     private String subContents;
     private String image;
 
-    public BookContentDTO(Integer bookId, Integer page, String korContents, String mainContents, String subContents, String image){
+    public BookContentDTO(Integer bookId, Integer page, String mainLan, String subLan, String korContents, String mainContents, String subContents, String image){
         this.bookId = bookId;
         this.page = page;
+        this.mainLan = mainLan;
+        this.subLan = subLan;
         this.korContents = korContents;
         this.mainContents = mainContents; //나중에 수정
         this.subContents = subContents; //나중에 수정
