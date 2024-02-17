@@ -1,15 +1,21 @@
 package com.FTIsland.BE.controller;
 
 import com.FTIsland.BE.dto.UserSignUpDTO;
+import com.FTIsland.BE.entity.User;
 import com.FTIsland.BE.service.UserService;
+import com.nimbusds.oauth2.sdk.auth.JWTAuthentication;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.*;
+
+import java.nio.file.attribute.UserPrincipal;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 public class UserController {
 
     private final UserService userService;
@@ -24,4 +30,11 @@ public class UserController {
     public String jwtTest() {
         return "jwtTest 요청 성공";
     }
+
+//    @PostMapping("/oauth/info")
+//    public void getUserId(@AuthenticationPrincipal JwtAuthenticationToken userPrincipal) {
+//        log.info(userPrincipal.getName());
+//       // log.info(String.valueOf(userService.getUserId(userPrincipal.getEmail())));
+//        //return userService.getUserId(userPrincipal.getEmail());
+//    }
 }

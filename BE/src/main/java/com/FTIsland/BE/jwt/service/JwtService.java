@@ -43,6 +43,7 @@ public class JwtService {
     private static final String ACCESS_TOKEN_SUBJECT = "AccessToken";
     private static final String REFRESH_TOKEN_SUBJECT = "RefreshToken";
     private static final String EMAIL_CLAIM = "email";
+    private static final String ID_CLAIM = "id";
     private static final String BEARER = "Bearer ";
 
     private final UserRepository userRepository;
@@ -50,7 +51,7 @@ public class JwtService {
     /**
      * AccessToken 생성 메소드
      */
-    public String createAccessToken(String email) {
+    public String createAccessToken(Long id, String email) {
         log.info("JwtService - createAccessToken");
         Date now = new Date();
 
@@ -62,6 +63,7 @@ public class JwtService {
                 //추가적으로 식별자나, 이름 등의 정보를 더 추가하셔도 됩니다.
                 //추가하실 경우 .withClaim(클래임 이름, 클래임 값) 으로 설정해주시면 됩니다
                 .withClaim(EMAIL_CLAIM, email)
+                .withClaim(ID_CLAIM, id)
                 .sign(Algorithm.HMAC512(secretKey)));
         return JWT.create() // JWT 토큰을 생성하는 빌더 반환
                 .withSubject(ACCESS_TOKEN_SUBJECT) // JWT의 Subject 지정 -> AccessToken이므로 AccessToken
@@ -71,6 +73,7 @@ public class JwtService {
                 //추가적으로 식별자나, 이름 등의 정보를 더 추가하셔도 됩니다.
                 //추가하실 경우 .withClaim(클래임 이름, 클래임 값) 으로 설정해주시면 됩니다
                 .withClaim(EMAIL_CLAIM, email)
+                .withClaim(ID_CLAIM, id)
                 .sign(Algorithm.HMAC512(secretKey)); // HMAC512 알고리즘 사용, application-jwt.yml에서 지정한 secret 키로 암호화
     }
 
