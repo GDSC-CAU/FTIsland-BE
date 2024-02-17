@@ -25,8 +25,8 @@ public class BookContentService {
     public void save() { // 동화 내용 저장 (임시로 만든 method)
         ArrayList<BookContentDTO> bookContentDTOS = new ArrayList<>();
 
-        bookContentDTOS.add(new BookContentDTO(1, 1, "어느 숲 속 마을에 엄마돼지와 아기돼지 삼 형제가 살고 있었어요.","", "", "https://storage.googleapis.com/ft-island-image/mango.jpg"));
-        bookContentDTOS.add(new BookContentDTO(1, 2, "어느 날 엄마돼지는 아기돼지 삼 형제를 불러 모았어요.","", "", "https://storage.googleapis.com/ft-island-image/mango.jpg"));
+        bookContentDTOS.add(new BookContentDTO(1, 1, "","","어느 숲 속 마을에 엄마돼지와 아기돼지 삼 형제가 살고 있었어요.","", "", "https://storage.googleapis.com/ft-island-image/mango.jpg"));
+        bookContentDTOS.add(new BookContentDTO(1, 2, "","","어느 날 엄마돼지는 아기돼지 삼 형제를 불러 모았어요.","", "", "https://storage.googleapis.com/ft-island-image/mango.jpg"));
 
         for (BookContentDTO bookContentDTO : bookContentDTOS) {
             BookContentEntity bookContentEntity = BookContentEntity.toBookContentEntity(bookContentDTO);
@@ -40,7 +40,8 @@ public class BookContentService {
         List<BookContentEntity> byBookId = bookContentRepository.findByBookId(bookId);
         List<BookContentDTO> bookContentDTOS = new ArrayList<>();
 
-        String selectedLanguage = "ko";
+        String selectedMainLanguage = "ko";
+        String selectedSubLanguage = "ko";
 
         for(BookContentEntity ent : byBookId){
             // 번역 로직
@@ -50,19 +51,22 @@ public class BookContentService {
             String subText = ent.getKorContents();
 
             // 2. 요청한 언어에 맞게 번역
-            if (requestDTO.getMainLan().equals("ko")){ // 주 언어가 한국어가 아니라면 번역해서 저장
-                selectedLanguage = requestDTO.getSubLan();
-                subText = translationService.test(selectedLanguage, subText);
+            if (!requestDTO.getMainLan().equals("ko")){ // 주 언어 한국어가 아니라면 번역해서 저장
+                selectedMainLanguage = requestDTO.getMainLan();
+                mainText = translationService.test(selectedMainLanguage, mainText);
             }
-            if (requestDTO.getSubLan().equals("ko")){ // 보조 언어가 한국어가 아니라면 번역해서 저장
-                selectedLanguage = requestDTO.getMainLan();
-                mainText = translationService.test(selectedLanguage, mainText);
+            if (!requestDTO.getSubLan().equals("ko")){ // 보조 언어가 한국어가 아니라면 번역해서 저장
+                selectedSubLanguage = requestDTO.getSubLan();
+                subText = translationService.test(selectedSubLanguage, subText);
             }
+
 
             // DTO List에 추가
             bookContentDTOS.add(new BookContentDTO(
                     ent.getBookId(),
                     ent.getPage(),
+                    selectedMainLanguage,
+                    selectedSubLanguage,
                     ent.getKorContents(),
                     mainText,
                     subText,
