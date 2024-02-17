@@ -15,5 +15,5 @@ public class ExploreDTO {
     private Integer bookId;
     private Boolean read;
     private Integer offset;
-    private Integer limit;
+    private Integer limitNum;
 }
