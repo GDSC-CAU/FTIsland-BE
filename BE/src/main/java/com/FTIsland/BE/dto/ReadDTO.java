@@ -21,9 +21,11 @@ public class ReadDTO {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public ReadDTO(Long userId, Integer bookId, Integer lastPage){
+    public ReadDTO(Long userId, Integer bookId, Integer offset, Integer limitNum, Integer lastPage){
         this.userId = userId;
         this.bookId = bookId;
+        this.offset = offset;
+        this.limitNum = limitNum;
         this.lastPage = lastPage;
     }
 }

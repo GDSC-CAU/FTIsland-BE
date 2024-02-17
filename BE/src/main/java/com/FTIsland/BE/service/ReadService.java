@@ -19,7 +19,6 @@ public class ReadService {
         Optional<ReadEntity> byUserIdAndBookId = readRepository.findByUserIdAndBookId(readDTO.getUserId(), readDTO.getBookId());
 
         if(byUserIdAndBookId.isPresent()){ // 이미 해당 회원이 동화를 읽은 적이 있는 경우
-            System.out.println("aaaa");
 
             ReadEntity originEntity = byUserIdAndBookId.get();
 
@@ -27,14 +26,12 @@ public class ReadService {
             Integer updateOffset = readDTO.getOffset();
             Integer updateLimit = readDTO.getLimitNum();
 
-            System.out.println(updateOffset);
-
             // 원래 저장되어있던 entity에 update
             originEntity.setOffset(updateOffset);
             originEntity.setLimitNum(updateLimit);
 
             // updatedAt은 update 쿼리 발생 시 자동으로 업데이트. @UpdateTimestamp
-            //originEntity.setUpdatedAt();
+            // originEntity.setUpdatedAt();
 
         } else{ // 처음 읽다가 나가서 현재 정보 저장을 처음 하는 경우
             // 새로 저장
@@ -44,7 +41,7 @@ public class ReadService {
             // createdAt은 create 쿼리 발생 시 자동으로 저장. @CreationTimestamp
         }
         Integer lastPage = readDTO.getOffset() * readDTO.getLimitNum();
-        ReadDTO responseDTO = new ReadDTO(readDTO.getUserId(), readDTO.getBookId(), lastPage);
+        ReadDTO responseDTO = new ReadDTO(readDTO.getUserId(), readDTO.getBookId(), readDTO.getOffset(), readDTO.getLimitNum(), lastPage);
 
         return responseDTO;
     }

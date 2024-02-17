@@ -44,8 +44,8 @@ public class ReadEntity {
         readEntity.setBookId(readDTO.getBookId());
         readEntity.setOffset(readDTO.getOffset());
         readEntity.setLimitNum(readDTO.getLimitNum());
-        //readEntity.setCreatedAt(readDTO.getCreatedAt());
-        //readEntity.setUpdatedAt(readDTO.getUpdatedAt());
+        // readEntity.setCreatedAt(readDTO.getCreatedAt());
+        // readEntity.setUpdatedAt(readDTO.getUpdatedAt());
 
         return readEntity;
     }
