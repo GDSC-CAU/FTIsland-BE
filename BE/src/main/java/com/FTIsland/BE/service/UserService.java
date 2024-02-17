@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,6 +21,14 @@ import java.util.Optional;
 public class UserService { // 자체 로그인 회원 가입 시 사용하는 회원 가입 API의 로직
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+
+    // client에서 받은 access token을 이용해 id의 list를 반환한다.
+    public Long getUserId(String email) {
+        List<Integer> userIds;
+        Optional<User> user = userRepository.findByEmail(email);
+
+        return user.get().getId();
+    }
 
     public void signUp(UserSignUpDTO userSignUpDto) throws Exception {
 
