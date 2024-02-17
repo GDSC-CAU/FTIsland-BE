@@ -26,6 +26,7 @@ public class RecentBookService {
             RecentBookDTO recentBookDTO = new RecentBookDTO();
             recentBookDTO.setUserId(ent.getUserId());
             recentBookDTO.setBookId(ent.getBookId());
+            recentBookDTO.setUpdatedAt(ent.getUpdatedAt());
             Optional<BookInfoEntity> bookInfoEntity = bookInfoRepository.findById(ent.getBookId());
             if(bookInfoEntity.isPresent()){
                 recentBookDTO.setTitle(bookInfoEntity.get().getTitle());

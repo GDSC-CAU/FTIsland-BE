@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -14,5 +16,6 @@ public class RecentBookDTO {
     private Integer bookId;
     private String title;
     private String description;
+    private LocalDateTime updatedAt;
     private String image;
 }
