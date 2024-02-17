@@ -11,5 +11,5 @@ import java.util.Optional;
 public interface ReadRepository extends JpaRepository<ReadEntity, Long> {
     Optional<ReadEntity> findByUserIdAndBookId(Long userId, Integer bookId);
     List<ReadEntity> findByUserId(Long userId);
-    // Optional<ReadEntity> findByUserId(Long userId);
+    List<ReadEntity> findAllByUserIdOrderByUpdatedAtDesc(Long userId);
 }

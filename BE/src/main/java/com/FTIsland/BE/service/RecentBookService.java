@@ -18,7 +18,8 @@ public class RecentBookService {
     private final ReadRepository readRepository;
     private final BookInfoRepository bookInfoRepository;
     public List<RecentBookDTO> findByUserId(RecentBookDTO requestDTO){
-        var byUserId = readRepository.findByUserId(requestDTO.getUserId());
+        // var byUserId = readRepository.findByUserId(requestDTO.getUserId());
+        var byUserId = readRepository.findAllByUserIdOrderByUpdatedAtDesc(requestDTO.getUserId());
 
         List<RecentBookDTO> responseDTOs = new ArrayList<>();
         for (ReadEntity ent : byUserId){
@@ -34,6 +35,7 @@ public class RecentBookService {
              //
             }
             responseDTOs.add(recentBookDTO);
+
         }
         return responseDTOs;
     }
