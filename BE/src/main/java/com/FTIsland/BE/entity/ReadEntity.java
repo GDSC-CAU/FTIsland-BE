@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Entity
 @Setter
 @Getter
-@Table(name = "read")
+@Table(name = "readbook")
 public class ReadEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +28,7 @@ public class ReadEntity {
     private Integer offset;
 
     @Column
-    private Integer limit;
+    private Integer limitNum;
 
     @CreationTimestamp
     @Column
@@ -43,7 +43,7 @@ public class ReadEntity {
         readEntity.setUserId(readDTO.getUserId());
         readEntity.setBookId(readDTO.getBookId());
         readEntity.setOffset(readDTO.getOffset());
-        readEntity.setLimit(readDTO.getLimit());
+        readEntity.setLimitNum(readDTO.getLimitNum());
         //readEntity.setCreatedAt(readDTO.getCreatedAt());
         //readEntity.setUpdatedAt(readDTO.getUpdatedAt());
 

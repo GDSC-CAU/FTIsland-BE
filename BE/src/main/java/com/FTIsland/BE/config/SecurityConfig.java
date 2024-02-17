@@ -70,7 +70,8 @@ public class SecurityConfig  {
                                 new AntPathRequestMatcher("/book/info"),
                                 new AntPathRequestMatcher("/saveBookContent"),
                                 new AntPathRequestMatcher("/book/content"),
-                                new AntPathRequestMatcher("/book/quiz")
+                                new AntPathRequestMatcher("/book/quiz"),
+                                new AntPathRequestMatcher("/book/last-page")
                         ).permitAll()
                         //.requestMatchers(new AntPathRequestMatcher("/api/v1/**")).hasRole(Role.USER.name())
                         .anyRequest().authenticated())

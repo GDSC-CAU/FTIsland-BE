@@ -3,31 +3,35 @@ package com.FTIsland.BE.service;
 import com.FTIsland.BE.dto.ReadDTO;
 import com.FTIsland.BE.entity.ReadEntity;
 import com.FTIsland.BE.repository.ReadRepository;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class ReadService {
     private final ReadRepository readRepository;
 
     public ReadDTO save(ReadDTO readDTO) {
+
         Optional<ReadEntity> byUserIdAndBookId = readRepository.findByUserIdAndBookId(readDTO.getUserId(), readDTO.getBookId());
 
         if(byUserIdAndBookId.isPresent()){ // 이미 해당 회원이 동화를 읽은 적이 있는 경우
+            System.out.println("aaaa");
+
             ReadEntity originEntity = byUserIdAndBookId.get();
 
             // request로 받은 DTO의 offset과 limit을
             Integer updateOffset = readDTO.getOffset();
-            Integer updateLimit = readDTO.getLimit();
+            Integer updateLimit = readDTO.getLimitNum();
+
+            System.out.println(updateOffset);
 
             // 원래 저장되어있던 entity에 update
             originEntity.setOffset(updateOffset);
-            originEntity.setLimit(updateLimit);
+            originEntity.setLimitNum(updateLimit);
 
             // updatedAt은 update 쿼리 발생 시 자동으로 업데이트. @UpdateTimestamp
             //originEntity.setUpdatedAt();
@@ -39,7 +43,7 @@ public class ReadService {
 
             // createdAt은 create 쿼리 발생 시 자동으로 저장. @CreationTimestamp
         }
-        Integer lastPage = readDTO.getOffset() * readDTO.getLimit();
+        Integer lastPage = readDTO.getOffset() * readDTO.getLimitNum();
         ReadDTO responseDTO = new ReadDTO(readDTO.getUserId(), readDTO.getBookId(), lastPage);
 
         return responseDTO;
