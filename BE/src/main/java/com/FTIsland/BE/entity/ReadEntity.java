@@ -1,8 +1,11 @@
 package com.FTIsland.BE.entity;
 
+import com.FTIsland.BE.dto.ReadDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -27,9 +30,23 @@ public class ReadEntity {
     @Column
     private Integer limit;
 
+    @CreationTimestamp
     @Column
     private LocalDateTime createdAt;
 
+    @UpdateTimestamp
     @Column
     private LocalDateTime updatedAt;
+
+    public static ReadEntity toReadEntity(ReadDTO readDTO){
+        ReadEntity readEntity = new ReadEntity();
+        readEntity.setUserId(readDTO.getUserId());
+        readEntity.setBookId(readDTO.getBookId());
+        readEntity.setOffset(readDTO.getOffset());
+        readEntity.setLimit(readDTO.getLimit());
+        //readEntity.setCreatedAt(readDTO.getCreatedAt());
+        //readEntity.setUpdatedAt(readDTO.getUpdatedAt());
+
+        return readEntity;
+    }
 }
