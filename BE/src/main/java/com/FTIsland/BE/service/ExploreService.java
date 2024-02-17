@@ -16,10 +16,14 @@ public class ExploreService {
         Optional<ReadEntity> read = readRepository.findByUserIdAndBookId(exploreDTO.getUserId(), exploreDTO.getBookId());
         ExploreDTO responseDTO = new ExploreDTO();
         if(read.isPresent()){
+            responseDTO.setUserId(exploreDTO.getUserId());
+            responseDTO.setBookId(exploreDTO.getBookId());
             responseDTO.setRead(true);
             responseDTO.setOffset(read.get().getOffset());
             responseDTO.setLimitNum(read.get().getLimitNum());
         } else{
+            responseDTO.setUserId(exploreDTO.getUserId());
+            responseDTO.setBookId(exploreDTO.getBookId());
             responseDTO.setRead(false);
             responseDTO.setOffset(0);
             responseDTO.setLimitNum(1);
