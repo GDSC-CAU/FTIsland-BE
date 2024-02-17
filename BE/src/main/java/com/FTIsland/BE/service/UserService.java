@@ -2,6 +2,7 @@ package com.FTIsland.BE.service;
 
 import com.FTIsland.BE.dto.BookInfoDTO;
 import com.FTIsland.BE.dto.QuizDTO;
+import com.FTIsland.BE.dto.UserLanguageDTO;
 import com.FTIsland.BE.dto.UserSignUpDTO;
 import com.FTIsland.BE.entity.Role;
 import com.FTIsland.BE.entity.User;
@@ -30,7 +31,7 @@ public class UserService { // 자체 로그인 회원 가입 시 사용하는 �
             throw new Exception("이미 존재하는 이름입니다.");
         }
 
-        User user = User.builder()
+        User user = User.builder() // 자체 로그인에서는 mainLanguage, subLanguage를 입력하니까 바로 USER로 등록함
                 .email(userSignUpDto.getEmail())
                 .password(userSignUpDto.getPassword())
                 .name(userSignUpDto.getName())
@@ -55,4 +56,12 @@ public class UserService { // 자체 로그인 회원 가입 시 사용하는 �
         }
     }
 
+    public UserLanguageDTO save(UserLanguageDTO userLanguageDTO) {
+        // 넘어온 userId, mainLanguage, subLanguage로 userDB에 저장하기
+        User user = userRepository.findById(userLanguageDTO.getUserId()).get();
+        user.setMainLanguage(userLanguageDTO.getMainLanguage());
+        user.setSubLanguage(userLanguageDTO.getSubLanguage());
+        userRepository.save(user);
+        return userLanguageDTO;
+    }
 }
