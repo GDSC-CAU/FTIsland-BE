@@ -22,12 +22,12 @@ public class UserService { // 자체 로그인 회원 가입 시 사용하는 �
     //private final PasswordEncoder passwordEncoder;
 
     // client에서 받은 access token을 이용해 id의 list를 반환한다.
-    public Long getUserId(String email) {
-        List<Integer> userIds;
-        Optional<User> user = userRepository.findByEmail(email);
-
-        return user.get().getId();
-    }
+//    public Long getUserId(String email) {
+//        List<Integer> userIds;
+//        Optional<User> user = userRepository.findByEmail(email);
+//
+//        return user.get().getId();
+//    }
 
 
     public Integer findLevelById(Long userId){

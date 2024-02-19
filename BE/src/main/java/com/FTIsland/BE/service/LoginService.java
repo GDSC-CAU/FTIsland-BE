@@ -30,8 +30,15 @@ public class LoginService {
         }
 
         // 회원 가입 진행
-        User newUser = User.toUserEntity(signUpDTO);
-        userRepository.save(newUser);
+        User userKid = User.toUserEntity(signUpDTO);
+        userKid.setParent(false); // kid 먼저 save
+        userKid.setLevel(5);
+        userRepository.save(userKid);
+
+        User userParent = User.toUserEntity(signUpDTO);
+        userParent.setParent(true); // parent 다음 save
+        userParent.setLevel(5);
+        userRepository.save(userParent);
 
         // 회원 가입 후 response dto return
         return new ResponseDTO<>(ResponseStatus.SUCCESS, "ok", null);
