@@ -1,9 +1,12 @@
 package com.FTIsland.BE.entity;
 
+import com.FTIsland.BE.dto.SignUpDTO;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
 
 
 @Getter
@@ -12,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Entity
 @Builder
 @Table(name = "user")
+@Slf4j
 @AllArgsConstructor
 public class User {
 
@@ -31,6 +35,8 @@ public class User {
     private int level;
     private String mainLanguage;
     private String subLanguage;
+    private String inputId;
+    private String inputPassword;
 
     // Enum 타입은 문자열 형태로 저장해야 함
     // 첫 로그인 시에 Role을 Guest로 설정, 추가 정보 입력 후 User로 업데이트
@@ -84,5 +90,16 @@ public class User {
 
     public String getRoleKey() {
         return this.role.getKey();
+    }
+
+    public static User toUserEntity(SignUpDTO signUpDTO) {
+        log.info(signUpDTO.getInputPassword());
+        User user = new User();
+        user.setInputId(signUpDTO.getInputId());
+        user.setInputPassword(signUpDTO.getInputPassword());
+        user.setName(signUpDTO.getName());
+        user.setMainLanguage(signUpDTO.getMainLanguage());
+        user.setSubLanguage(signUpDTO.getSubLanguage());
+        return user;
     }
 }
