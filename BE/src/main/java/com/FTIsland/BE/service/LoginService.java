@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,14 +23,14 @@ public class LoginService {
     public ResponseDTO save(SignUpDTO signUpDTO) {
         // 사용자가 입력한 id로 User 검색
         log.info(signUpDTO.getInputId());
-        Optional<User> user = userRepository.findByInputId(signUpDTO.getInputId());
+        List<Optional<User>> users = userRepository.findByInputId(signUpDTO.getInputId());
 
         // 중복 id가 있으면 duplicated id return
-        if (user.isPresent()) {
+        if (users.isEmpty()) {
             return new ResponseDTO<>(ResponseStatus.ERROR, "duplicate id", null);
         }
 
-        // 회원 가입 진행
+        // 중복 id가 없다면 회원 가입 진행
         User userKid = User.toUserEntity(signUpDTO);
         userKid.setParent(false); // kid 먼저 save
         userKid.setLevel(5);
@@ -46,15 +47,17 @@ public class LoginService {
 
     public ResponseDTO login(LoginDTO loginDTO) {
         // 사용자가 입력한 id로 User 검색
-        Optional<User> user = userRepository.findByInputId(loginDTO.getInputId());
+        List<Optional<User>> users = userRepository.findByInputId(loginDTO.getInputId());
+        log.info(loginDTO.getInputId());
+        log.info(String.valueOf(users.size()));
 
         // inputId가 있으면 정보 가져와서 db의 userId, mainlanguage, sublanguage return
-        if(user.isPresent()) {
+        if(users.size() != 0) {
             UserInfoDTO userInfoDTO = new UserInfoDTO();
-            userInfoDTO.setUserId(user.get().getId());
-            userInfoDTO.setName(user.get().getName());
-            userInfoDTO.setMainLanguage(user.get().getMainLanguage());
-            userInfoDTO.setSubLanguage(user.get().getSubLanguage());
+            userInfoDTO.setUserId(users.get(0).get().getId());
+            userInfoDTO.setName(users.get(0).get().getName());
+            userInfoDTO.setMainLanguage(users.get(0).get().getMainLanguage());
+            userInfoDTO.setSubLanguage(users.get(0).get().getSubLanguage());
             return new ResponseDTO<>(ResponseStatus.SUCCESS, "ok", userInfoDTO);
 
         } else { // 없으면 ERROR response dto return
