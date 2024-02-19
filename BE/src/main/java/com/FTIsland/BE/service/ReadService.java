@@ -6,6 +6,8 @@ import com.FTIsland.BE.repository.ReadRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,7 +29,7 @@ public class ReadService {
             Integer updateLimit = readDTO.getLimitNum();
 
             // 원래 저장되어있던 entity에 update
-            originEntity.setOffset(updateOffset);
+            originEntity.setOffsetNum(updateOffset);
             originEntity.setLimitNum(updateLimit);
 
             // updatedAt은 update 쿼리 발생 시 자동으로 업데이트. @UpdateTimestamp
@@ -44,5 +46,10 @@ public class ReadService {
         ReadDTO responseDTO = new ReadDTO(readDTO.getUserId(), readDTO.getBookId(), readDTO.getOffset(), readDTO.getLimitNum(), lastPage);
 
         return responseDTO;
+    }
+
+    public Optional<ReadEntity> findByUserIdAndBookId(Integer userId, Integer bookId) {
+        Optional<ReadEntity> readEntity = readRepository.findByUserIdAndBookId(userId, bookId);
+        return readEntity;
     }
 }

@@ -16,16 +16,16 @@ import java.time.LocalDateTime;
 public class ReadEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column
-    private Long userId;
+    private Integer userId;
 
     @Column
     private Integer bookId;
 
     @Column
-    private Integer offset;
+    private Integer offsetNum;
 
     @Column
     private Integer limitNum;
@@ -42,7 +42,7 @@ public class ReadEntity {
         ReadEntity readEntity = new ReadEntity();
         readEntity.setUserId(readDTO.getUserId());
         readEntity.setBookId(readDTO.getBookId());
-        readEntity.setOffset(readDTO.getOffset());
+        readEntity.setOffsetNum(readDTO.getOffset());
         readEntity.setLimitNum(readDTO.getLimitNum());
         // readEntity.setCreatedAt(readDTO.getCreatedAt());
         // readEntity.setUpdatedAt(readDTO.getUpdatedAt());

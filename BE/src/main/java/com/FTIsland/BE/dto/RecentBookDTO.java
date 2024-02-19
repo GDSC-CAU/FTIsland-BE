@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @ToString
 public class RecentBookDTO {
-    private Long userId;
+    private Integer userId;
     private Integer bookId;
     private String title;
     private String description;

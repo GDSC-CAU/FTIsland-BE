@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface ReadRepository extends JpaRepository<ReadEntity, Long> {
-    Optional<ReadEntity> findByUserIdAndBookId(Long userId, Integer bookId);
+    Optional<ReadEntity> findByUserIdAndBookId(Integer userId, Integer bookId);
     List<ReadEntity> findByUserId(Long userId);
-    List<ReadEntity> findAllByUserIdOrderByUpdatedAtDesc(Long userId);
+    List<ReadEntity> findAllByUserIdOrderByUpdatedAtDesc(Integer userId);
 }

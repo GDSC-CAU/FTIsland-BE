@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @ToString
 public class ReadDTO {
-    private Long userId;
+    private Integer userId;
     private Integer bookId;
     private Integer offset;
     private Integer limitNum;
@@ -21,7 +21,7 @@ public class ReadDTO {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public ReadDTO(Long userId, Integer bookId, Integer offset, Integer limitNum, Integer lastPage){
+    public ReadDTO(Integer userId, Integer bookId, Integer offset, Integer limitNum, Integer lastPage){
         this.userId = userId;
         this.bookId = bookId;
         this.offset = offset;

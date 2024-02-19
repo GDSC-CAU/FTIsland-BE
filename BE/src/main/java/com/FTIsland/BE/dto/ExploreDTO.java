@@ -11,7 +11,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class ExploreDTO {
-    private Long userId;
+    private Integer userId;
     private Integer bookId;
     private Boolean read;
     private Integer offset;

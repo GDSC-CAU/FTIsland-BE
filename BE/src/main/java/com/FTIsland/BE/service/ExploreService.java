@@ -19,7 +19,7 @@ public class ExploreService {
             responseDTO.setUserId(exploreDTO.getUserId());
             responseDTO.setBookId(exploreDTO.getBookId());
             responseDTO.setRead(true);
-            responseDTO.setOffset(read.get().getOffset());
+            responseDTO.setOffset(read.get().getOffsetNum());
             responseDTO.setLimitNum(read.get().getLimitNum());
         } else{
             responseDTO.setUserId(exploreDTO.getUserId());
