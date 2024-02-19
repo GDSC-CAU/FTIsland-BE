@@ -16,10 +16,10 @@ import java.time.LocalDateTime;
 public class ReadEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column
-    private Long userId;
+    private Integer userId;
 
     @Column
     private Integer bookId;

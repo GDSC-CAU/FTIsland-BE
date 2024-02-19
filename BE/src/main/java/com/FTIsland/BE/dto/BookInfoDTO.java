@@ -18,6 +18,7 @@ public class BookInfoDTO {
     private String country;
     private Integer totalPage;
     private String image;
+    private Integer islandId;
 
     public static BookInfoDTO toBookInfoDTO(BookInfoEntity bookInfoEntity){
         BookInfoDTO bookInfoDTO = new BookInfoDTO();
@@ -28,10 +29,11 @@ public class BookInfoDTO {
         bookInfoDTO.setCountry(bookInfoEntity.getCountry());
         bookInfoDTO.setTotalPage(bookInfoEntity.getTotalPage());
         bookInfoDTO.setImage(bookInfoEntity.getImage());
+        bookInfoDTO.setIslandId(bookInfoEntity.getIslandId());
         return bookInfoDTO;
     }
 
-    public BookInfoDTO(Integer id, String title, String description, String category, String country, Integer totalPage, String image){
+    public BookInfoDTO(Integer id, String title, String description, String category, String country, Integer totalPage, String image, Integer islandId){
         this.id = id;
         this.title = title;
         this.description = description;
@@ -39,5 +41,6 @@ public class BookInfoDTO {
         this.country = country;
         this.totalPage = totalPage;
         this.image = image;
+        this.islandId = islandId;
     }
 }
