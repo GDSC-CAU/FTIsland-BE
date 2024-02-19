@@ -2,6 +2,7 @@ package com.FTIsland.BE.controller;
 
 import aj.org.objectweb.asm.TypeReference;
 import com.FTIsland.BE.dto.*;
+import com.FTIsland.BE.entity.ResponseStatus;
 import com.FTIsland.BE.repository.UserRepository;
 import com.FTIsland.BE.service.LoginService;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -10,6 +11,7 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.google.api.client.http.HttpHeaders;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -37,7 +40,13 @@ public class LoginController {
     private final LoginService loginService;
 
     @PostMapping("/sign-up")
-    public ResponseDTO addUser(@RequestBody SignUpDTO signUpDTO) {
+    public ResponseDTO addUser(@Valid @RequestBody SignUpDTO signUpDTO, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            Map<String, String> validatorResult = loginService.validateHandling(bindingResult);
+
+            return new ResponseDTO<>(ResponseStatus.ERROR, "invalid input", validatorResult);
+        }
+
         return loginService.save(signUpDTO);
     }
 
