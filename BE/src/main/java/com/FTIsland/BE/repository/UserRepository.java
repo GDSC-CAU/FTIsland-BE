@@ -8,14 +8,14 @@ import java.util.Optional;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    Optional<User> findByEmail(String email);
+    //Optional<User> findByEmail(String email);
     Optional<User> findByInputId(String inputId);
 
-    Optional<User> findByEmailWithisParent(String emailWithisParent);
+    //Optional<User> findByEmailWithisParent(String emailWithisParent);
 
     Optional<User> findByName(String name);
 
-    Optional<User> findByRefreshToken(String refreshToken);
+    //Optional<User> findByRefreshToken(String refreshToken);
 
     Optional<User> findById(Long id);
 
@@ -25,6 +25,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
      * 유저 객체는 DB에 있지만, 추가 정보가 빠진 상태이다.
      * 따라서 추가 정보를 입력받아 회원 가입을 진행할 때 소셜 타입, 식별자로 해당 회원을 찾기 위한 메소드
      */
-    Optional<User> findBySocialTypeAndSocialId(SocialType socialType, String socialId);
+    //Optional<User> findBySocialTypeAndSocialId(SocialType socialType, String socialId);
 
 }
