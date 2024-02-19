@@ -29,7 +29,7 @@ public class ReadService {
             Integer updateLimit = readDTO.getLimitNum();
 
             // 원래 저장되어있던 entity에 update
-            originEntity.setOffsetNum(updateOffset);
+            originEntity.setOffset(updateOffset);
             originEntity.setLimitNum(updateLimit);
 
             // updatedAt은 update 쿼리 발생 시 자동으로 업데이트. @UpdateTimestamp

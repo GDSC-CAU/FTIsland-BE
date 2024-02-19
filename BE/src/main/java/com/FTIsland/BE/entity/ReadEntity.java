@@ -25,7 +25,7 @@ public class ReadEntity {
     private Integer bookId;
 
     @Column
-    private Integer offsetNum;
+    private Integer offset;
 
     @Column
     private Integer limitNum;
@@ -42,7 +42,7 @@ public class ReadEntity {
         ReadEntity readEntity = new ReadEntity();
         readEntity.setUserId(readDTO.getUserId());
         readEntity.setBookId(readDTO.getBookId());
-        readEntity.setOffsetNum(readDTO.getOffset());
+        readEntity.setOffset(readDTO.getOffset());
         readEntity.setLimitNum(readDTO.getLimitNum());
         // readEntity.setCreatedAt(readDTO.getCreatedAt());
         // readEntity.setUpdatedAt(readDTO.getUpdatedAt());
