@@ -6,8 +6,8 @@ import com.FTIsland.BE.repository.BookInfoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.net.BindException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -48,5 +48,11 @@ public class BookInfoService {
         } else {
             return null;
         }
+    }
+
+    public List<Optional<BookInfoEntity>> findNameByIslandId(Integer islandId) {
+        List<Optional<BookInfoEntity>> bookInfoEntityList = bookInfoRepository.findByIslandId(islandId);
+        return bookInfoEntityList;
+
     }
 }
