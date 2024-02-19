@@ -33,6 +33,9 @@ public class BookInfoEntity {
     @Column
     private String image;
 
+    @Column
+    private Integer islandId;
+
     // 나중에 islandId 추가
 
     public static BookInfoEntity toBookInfoEntity(BookInfoDTO bookInfoDTO){
@@ -44,6 +47,7 @@ public class BookInfoEntity {
         bookInfoEntity.setCountry(bookInfoDTO.getCountry());
         bookInfoEntity.setTotalPage(bookInfoDTO.getTotalPage());
         bookInfoEntity.setImage(bookInfoDTO.getImage());
+        bookInfoEntity.setIslandId(bookInfoDTO.getIslandId());
         return bookInfoEntity;
     }
 

@@ -18,8 +18,9 @@ public class BookInfoService {
     public void save(){ // 동화 정보 저장 (임시로 만든 method)
         ArrayList<BookInfoDTO> bookInfoDTOS = new ArrayList<>();
 
-        bookInfoDTOS.add(new BookInfoDTO(1,"아기 돼지 삼형제","아기 돼지들이~~", "모험", "영국", 12, "qwer"));
-        bookInfoDTOS.add(new BookInfoDTO(2,"콩쥐 팥쥐","옛날에 콩쥐가 ~~", "전래동화", "한국",15,"asdf"));
+        bookInfoDTOS.add(new BookInfoDTO(1,"아기 돼지 삼형제","아기 돼지 삼형제가 늑대로부터 현명하게 대처한 이야기", "모험", "영국", 12, "qwer", 1));
+        bookInfoDTOS.add(new BookInfoDTO(2,"콩쥐 팥쥐","콩쥐가 동물 친구들과 함께 팥쥐와 계모의 괴롭힘을 헤쳐나가는 이야기", "전래동화", "한국", 15, "asdf", 2));
+        bookInfoDTOS.add(new BookInfoDTO(3, "금도끼 은도끼", "도끼를 잃어버린 성실한 청년이 금도끼, 은도끼, 동도끼 모두를 가지고 선녀와 행복하게 사는 이야기", "전래동화", "한국", 10, "2342", 1));
 
         for(BookInfoDTO bookInfoDTO : bookInfoDTOS){
             BookInfoEntity bookInfoEntity = BookInfoEntity.toBookInfoEntity(bookInfoDTO);
