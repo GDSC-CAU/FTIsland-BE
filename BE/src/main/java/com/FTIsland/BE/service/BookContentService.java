@@ -2,10 +2,13 @@ package com.FTIsland.BE.service;
 
 import com.FTIsland.BE.dto.BookContentDTO;
 import com.FTIsland.BE.dto.BookInfoDTO;
+import com.FTIsland.BE.dto.ContentVocaDTO;
 import com.FTIsland.BE.entity.BookContentEntity;
 import com.FTIsland.BE.entity.BookInfoEntity;
+import com.FTIsland.BE.entity.VocaEntity;
 import com.FTIsland.BE.repository.BookContentRepository;
 import com.FTIsland.BE.repository.BookInfoRepository;
+import com.FTIsland.BE.repository.VocaRepository;
 import com.google.cloud.translate.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,6 +24,7 @@ import java.util.stream.Collectors;
 public class BookContentService {
     private final BookContentRepository bookContentRepository;
     private final TranslationService translationService;
+    private final VocaRepository vocaRepository;
 
     public void save() { // 동화 내용 저장 (임시로 만든 method)
         ArrayList<BookContentDTO> bookContentDTOS = new ArrayList<>();
@@ -86,18 +90,43 @@ public class BookContentService {
             String subText = ent.getKorContents();
 
             // 2. 요청한 언어에 맞게 번역
-            if (!requestDTO.getMainLan().equals("ko")){ // 주 언어 한국어가 아니라면 번역해서 저장
+            if (!requestDTO.getMainLan().equals("ko")){ // 주 언어 한국어가 아니라면 번역
                 selectedMainLanguage = requestDTO.getMainLan();
                 mainText = translationService.test(selectedMainLanguage, mainText);
             }
-            if (!requestDTO.getSubLan().equals("ko")){ // 보조 언어가 한국어가 아니라면 번역해서 저장
+            if (!requestDTO.getSubLan().equals("ko")){ // 보조 언어가 한국어가 아니라면 번역
                 selectedSubLanguage = requestDTO.getSubLan();
                 subText = translationService.test(selectedSubLanguage, subText);
             }
 
+            // 해당 페이지의 vocaId, word, subWord 가져오기
+            var vocaEntities = vocaRepository.findByBookIdAndPage(ent.getBookId(), ent.getPage());
+            List<ContentVocaDTO> contentVocaDTOS = new ArrayList<>();
+
+            for(VocaEntity entity : vocaEntities){
+                ContentVocaDTO contentVocaDTO = new ContentVocaDTO();
+                contentVocaDTO.setVocaId(entity.getId());
+
+                String mainWord = entity.getWord();
+                String subWord = entity.getWord();
+
+                if (!requestDTO.getMainLan().equals("ko")){ // 주 언어 한국어가 아니라면 번역
+                    selectedMainLanguage = requestDTO.getMainLan();
+                    mainWord = translationService.test(selectedMainLanguage, mainWord);
+                }
+                if (!requestDTO.getSubLan().equals("ko")){ // 보조 언어가 한국어가 아니라면 번역
+                    selectedSubLanguage = requestDTO.getSubLan();
+                    subWord = translationService.test(selectedSubLanguage, subWord);
+                }
+                contentVocaDTO.setWord(mainWord);
+                contentVocaDTO.setSubWord(subWord);
+                contentVocaDTOS.add(contentVocaDTO);
+            }
+
+
 
             // DTO List에 추가
-            bookContentDTOS.add(new BookContentDTO(
+            BookContentDTO bookContentDTO = new BookContentDTO(
                     ent.getBookId(),
                     ent.getPage(),
                     selectedMainLanguage,
@@ -106,8 +135,9 @@ public class BookContentService {
                     mainText,
                     subText,
                     ent.getImage()
-                    )
             );
+            bookContentDTO.setVocaList(contentVocaDTOS);
+            bookContentDTOS.add(bookContentDTO);
         }
 
         // page 순으로 정렬
