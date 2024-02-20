@@ -1,5 +1,6 @@
 package com.FTIsland.BE.controller;
 
+import com.FTIsland.BE.dto.BookContentDTO;
 import com.FTIsland.BE.dto.VocaDTO;
 import com.FTIsland.BE.dto.VocaDescriptionDTO;
 import com.FTIsland.BE.entity.UserVocaEntity;
@@ -35,8 +36,14 @@ public class VocaController {
         vocaService.deleteUserVoca(vocaDTO.getUserId(), vocaDTO.getVocaId());
     }
 
+    @PostMapping("/voca/list")
+    public List<VocaDTO> getVocaList(@RequestBody VocaDTO vocaDTO){
+        return vocaService.getVocaList(vocaDTO.getUserId()); // 해당 id의 동화 내용 list
+    }
+
     @GetMapping("/voca/description")
     public List<VocaDescriptionDTO> getVocaDescription(@RequestParam Integer vocaId, @RequestParam String mainLan, @RequestParam String subLan) {
         return vocaService.getVocaDescription(vocaId, mainLan, subLan);
     }
+    
 }
