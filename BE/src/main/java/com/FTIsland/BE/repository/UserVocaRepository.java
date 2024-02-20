@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface UserVocaRepository extends JpaRepository<UserVocaEntity, Integer> {
     Optional<UserVocaEntity> findByUserId(Integer userId);
+
+    void deleteByUserIdAndVocaId(Integer userId, Integer vocaId);
 }

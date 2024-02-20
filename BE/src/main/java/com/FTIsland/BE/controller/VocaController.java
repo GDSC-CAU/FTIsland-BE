@@ -6,6 +6,7 @@ import com.FTIsland.BE.service.VocaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,5 +30,10 @@ public class VocaController {
                 .buildAndExpand(savedVoca.getId())
                 .toUri();
         return ResponseEntity.created(location).build();
+    }
+
+    @DeleteMapping("/voca")
+    public void deleteUserVoca(@RequestBody VocaDTO vocaDTO){
+        vocaService.deleteUserVoca(vocaDTO.getUserId(), vocaDTO.getVocaId());
     }
 }

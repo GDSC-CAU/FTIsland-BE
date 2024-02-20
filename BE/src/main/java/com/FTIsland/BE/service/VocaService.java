@@ -5,6 +5,7 @@ import com.FTIsland.BE.repository.UserVocaRepository;
 import com.FTIsland.BE.repository.VocaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,12 @@ public class VocaService {
         userVocaRepository.save(userVocaEntity);
 
         return userVocaEntity;
+    }
+
+    // 단어 삭제
+    @Transactional
+    public void deleteUserVoca(Integer userId, Integer vocaId){
+        userVocaRepository.deleteByUserIdAndVocaId(userId, vocaId);
     }
 
 }
