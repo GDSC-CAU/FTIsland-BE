@@ -11,11 +11,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class UserLanguageDTO {
-    private Long userId;
+    private Integer userId;
     private String mainLanguage;
     private String subLanguage;
 
-    public UserLanguageDTO(Long userId, String mainLanguage, String subLanguage) {
+    public UserLanguageDTO(Integer userId, String mainLanguage, String subLanguage) {
         this.userId = userId;
         this.mainLanguage = mainLanguage;
         this.subLanguage = subLanguage;

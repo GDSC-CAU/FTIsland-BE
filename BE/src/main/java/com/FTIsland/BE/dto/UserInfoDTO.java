@@ -10,12 +10,12 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class UserInfoDTO {
-    private Long userId;
+    private Integer userId;
     private String name;
     private String mainLanguage;
     private String subLanguage;
 
-    public UserInfoDTO(Long userId, String name, String mainLanguage, String subLanguage){
+    public UserInfoDTO(Integer userId, String name, String mainLanguage, String subLanguage){
         this.userId = userId;
         this.name = name;
         this.mainLanguage = mainLanguage;
