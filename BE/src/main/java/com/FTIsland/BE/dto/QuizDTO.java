@@ -10,7 +10,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class QuizDTO {
-    private Long userId;
+    private Integer userId;
     private Integer bookId;
     private String mainLan;
     private String subLan;
