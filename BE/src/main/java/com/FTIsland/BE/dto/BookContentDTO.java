@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -18,6 +20,7 @@ public class BookContentDTO {
     private String korContents;
     private String mainContents;
     private String subContents;
+    private List<ContentVocaDTO> vocaList;
     private String image;
 
     public BookContentDTO(Integer bookId, Integer page, String mainLan, String subLan, String korContents, String mainContents, String subContents, String image){
