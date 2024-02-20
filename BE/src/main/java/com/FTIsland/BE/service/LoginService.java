@@ -7,9 +7,11 @@ import com.FTIsland.BE.dto.UserInfoDTO;
 import com.FTIsland.BE.entity.ResponseStatus;
 import com.FTIsland.BE.entity.User;
 import com.FTIsland.BE.repository.UserRepository;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -32,7 +34,7 @@ public class LoginService {
 
         // 중복 id가 있으면 duplicated id return
         if (!users.isEmpty()) {
-            return new ResponseDTO<>(ResponseStatus.ERROR, "duplicate id", null);
+            return new ResponseDTO<>(HttpServletResponse.SC_OK, "duplicate id", null);
         }
 
         // 중복 id가 없다면 회원 가입 진행
@@ -47,7 +49,7 @@ public class LoginService {
         userRepository.save(userParent);
 
         // 회원 가입 후 response dto return
-        return new ResponseDTO<>(ResponseStatus.SUCCESS, "ok", null);
+        return new ResponseDTO<>(HttpServletResponse.SC_OK, "ok", null);
     }
 
     public ResponseDTO login(LoginDTO loginDTO) {
@@ -63,10 +65,10 @@ public class LoginService {
             userInfoDTO.setName(users.get(0).get().getName());
             userInfoDTO.setMainLanguage(users.get(0).get().getMainLanguage());
             userInfoDTO.setSubLanguage(users.get(0).get().getSubLanguage());
-            return new ResponseDTO<>(ResponseStatus.SUCCESS, "ok", userInfoDTO);
+            return new ResponseDTO<>(HttpServletResponse.SC_OK, "ok", userInfoDTO);
 
         } else { // 없으면 ERROR response dto return
-            return new ResponseDTO<>(ResponseStatus.ERROR, "not in database", null);
+            return new ResponseDTO<>(HttpServletResponse.SC_NOT_FOUND, "not in database", null);
 
         }
     }
