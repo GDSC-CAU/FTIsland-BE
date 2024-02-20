@@ -25,7 +25,7 @@ public class VocaController {
         UserVocaEntity savedVoca = vocaService.save(vocaDTO.getUserId(), vocaDTO.getVocaId());
 
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
-                .path(("{id}"))
+                .path(("/{id}"))
                 .buildAndExpand(savedVoca.getId())
                 .toUri();
         return ResponseEntity.created(location).build();
