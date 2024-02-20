@@ -53,9 +53,13 @@ public class VocaService {
 
         // 유저의 주언어 보조언어 조회
         Optional<User> byId = userRepository.findById(userId);
-        String mainLan = byId.get().getMainLanguage();
-        String subLan = byId.get().getSubLanguage();
-
+        String mainLan = "ko";
+        String subLan = "ko";
+        if(byId.isPresent()){
+            mainLan = byId.get().getMainLanguage();
+            subLan = byId.get().getSubLanguage();
+        }
+        
         // 반환 DTO List
         List<VocaDTO> vocaDTOS = new ArrayList<>();
 
