@@ -30,14 +30,21 @@ public class VocaService {
     private final UserRepository userRepository;
 
     // 단어 추가
+    @Transactional
     public UserVocaEntity save(Integer userId, Integer vocaId){
-        UserVocaEntity userVocaEntity = new UserVocaEntity();
-        userVocaEntity.setUserId(userId);
-        userVocaEntity.setVocaId(vocaId);
+        Optional <UserVocaEntity> userVoca = userVocaRepository.findByUserIdAndVocaId(userId, vocaId);
 
-        userVocaRepository.save(userVocaEntity);
+        if(userVoca.isPresent()){
+            return userVoca.get();
 
-        return userVocaEntity;
+        } else{
+            UserVocaEntity userVocaEntity = new UserVocaEntity();
+            userVocaEntity.setUserId(userId);
+            userVocaEntity.setVocaId(vocaId);
+            userVocaRepository.save(userVocaEntity);
+            return userVocaEntity;
+        }
+
     }
 
     // 단어 삭제
