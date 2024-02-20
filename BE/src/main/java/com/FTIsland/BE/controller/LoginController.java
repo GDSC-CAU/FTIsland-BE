@@ -44,7 +44,7 @@ public class LoginController {
         if(bindingResult.hasErrors()) {
             Map<String, String> validatorResult = loginService.validateHandling(bindingResult);
 
-            return new ResponseDTO<>(ResponseStatus.ERROR, "invalid input", validatorResult);
+            return new ResponseDTO<>(HttpServletResponse.SC_NOT_FOUND, "invalid input", validatorResult);
         }
 
         return loginService.save(signUpDTO);
