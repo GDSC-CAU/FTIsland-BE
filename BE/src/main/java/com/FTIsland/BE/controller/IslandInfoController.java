@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -83,13 +85,14 @@ public class IslandInfoController {
 
             // readEntityList에 있는 정보들을 islandBooksDTOList로 바꿔서 변환
             for(Optional<ReadEntity> readEntityOptional : readEntityList) {
+                if(readEntityOptional.isPresent()) {
+                    ReadEntity readEntity = readEntityOptional.get();
+                    Integer bookId = readEntity.getBookId();
+                    BookInfoDTO bookEntityOptional = bookInfoService.findById(bookId);
 
-                Integer bookId = readEntityOptional.get().getBookId();
-                BookInfoDTO bookEntityOptional = bookInfoService.findById(bookId);
-                log.info(bookEntityOptional.getTitle());
-                log.info(String.valueOf(readEntityOptional.get().getOffset()));
+                    log.info(bookEntityOptional.getTitle());
+                    log.info("offset" + String.valueOf(readEntityOptional.get().getOffset()));
 
-                readEntityOptional.ifPresent(readEntity -> {
                     IslandBooksDTO dto = new IslandBooksDTO(
                             islandBooksDTO.getUserId(), // 비회원일 경우 userId는 -1로 설정
                             readEntity.getId(),
@@ -103,10 +106,23 @@ public class IslandInfoController {
                             0.00f
                     );
                     // progress 계산
+                    DecimalFormat df = new DecimalFormat("#.##");
+                    df.setRoundingMode(RoundingMode.HALF_UP);
+
                     float progressCal = (readEntity.getOffset() + 1) * readEntity.getLimitNum();
-                    dto.setProgress(progressCal);
+                    float progressResult = progressCal / bookEntityOptional.getTotalPage();
+                    String formattedProgress = df.format(progressResult);
+
+                    float progressTemp = Float.parseFloat(formattedProgress);
+                    dto.setProgress(progressTemp);
                     islandBooksDTOList.add(dto);
-                });
+
+//                    readEntityOptional.ifPresent(readEntity -> {
+//
+//                    });
+                }
+
+
             }
             log.info(String.valueOf(islandBooksDTOList.size()));
             return islandBooksDTOList;
