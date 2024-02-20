@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ReadRepository extends JpaRepository<ReadEntity, Long> {
+public interface ReadRepository extends JpaRepository<ReadEntity, Integer> {
     Optional<ReadEntity> findByUserIdAndBookId(Integer userId, Integer bookId);
-    List<ReadEntity> findByUserId(Long userId);
+    List<ReadEntity> findByUserId(Integer userId);
     List<ReadEntity> findAllByUserIdOrderByUpdatedAtDesc(Integer userId);
 }
