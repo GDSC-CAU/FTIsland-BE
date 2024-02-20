@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -138,5 +139,21 @@ public class VocaService {
 
         return vocaDescriptionDTOS;
 
+    }
+
+    // 금도끼 은도끼, 그림자 괴물에 대한 단어 추가
+    // voca table에 단어를 추가하는 것!
+    public void saveVoca() {
+
+        // 금도끼 은도끼, 그림자 괴물 의 단어 저장
+        // 같은 단어가 여러 번 나올 경우, 가장 앞의 단어를 저장
+        vocaRepository.save(new VocaEntity(1, 1, 0, "정직", "남을 속이지 않는 것", "https://storage.googleapis.com/ft-island-image/honest.webp"));
+        vocaRepository.save(new VocaEntity(2, 1, 2, "산신령", "산을 지키는 사람", "https://storage.googleapis.com/ft-island-image/sansinryeong.webp"));
+        vocaRepository.save(new VocaEntity(3,1, 10, "욕심쟁이", "다른 사람에게 줄 생각을 하지 않고 자기만 가지려고 하는 사람", "https://storage.googleapis.com/ft-island-image/yoksim.webp"));
+        vocaRepository.save(new VocaEntity(4, 1, 10, "샘", "다른 사람이 가진 것을 욕심내는 것", "https://storage.googleapis.com/ft-island-image/sam.webp"));
+        vocaRepository.save(new VocaEntity(5, 1, 13, "재빠르게", "더 빠르게", "https://storage.googleapis.com/ft-island-image/fast.webp"));
+        vocaRepository.save(new VocaEntity(6, 2, 0, "그림자", "해를 보면 내 뒤에 생기는 것", "https://storage.googleapis.com/ft-island-image/shadowimg.webp"));
+        vocaRepository.save(new VocaEntity(7, 2, 2, "살금살금", "조심스럽고 발소리가 나지 않는", "https://storage.googleapis.com/ft-island-image/salgeum.webp"));
+        vocaRepository.save(new VocaEntity(8, 2, 4, "줄행랑", "뒤도 안돌아보고 도망가기", "https://storage.googleapis.com/ft-island-image/julhang.webp"));
     }
 }

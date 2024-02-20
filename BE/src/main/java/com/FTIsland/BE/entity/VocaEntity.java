@@ -27,4 +27,17 @@ public class VocaEntity {
 
     @Column
     private String image;
+
+    public VocaEntity() {
+        // 기본 생성자 내용 추가 (필요한 경우)
+    }
+
+    public VocaEntity(Integer id, Integer bookId, Integer page, String word, String description, String image) {
+        this.id = id;
+        this.bookId = bookId;
+        this.page = page;
+        this.word = word;
+        this.description = description;
+        this.image = image;
+    }
 }

@@ -44,8 +44,8 @@ public class BookContentService {
         bookContentDTOS.add(new BookContentDTO(1, 11, "","","욕심쟁이 나무꾼은 일부러 쇠도끼를 빠뜨렸어요.","", "", "https://storage.googleapis.com/ft-island-image/goldsilver6.webp"));
 
         bookContentDTOS.add(new BookContentDTO(1, 12, "","","그때 산신령이 나타났고, 욕심쟁이 나무꾼은 재빠르게 도끼를 찾아달라고 부탁했어요.","", "", "https://storage.googleapis.com/ft-island-image/goldsilver7.webp"));
-        bookContentDTOS.add(new BookContentDTO(1, 13, "","","산신령은 금도끼를 보여주며 물었어요. \"이 도끼가 네 도끼냐.\" 욕심쟁이 나무꾼은 재빠르게 맞다고 했어요.","", "", "https://storage.googleapis.com/ft-island-image/goldsilver8.webp"));
-        bookContentDTOS.add(new BookContentDTO(1, 14, "","","산신령은 은도끼를 보여주며 물었어요. \"이 도끼가 네 도끼냐.\" 욕심쟁이 나무꾼은 재빠르게 맞다고 했어요.","", "", "https://storage.googleapis.com/ft-island-image/goldsilver9.webp"));
+        bookContentDTOS.add(new BookContentDTO(1, 13, "","","산신령은 금도끼를 보여주며 물었어요. \"이 도끼가 네 도끼냐.\" 욕심쟁이 나무꾼은 맞다고 했어요.","", "", "https://storage.googleapis.com/ft-island-image/goldsilver8.webp"));
+        bookContentDTOS.add(new BookContentDTO(1, 14, "","","산신령은 은도끼를 보여주며 물었어요. \"이 도끼가 네 도끼냐.\" 욕심쟁이 나무꾼은 이번에도 맞다고 했어요.","", "", "https://storage.googleapis.com/ft-island-image/goldsilver9.webp"));
 
         bookContentDTOS.add(new BookContentDTO(1, 15, "","","욕심쟁이 나무꾼은 금도끼, 은도끼, 쇠도끼 모두 가질 생각에 신이 났어요.","", "", "https://storage.googleapis.com/ft-island-image/goldsilver10.webp"));
         bookContentDTOS.add(new BookContentDTO(1, 16, "","","그때 산신령이 크게 화를 내며 말했어요. \"네 이놈! 거짓말 치는 욕심쟁이에겐 쇠도끼도 어림없다!\"","", "", "https://storage.googleapis.com/ft-island-image/goldsilver11.webp"));
@@ -57,7 +57,7 @@ public class BookContentService {
         bookContentDTOS.add(new BookContentDTO(2, 1, "","","어느 날 마을에 살고 있던 작은 아이 치치는 그림자 괴물이 궁금했어요.","", "", "https://storage.googleapis.com/ft-island-image/shadow1.webp"));
         bookContentDTOS.add(new BookContentDTO(2, 2, "","","살금 살금 그림자를 따라가보니... 늑대가 그림자로 장난을 치고 있었어요!","", "", "https://storage.googleapis.com/ft-island-image/shadow1.webp"));
 
-        bookContentDTOS.add(new BookContentDTO(2, 3, "","","친화력이 좋은 치치는 금세 늑대와 친해졌고, 함께 그림자 놀이를 하며 놀았어요.","", "", "https://storage.googleapis.com/ft-island-image/shadow2.webp"));
+        bookContentDTOS.add(new BookContentDTO(2, 3, "","","친화력이 좋은 치치는 늑대와 바로 친해졌고, 함께 그림자 놀이를 하며 놀았어요.","", "", "https://storage.googleapis.com/ft-island-image/shadow2.webp"));
         bookContentDTOS.add(new BookContentDTO(2, 4, "","","여우를 사냥하려고 숲 주변에 있던 사냥꾼이, 치치와 늑대의 그림자를 보고 줄행랑 쳤답니다!","", "", "https://storage.googleapis.com/ft-island-image/shadow3.webp"));
 
 

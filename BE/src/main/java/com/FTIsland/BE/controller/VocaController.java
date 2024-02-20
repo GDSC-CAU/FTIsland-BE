@@ -20,6 +20,9 @@ import java.util.List;
 public class VocaController {
     private final VocaService vocaService;
 
+    @RequestMapping("/saveVoca")
+    public void saveVoca() {vocaService.saveVoca();}
+
     @PostMapping("/voca")
     public ResponseEntity<UserVocaEntity> createdUserVoca(@RequestBody VocaDTO vocaDTO){
         UserVocaEntity savedVoca = vocaService.save(vocaDTO.getUserId(), vocaDTO.getVocaId());
