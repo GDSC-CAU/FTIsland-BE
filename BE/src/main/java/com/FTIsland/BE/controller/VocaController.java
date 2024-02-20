@@ -1,15 +1,13 @@
 package com.FTIsland.BE.controller;
 
 import com.FTIsland.BE.dto.VocaDTO;
+import com.FTIsland.BE.dto.VocaDescriptionDTO;
 import com.FTIsland.BE.entity.UserVocaEntity;
 import com.FTIsland.BE.service.VocaService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
@@ -35,5 +33,10 @@ public class VocaController {
     @DeleteMapping("/voca")
     public void deleteUserVoca(@RequestBody VocaDTO vocaDTO){
         vocaService.deleteUserVoca(vocaDTO.getUserId(), vocaDTO.getVocaId());
+    }
+
+    @GetMapping("/voca/description")
+    public List<VocaDescriptionDTO> getVocaDescription(@RequestParam Integer vocaId, @RequestParam String mainLan, @RequestParam String subLan) {
+        return vocaService.getVocaDescription(vocaId, mainLan, subLan);
     }
 }
