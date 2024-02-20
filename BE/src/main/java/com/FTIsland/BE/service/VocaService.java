@@ -82,6 +82,9 @@ public class VocaService {
             vocaDTO.setWord(mainWord);
             vocaDTO.setSubWord(subWord);
             vocaDTO.setImage(vocaEntity.get().getImage());
+
+            vocaDTOS.add(vocaDTO);
+
         }
         return vocaDTOS;
 

@@ -45,5 +45,5 @@ public class VocaController {
     public List<VocaDescriptionDTO> getVocaDescription(@RequestParam Integer vocaId, @RequestParam String mainLan, @RequestParam String subLan) {
         return vocaService.getVocaDescription(vocaId, mainLan, subLan);
     }
-    
+
 }
