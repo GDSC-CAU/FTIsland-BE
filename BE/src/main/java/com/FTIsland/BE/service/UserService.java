@@ -30,7 +30,7 @@ public class UserService { // 자체 로그인 회원 가입 시 사용하는 �
 //    }
 
 
-    public Integer findLevelById(Long userId){
+    public Integer findLevelById(Integer userId){
         Optional<User> byId = userRepository.findById(userId);
         if(byId.isPresent()){
             User userInfo = byId.get();
