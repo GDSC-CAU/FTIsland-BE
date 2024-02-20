@@ -17,6 +17,9 @@ public class VocaEntity {
     private Integer bookId;
 
     @Column
+    private Integer page;
+
+    @Column
     private String word;
 
     @Column
