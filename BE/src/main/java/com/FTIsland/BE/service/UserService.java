@@ -40,12 +40,14 @@ public class UserService { // 자체 로그인 회원 가입 시 사용하는 �
         }
     }
 
-    public UserLanguageDTO save(UserLanguageDTO userLanguageDTO) {
-        // 넘어온 userId, mainLanguage, subLanguage로 userDB에 저장하기
-        User user = userRepository.findById(userLanguageDTO.getUserId()).get();
-        user.setMainLanguage(userLanguageDTO.getMainLanguage());
-        user.setSubLanguage(userLanguageDTO.getSubLanguage());
-        userRepository.save(user);
+    public UserLanguageDTO updateUserLanguage(UserLanguageDTO userLanguageDTO) {
+        // 넘어온 userId, mainLanguage, subLanguage로 userDB에 update
+        Optional<User> byId = userRepository.findById(userLanguageDTO.getUserId());
+        if(byId.isPresent()){
+            User user = byId.get();
+            user.setMainLanguage(userLanguageDTO.getMainLanguage());
+            user.setSubLanguage(userLanguageDTO.getSubLanguage());
+        }
         return userLanguageDTO;
     }
 }

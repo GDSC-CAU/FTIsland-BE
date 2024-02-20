@@ -14,7 +14,7 @@ public class LanguageController {
     private final UserService userService;
 
     @PutMapping("/language")
-    public UserLanguageDTO saveUserLanguage(@RequestBody UserLanguageDTO userLanguageDTO){
-        return userService.save(userLanguageDTO);
+    public UserLanguageDTO updateUserLanguage(@RequestBody UserLanguageDTO userLanguageDTO){
+        return userService.updateUserLanguage(userLanguageDTO);
     }
 }
