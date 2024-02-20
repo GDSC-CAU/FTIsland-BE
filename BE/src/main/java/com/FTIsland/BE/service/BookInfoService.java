@@ -18,10 +18,11 @@ public class BookInfoService {
     public void save(){ // 동화 정보 저장 (임시로 만든 method)
         ArrayList<BookInfoDTO> bookInfoDTOS = new ArrayList<>();
 
-        bookInfoDTOS.add(new BookInfoDTO(1,"아기 돼지 삼형제","아기 돼지 삼형제가 늑대로부터 현명하게 대처한 이야기", "모험", "영국", 12, "qwer", 1));
-        bookInfoDTOS.add(new BookInfoDTO(2,"콩쥐 팥쥐","콩쥐가 동물 친구들과 함께 팥쥐와 계모의 괴롭힘을 헤쳐나가는 이야기", "전래동화", "한국", 15, "asdf", 2));
-        bookInfoDTOS.add(new BookInfoDTO(3, "금도끼 은도끼", "도끼를 잃어버린 성실한 청년이 금도끼, 은도끼, 동도끼 모두를 가지고 선녀와 행복하게 사는 이야기", "전래동화", "한국", 10, "2342", 1));
-
+//        bookInfoDTOS.add(new BookInfoDTO(1,"아기 돼지 삼형제","아기 돼지 삼형제가 늑대로부터 현명하게 대처한 이야기", "모험", "영국", 12, "qwer", 1));
+//        bookInfoDTOS.add(new BookInfoDTO(2,"콩쥐 팥쥐","콩쥐가 동물 친구들과 함께 팥쥐와 계모의 괴롭힘을 헤쳐나가는 이야기", "전래동화", "한국", 15, "asdf", 2));
+//        bookInfoDTOS.add(new BookInfoDTO(3, "금도끼 은도끼", "도끼를 잃어버린 성실한 청년이 금도끼, 은도끼, 동도끼 모두를 가지고 선녀와 행복하게 사는 이야기", "전래동화", "한국", 10, "2342", 1));
+        //bookInfoDTOS.add(new BookInfoDTO(1, "당나귀 알", "당나귀 알을 부화시키려는 어리석은 농부의 이야기", "교훈", "한국", 6, "표지이미지링크", 1));
+        // 블로그에서 찾은 동화 넣기
         for(BookInfoDTO bookInfoDTO : bookInfoDTOS){
             BookInfoEntity bookInfoEntity = BookInfoEntity.toBookInfoEntity(bookInfoDTO);
             bookInfoRepository.save(bookInfoEntity);
