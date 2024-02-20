@@ -153,7 +153,7 @@ public class VocaService {
         vocaRepository.save(new VocaEntity(4, 1, 10, "샘", "다른 사람이 가진 것을 욕심내는 것", "https://storage.googleapis.com/ft-island-image/sam.webp"));
         vocaRepository.save(new VocaEntity(5, 1, 13, "재빠르게", "더 빠르게", "https://storage.googleapis.com/ft-island-image/fast.webp"));
         vocaRepository.save(new VocaEntity(6, 2, 0, "그림자", "해를 보면 내 뒤에 생기는 것", "https://storage.googleapis.com/ft-island-image/shadowimg.webp"));
-        vocaRepository.save(new VocaEntity(7, 2, 2, "살금살금", "조심스럽고 발소리가 나지 않는", "https://storage.googleapis.com/ft-island-image/salgeum.webp"));
+        vocaRepository.save(new VocaEntity(7, 2, 2, "살금 살금", "조심스럽고 발소리가 나지 않는", "https://storage.googleapis.com/ft-island-image/salgeum.webp"));
         vocaRepository.save(new VocaEntity(8, 2, 4, "줄행랑", "뒤도 안돌아보고 도망가기", "https://storage.googleapis.com/ft-island-image/julhang.webp"));
     }
 }
