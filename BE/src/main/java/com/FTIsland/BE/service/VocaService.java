@@ -1,11 +1,14 @@
 package com.FTIsland.BE.service;
 
 import com.FTIsland.BE.dto.BookContentDTO;
+import com.FTIsland.BE.dto.VocaDTO;
 import com.FTIsland.BE.dto.VocaDescriptionDTO;
 import com.FTIsland.BE.entity.BookInfoEntity;
+import com.FTIsland.BE.entity.User;
 import com.FTIsland.BE.entity.UserVocaEntity;
 import com.FTIsland.BE.entity.VocaEntity;
 import com.FTIsland.BE.repository.BookInfoRepository;
+import com.FTIsland.BE.repository.UserRepository;
 import com.FTIsland.BE.repository.UserVocaRepository;
 import com.FTIsland.BE.repository.VocaRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +26,7 @@ public class VocaService {
     private final UserVocaRepository userVocaRepository;
     private final BookInfoRepository bookInfoRepository;
     private final TranslationService translationService;
+    private final UserRepository userRepository;
 
     // 단어 추가
     public UserVocaEntity save(Integer userId, Integer vocaId){
@@ -39,6 +43,48 @@ public class VocaService {
     @Transactional
     public void deleteUserVoca(Integer userId, Integer vocaId){
         userVocaRepository.deleteByUserIdAndVocaId(userId, vocaId);
+    }
+
+    // 단어장 리스트
+    public List<VocaDTO> getVocaList(Integer userId){
+        // 해당 유저의 단어장 조회
+        List<UserVocaEntity> userVocaEntities = userVocaRepository.findByUserId(userId);
+
+        // 유저의 주언어 보조언어 조회
+        Optional<User> byId = userRepository.findById(userId);
+        String mainLan = byId.get().getMainLanguage();
+        String subLan = byId.get().getSubLanguage();
+
+        // 반환 DTO List
+        List<VocaDTO> vocaDTOS = new ArrayList<>();
+
+        // 단어장의 vocaId로 vocaEntity를 조회하여 번역 후 반환 DTO List에 정보 넣기
+        for(UserVocaEntity ent : userVocaEntities){
+            // 단어장의 vocaId로 voca 조회
+            Integer vocaId = ent.getVocaId();
+            Optional<VocaEntity> vocaEntity = vocaRepository.findById(vocaId);
+
+            // 번역
+            String mainWord = vocaEntity.get().getWord();
+            String subWord = vocaEntity.get().getWord();
+
+            if (!mainLan.equals("ko")){ // 주 언어 한국어가 아니라면 번역
+                mainWord = translationService.test(mainLan, mainWord);
+            }
+            if (!subLan.equals("ko")){ // 보조 언어가 한국어가 아니라면 번역
+                subWord = translationService.test(subLan, subWord);
+            }
+
+            // List에 추가
+            VocaDTO vocaDTO = new VocaDTO();
+            vocaDTO.setUserId(userId);
+            vocaDTO.setVocaId(vocaEntity.get().getId());
+            vocaDTO.setWord(mainWord);
+            vocaDTO.setSubWord(subWord);
+            vocaDTO.setImage(vocaEntity.get().getImage());
+        }
+        return vocaDTOS;
+
     }
 
     // 단어 설명 조회 및 번역
@@ -64,12 +110,12 @@ public class VocaService {
         String subBook = bookName;
 
         // 2. 요청한 언어에 맞게 번역
-        if (!mainLan.equals("ko")){ // 주 언어 한국어가 아니라면 번역해서 저장
+        if (!mainLan.equals("ko")){ // 주 언어 한국어가 아니라면 번역
             mainWord = translationService.test(mainLan, mainWord);
             mainDescription = translationService.test(mainLan, mainDescription);
             mainBook = translationService.test(mainLan, mainBook);
         }
-        if (!subLan.equals("ko")){ // 보조 언어가 한국어가 아니라면 번역해서 저장
+        if (!subLan.equals("ko")){ // 보조 언어가 한국어가 아니라면 번역
             subWord = translationService.test(subLan, subWord);
             subDescription = translationService.test(subLan, subDescription);
             subBook = translationService.test(subLan, subBook);
