@@ -17,7 +17,7 @@ public class LanguageController {
     private final UserService userService;
 
     @PostMapping("/language")
-    public UserLanguageDTO saveUserLanguage(@RequestBody UserLanguageDTO userLanguageDTO){ // DB에 동화 정보 저장
+    public UserLanguageDTO saveUserLanguage(@RequestBody UserLanguageDTO userLanguageDTO){
         return userService.save(userLanguageDTO);
     }
 }
