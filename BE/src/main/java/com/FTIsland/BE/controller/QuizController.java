@@ -62,10 +62,11 @@ public class QuizController {
 
 
         // 생성된 퀴즈 3개를 파싱하고 저장
+        List<String> quizs = quizService.makeQuiz(threeQuiz);
 
         // 해당 퀴즈 리스트를 주언어, 서브언어로 번역 후 반환
         return quizService.translationQuiz(
-                quizService.makeQuiz(threeQuiz),
+                quizs,
                 quizDTO.getMainLan(),
                 quizDTO.getSubLan());
     }
