@@ -17,20 +17,20 @@ public class QuizService {
 
     // 동화-레벨 조합의 퀴즈가 있는지 확인
 
-    // 생성한 퀴즈 String을 3개의 퀴즈 list로 변환
-    public List<QuizDTO> makeQuiz(String threeQuiz) {
+    // 생성한 퀴즈 String을 3개의 퀴즈 String list로 변환
+    public List<String> makeQuiz(String threeQuiz) {
         // 리스트에 질문 3개 담기
         // 1. parsing
         String quizLine[] = threeQuiz.split("\n");
 
         // 2. list에 추가
-        List<QuizDTO> quizDTOS = new ArrayList<>();
-        quizDTOS.add(new QuizDTO(quizLine[0], null, null));
-        quizDTOS.add(new QuizDTO(quizLine[1], null, null));
-        quizDTOS.add(new QuizDTO(quizLine[2], null, null));
+        List<String> quizs = new ArrayList<>();
+        quizs.add(quizLine[0]);
+        quizs.add(quizLine[1]);
+        quizs.add(quizLine[2]);
 
         // QuizDTO List 반환
-        return quizDTOS;
+        return quizs;
     }
 
     // 3개의 퀴즈 list를 번역 후 QuizDTO로 반환
