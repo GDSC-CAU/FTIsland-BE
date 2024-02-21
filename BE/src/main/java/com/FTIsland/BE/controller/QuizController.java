@@ -27,8 +27,13 @@ public class QuizController {
     @PostMapping("/book/quiz")
     public List<QuizDTO> getQuiz(@RequestBody QuizDTO quizDTO){
         // 사용자 맞춤형 생각해보기 질문 생성을 위해 user entity의 level 정보 조회
-        Integer userLevel = userService.findLevelById(quizDTO.getUserId());
+        Integer userLevel = userLevel = userService.findLevelById(quizDTO.getUserId());
 
+        // 비회원 or 회원 구분 -> 비회원이면 default level인 5 level로
+        if(quizDTO.getUserId() == -1 || userLevel == null){ // 비회원
+            userLevel = 5;
+        }
+        
         // 책 이름으로 생각해보기 질문을 생성해야하기 때문에 bookId를 통해 동화 제목 조회
         String bookTitle = bookInfoService.findNameById(quizDTO.getBookId());
 
