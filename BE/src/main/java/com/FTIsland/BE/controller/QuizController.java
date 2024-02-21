@@ -3,6 +3,7 @@ package com.FTIsland.BE.controller;
 import com.FTIsland.BE.dto.BookContentDTO;
 import com.FTIsland.BE.dto.ChatGptResponse;
 import com.FTIsland.BE.dto.QuizDTO;
+import com.FTIsland.BE.entity.QuizEntity;
 import com.FTIsland.BE.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +34,7 @@ public class QuizController {
 
         // 책 - 사용자 레벨 쌍의 조합으로 저장되어있는 생각해보기 질문이 있는지 확인
 
+
         // 있으면 조회한 질문을 그대로 번역 후 반환
 
         // 없으면 새로 생성 후 저장
@@ -60,7 +62,6 @@ public class QuizController {
 
 
         // 생성된 퀴즈 3개를 파싱하고 저장
-
 
         // 해당 퀴즈 리스트를 주언어, 서브언어로 번역 후 반환
         return quizService.translationQuiz(

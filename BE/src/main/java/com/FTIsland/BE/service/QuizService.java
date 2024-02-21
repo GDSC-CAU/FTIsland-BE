@@ -2,6 +2,7 @@ package com.FTIsland.BE.service;
 
 
 import com.FTIsland.BE.dto.QuizDTO;
+import com.FTIsland.BE.entity.QuizEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,9 @@ import java.util.Optional;
 public class QuizService {
     private final TranslationService translationService;
 
+    // 동화-레벨 조합의 퀴즈가 있는지 확인
+
+    // 생성한 퀴즈 String을 3개의 퀴즈 list로 변환
     public List<QuizDTO> makeQuiz(String threeQuiz) {
         // 리스트에 질문 3개 담기
         // 1. parsing
@@ -29,6 +33,7 @@ public class QuizService {
         return quizDTOS;
     }
 
+    // 3개의 퀴즈 list를 번역 후 QuizDTO로 반환
     public List<QuizDTO> translationQuiz(List<QuizDTO> quizDTOS, String mainLan, String subLan) {
 
         List<QuizDTO> translatedQuizDTOS = new ArrayList<>();
