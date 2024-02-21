@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -38,6 +39,12 @@ public class QuizController {
         bookContentDTO.setSubLan(quizDTO.getSubLan());
         // 2. content List 조회
         List<BookContentDTO> bookContentDTOS = bookContentService.findByBookId(bookContentDTO);
+        List<String> bookContentList = new ArrayList<>();
+        for(BookContentDTO dto : bookContentDTOS){
+            bookContentList.add(dto.getKorContents());
+        }
+        String bookContents = String.join(" ", bookContentList);
+        System.out.println(bookContents);
 
         // 퀴즈 생성
         ChatGptResponse chatGptResponse = null;
