@@ -21,17 +21,15 @@ public class QuizService {
     // 동화-레벨 조합의 퀴즈가 있는지 확인
     public List<String> findQuiz(Integer bookId, Integer level){
         Optional<QuizEntity> quizEntity = quizRepository.findByBookIdAndLevel(bookId, level);
+        List<String> savedQuizs = new ArrayList<>();
+
         if(quizEntity.isPresent()){ // 이미 있으면 해당 퀴즈 엔티티 안에 있는 퀴즈를 String list로 반환
-            List<String> savedQuizs = new ArrayList<>();
             savedQuizs.add(quizEntity.get().getQuiz1());
             savedQuizs.add(quizEntity.get().getQuiz2());
             savedQuizs.add(quizEntity.get().getQuiz3());
-
-            return savedQuizs;
-
-        } else { // 없으면 null 반환 후 새로 생성
-            return null;
+        } else { // 없으면 empty list 반환 후 새로 생성;
         }
+        return savedQuizs;
     }
 
     // 생성한 퀴즈 String을 3개의 퀴즈 String list로 변환
