@@ -33,22 +33,13 @@ public class QuizController {
         String bookTitle = bookInfoService.findNameById(quizDTO.getBookId());
 
         // 책의 description 조회 - 동화 제목만으로는 버전이 다를 수 있기 때문에
-        // String description = bookInfoService.findDescriptionByUd(quizDTO.getBookId());
+        String description = bookInfoService.findDescriptionByBookId(quizDTO.getBookId());
 
-        // 이미 해당 동화-레벨 맞춤형 질문이 있으면 DB에서 가져오기 / 없다면 퀴즈 생성 후 저장
-          // 1. quizService에서 동화-레벨 쌍으로 검색
-
-          // 2-a. 있으면
-
-          // 2-b. 없다면
-
-            // 1. 퀴즈 생성
+        // 퀴즈 생성
         ChatGptResponse chatGptResponse = null;
-        chatGptResponse = chatGptService.askQuestion(bookTitle, userLevel);
+        chatGptResponse = chatGptService.askQuestion(bookTitle, userLevel,description);
         String threeQuiz = chatGptResponse.getChoices().get(0).getMessage().getContent();
         System.out.println(threeQuiz);
-
-            // 2. 저장
 
 
         // 생성된 퀴즈 3개를 파싱하고 해당 퀴즈 리스트를 주언어, 서브언어로 번역 후 반환

@@ -52,9 +52,9 @@ public class ChatGptService {
 
         return responseEntity.getBody();
     }
-    public ChatGptResponse askQuestion(String bookTitle, Integer userLevel){
+    public ChatGptResponse askQuestion(String bookTitle, Integer userLevel, String description){
 
-        String finalQuestion = bookTitle + " 동화를 읽은 " + userLevel + "세 아이에게 정답이 없는 생각해볼만한 질문을 반말로 3개만 해줘.";
+        String finalQuestion = bookTitle + " 동화의 줄거리는 " + description + "이고, " + "이 동화를 읽은 " + userLevel + "세 아이에게 정답이 없는 생각해볼만한 질문을 반말로 3개만 해줘.";
 
         List<ChatGptMessage> messages = new ArrayList<>();
         messages.add(ChatGptMessage.builder()
