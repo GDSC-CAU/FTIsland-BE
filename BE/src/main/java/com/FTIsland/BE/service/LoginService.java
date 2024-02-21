@@ -57,17 +57,28 @@ public class LoginService {
         List<Optional<User>> users = userRepository.findByInputId(loginDTO.getInputId());
         log.info(loginDTO.getInputId());
         log.info(String.valueOf(users.size()));
+        log.info(String.valueOf(users.get(0).get().getInputPassword()));
+        log.info(loginDTO.getInputPassword());
 
         // inputId가 있으면 정보 가져와서 db의 userId, mainlanguage, sublanguage return
         if(users.size() != 0) {
-            UserInfoDTO userInfoDTO = new UserInfoDTO();
-            userInfoDTO.setUserId(users.get(0).get().getId());
-            userInfoDTO.setName(users.get(0).get().getName());
-            userInfoDTO.setMainLanguage(users.get(0).get().getMainLanguage());
-            userInfoDTO.setSubLanguage(users.get(0).get().getSubLanguage());
-            return new ResponseDTO<>(HttpServletResponse.SC_OK, "ok", userInfoDTO);
+            // 정상적으로 비밀번호를 입력해 가입하는 경우
+            if(users.get(0).get().getInputPassword().equals(loginDTO.getInputPassword())) {
+                UserInfoDTO userInfoDTO = new UserInfoDTO();
+                userInfoDTO.setUserId(users.get(0).get().getId());
+                userInfoDTO.setName(users.get(0).get().getName());
+                userInfoDTO.setMainLanguage(users.get(0).get().getMainLanguage());
+                userInfoDTO.setSubLanguage(users.get(0).get().getSubLanguage());
+                return new ResponseDTO<>(HttpServletResponse.SC_OK, "ok", userInfoDTO);
+            }
+            // 비밀번호가 틀린 경우
+            else {
+                return new ResponseDTO<>(HttpServletResponse.SC_OK, "invalid password", null);
+            }
+
 
         } else { // 없으면 ERROR response dto return
+            // input id를 입력하지 않아도 not in database
             return new ResponseDTO<>(HttpServletResponse.SC_NOT_FOUND, "not in database", null);
 
         }
