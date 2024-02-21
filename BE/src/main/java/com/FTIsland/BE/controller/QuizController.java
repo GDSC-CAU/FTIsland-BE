@@ -44,13 +44,13 @@ public class QuizController {
             bookContentList.add(dto.getKorContents());
         }
         String bookContents = String.join(" ", bookContentList);
-        System.out.println(bookContents);
+        // System.out.println(bookContents);
 
         // 퀴즈 생성
         ChatGptResponse chatGptResponse = null;
-        chatGptResponse = chatGptService.askQuestion(bookTitle, userLevel, bookContentDTOS);
+        chatGptResponse = chatGptService.askQuestion(bookTitle, userLevel, bookContents);
         String threeQuiz = chatGptResponse.getChoices().get(0).getMessage().getContent();
-        System.out.println(threeQuiz);
+        // System.out.println(threeQuiz);
 
 
         // 생성된 퀴즈 3개를 파싱하고 해당 퀴즈 리스트를 주언어, 서브언어로 번역 후 반환

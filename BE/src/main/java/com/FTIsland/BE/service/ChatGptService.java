@@ -53,10 +53,10 @@ public class ChatGptService {
 
         return responseEntity.getBody();
     }
-    public ChatGptResponse askQuestion(String bookTitle, Integer userLevel, List<BookContentDTO> bookContentDTOS){
+    public ChatGptResponse askQuestion(String bookTitle, Integer userLevel, String bookContents){
 
-        String bookContents;
-        String finalQuestion = bookTitle + " 동화를 읽은 " + userLevel + "세 아이에게 정답이 없는 생각해볼만한 질문을 반말로 3개만 해줘.";
+        String contentsForQuestion = bookTitle + " 동화의 내용은 " + bookContents + "이고, ";
+        String finalQuestion = "이 동화를 읽은 " + userLevel + "세 아이에게 정답이 없는 생각해볼만한 질문을 반말로 3개만 해줘.";
 
         List<ChatGptMessage> messages = new ArrayList<>();
         messages.add(ChatGptMessage.builder()
@@ -75,7 +75,7 @@ public class ChatGptService {
                 .build());
         messages.add(ChatGptMessage.builder()
                 .role(ChatGptConfig.ROLE)
-                .content(finalQuestion)
+                .content(contentsForQuestion + finalQuestion)
                 .build());
         return this.getResponse(
                 this.buildHttpEntity(
