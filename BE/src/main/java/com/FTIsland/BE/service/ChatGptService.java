@@ -54,12 +54,12 @@ public class ChatGptService {
     }
     public ChatGptResponse askQuestion(String bookTitle, Integer userLevel){
 
-        String finalQuestion = bookTitle + " 동화를 읽은 " + userLevel + "세 아이에게 정답이 없는 생각해볼만한 질문을 3개만 해줘.";
+        String finalQuestion = bookTitle + " 동화를 읽은 " + userLevel + "세 아이에게 정답이 없는 생각해볼만한 질문을 반말로 3개만 해줘.";
 
         List<ChatGptMessage> messages = new ArrayList<>();
         messages.add(ChatGptMessage.builder()
                 .role(ChatGptConfig.USER)
-                .content("아기 돼지 삼형제 동화를 읽은 " + userLevel + "세 아이에게 할 수 있는 정답이 없는 생각해볼만한 질문을 3개만 해줘.")
+                .content("아기 돼지 삼형제 동화를 읽은 " + userLevel + "세 아이에게 할 수 있는 정답이 없는 생각해볼만한 질문을 반말로 3개만 해줘.")
                 .build());
         messages.add(ChatGptMessage.builder()
                 .role(ChatGptConfig.ASSISTANT)
