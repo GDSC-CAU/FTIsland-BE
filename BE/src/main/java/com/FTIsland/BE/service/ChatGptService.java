@@ -55,6 +55,7 @@ public class ChatGptService {
     }
     public ChatGptResponse askQuestion(String bookTitle, Integer userLevel, List<BookContentDTO> bookContentDTOS){
 
+        String bookContents;
         String finalQuestion = bookTitle + " 동화를 읽은 " + userLevel + "세 아이에게 정답이 없는 생각해볼만한 질문을 반말로 3개만 해줘.";
 
         List<ChatGptMessage> messages = new ArrayList<>();
@@ -74,7 +75,6 @@ public class ChatGptService {
                 .build());
         messages.add(ChatGptMessage.builder()
                 .role(ChatGptConfig.ROLE)
-//                .content(questionRequest.getQuestion())
                 .content(finalQuestion)
                 .build());
         return this.getResponse(
