@@ -31,6 +31,12 @@ public class QuizController {
         // 책 이름으로 생각해보기 질문을 생성해야하기 때문에 bookId를 통해 동화 제목 조회
         String bookTitle = bookInfoService.findNameById(quizDTO.getBookId());
 
+        // 책 - 사용자 레벨 쌍의 조합으로 저장되어있는 생각해보기 질문이 있는지 확인
+
+        // 있으면 조회한 질문을 그대로 번역 후 반환
+
+        // 없으면 새로 생성 후 저장
+
         // 책의 contents 조회 - 동화 제목만으로는 버전이 다를 수 있기 때문에
         // 1. bookContentService의 findByBookId method를 쓰기 위해 QuizDTO -> BookContentDTO 변환
         BookContentDTO bookContentDTO = new BookContentDTO();
@@ -53,7 +59,10 @@ public class QuizController {
         // System.out.println(threeQuiz);
 
 
-        // 생성된 퀴즈 3개를 파싱하고 해당 퀴즈 리스트를 주언어, 서브언어로 번역 후 반환
+        // 생성된 퀴즈 3개를 파싱하고 저장
+
+
+        // 해당 퀴즈 리스트를 주언어, 서브언어로 번역 후 반환
         return quizService.translationQuiz(
                 quizService.makeQuiz(threeQuiz),
                 quizDTO.getMainLan(),
