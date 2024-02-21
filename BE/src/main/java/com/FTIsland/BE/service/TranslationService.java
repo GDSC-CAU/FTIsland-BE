@@ -23,8 +23,8 @@ public class TranslationService {
         Translation translation = translate.translate(text, Translate.TranslateOption.sourceLanguage(sourceLanguage),
                 Translate.TranslateOption.targetLanguage(targetLanguage)); // 번역 실행
 
-        System.out.println("원본: " + text);
-        System.out.println("번역: " + translation.getTranslatedText());
+        // System.out.println("원본: " + text);
+        // System.out.println("번역: " + translation.getTranslatedText());
 
         return translation.getTranslatedText();
     }
