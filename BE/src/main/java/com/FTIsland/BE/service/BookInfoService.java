@@ -59,4 +59,12 @@ public class BookInfoService {
         return bookInfoEntityList;
 
     }
+
+    public String findDescriptionByBookId(Integer bookId) {
+        Optional<BookInfoEntity> bookInfoEntity = bookInfoRepository.findById(bookId);
+        if(bookInfoEntity.isPresent()){
+            return bookInfoEntity.get().getDescription();
+        }
+        return null;
+    }
 }
