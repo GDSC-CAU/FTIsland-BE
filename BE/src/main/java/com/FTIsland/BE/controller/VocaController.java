@@ -1,9 +1,6 @@
 package com.FTIsland.BE.controller;
 
-import com.FTIsland.BE.dto.BookContentDTO;
-import com.FTIsland.BE.dto.BookVocaDescriptionDTO;
-import com.FTIsland.BE.dto.VocaDTO;
-import com.FTIsland.BE.dto.VocaDescriptionDTO;
+import com.FTIsland.BE.dto.*;
 import com.FTIsland.BE.entity.UserVocaEntity;
 import com.FTIsland.BE.service.VocaService;
 import lombok.RequiredArgsConstructor;
@@ -43,6 +40,11 @@ public class VocaController {
     @PostMapping("/voca/list")
     public List<VocaDTO> getVocaList(@RequestBody VocaDTO vocaDTO){
         return vocaService.getVocaList(vocaDTO.getUserId()); // 해당 id의 동화 내용 list
+    }
+
+    @PostMapping("/voca/star")
+    public VocaStarDTO isStar(@RequestBody VocaStarDTO vocaStarDTO){
+        return vocaService.isStar(vocaStarDTO); // 해당 id의 동화 내용 list
     }
 
     @GetMapping("/book/voca/description")

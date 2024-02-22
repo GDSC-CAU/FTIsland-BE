@@ -114,7 +114,7 @@ public class VocaService {
         } else{
             response.setIsStar(false);
         }
-        
+
         return response;
     }
 
