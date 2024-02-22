@@ -103,7 +103,7 @@ public class VocaService {
 
     // 단어 즐겨찾기 여부 확인
     public VocaStarDTO isStar(VocaStarDTO vocaStarDTO){
-        Optional<VocaEntity> byId = vocaRepository.findById(vocaStarDTO.getVocaId());
+        Optional<UserVocaEntity> byId = userVocaRepository.findByUserIdAndVocaId(vocaStarDTO.getUserId(), vocaStarDTO.getVocaId());
 
         VocaStarDTO response = new VocaStarDTO();
         response.setUserId(vocaStarDTO.getUserId());
