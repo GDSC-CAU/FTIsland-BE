@@ -52,4 +52,8 @@ public class ReadService {
         Optional<ReadEntity> readEntity = readRepository.findByUserIdAndBookId(userId, bookId);
         return readEntity;
     }
+
+    public Optional<ReadEntity> findByBookId(int nowId) {
+        return readRepository.findByBookId(nowId);
+    }
 }
