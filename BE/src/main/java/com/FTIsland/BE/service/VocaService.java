@@ -1,9 +1,6 @@
 package com.FTIsland.BE.service;
 
-import com.FTIsland.BE.dto.BookContentDTO;
-import com.FTIsland.BE.dto.BookVocaDescriptionDTO;
-import com.FTIsland.BE.dto.VocaDTO;
-import com.FTIsland.BE.dto.VocaDescriptionDTO;
+import com.FTIsland.BE.dto.*;
 import com.FTIsland.BE.entity.BookInfoEntity;
 import com.FTIsland.BE.entity.User;
 import com.FTIsland.BE.entity.UserVocaEntity;
@@ -12,6 +9,7 @@ import com.FTIsland.BE.repository.BookInfoRepository;
 import com.FTIsland.BE.repository.UserRepository;
 import com.FTIsland.BE.repository.UserVocaRepository;
 import com.FTIsland.BE.repository.VocaRepository;
+import com.nimbusds.openid.connect.sdk.assurance.request.VerifiedClaimsSetRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -103,6 +101,22 @@ public class VocaService {
 
     }
 
+    // 단어 즐겨찾기 여부 확인
+    public VocaStarDTO isStar(VocaStarDTO vocaStarDTO){
+        Optional<VocaEntity> byId = vocaRepository.findById(vocaStarDTO.getVocaId());
+
+        VocaStarDTO response = new VocaStarDTO();
+        response.setUserId(vocaStarDTO.getUserId());
+        response.setVocaId(vocaStarDTO.getVocaId());
+
+        if(byId.isPresent()){
+            response.setIsStar(true);
+        } else{
+            response.setIsStar(false);
+        }
+        
+        return response;
+    }
 
     // 단어 설명 조회 및 번역 - 동화
     public BookVocaDescriptionDTO getBookVocaDescription(Integer vocaId, String lan) {
