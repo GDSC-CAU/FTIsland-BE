@@ -1,6 +1,7 @@
 package com.FTIsland.BE.service;
 
 import com.FTIsland.BE.dto.BookContentDTO;
+import com.FTIsland.BE.dto.BookVocaDescriptionDTO;
 import com.FTIsland.BE.dto.VocaDTO;
 import com.FTIsland.BE.dto.VocaDescriptionDTO;
 import com.FTIsland.BE.entity.BookInfoEntity;
@@ -102,7 +103,32 @@ public class VocaService {
 
     }
 
-    // 단어 설명 조회 및 번역
+
+    // 단어 설명 조회 및 번역 - 동화
+    public BookVocaDescriptionDTO getBookVocaDescription(Integer vocaId, String lan) {
+        // vocaId로 단어 조회 (단어, 설명, 책id)
+        Optional<VocaEntity> byId = vocaRepository.findById(vocaId);
+        String korDescription = byId.get().getDescription();
+        String image = byId.get().getImage();
+
+        // 단어 및 단어 설명 번역
+        // 1. 한국어를 기본으로 설정
+        String description = korDescription;
+
+        // 2. 요청한 언어에 맞게 번역
+        if (!lan.equals("ko")){ // 한국어가 아니라면 번역
+            description = translationService.test(lan, description);
+        }
+
+        BookVocaDescriptionDTO responseDTO = new BookVocaDescriptionDTO();
+        responseDTO.setDescription(description);
+        responseDTO.setImage(image);
+
+        return responseDTO;
+    }
+
+
+    // 단어 설명 조회 및 번역 - 단어장
     public List<VocaDescriptionDTO> getVocaDescription(Integer vocaId, String mainLan, String subLan){
         // vocaId로 단어 조회 (단어, 설명, 책id)
         Optional<VocaEntity> byId = vocaRepository.findById(vocaId);
@@ -167,4 +193,5 @@ public class VocaService {
         vocaRepository.save(new VocaEntity(7, 2, 2, "살금 살금", "조심스럽고 발소리가 나지 않는", "https://storage.googleapis.com/ft-island-image/salgeum.webp"));
         vocaRepository.save(new VocaEntity(8, 2, 4, "줄행랑", "뒤도 안돌아보고 도망가기", "https://storage.googleapis.com/ft-island-image/julhang.webp"));
     }
+
 }
