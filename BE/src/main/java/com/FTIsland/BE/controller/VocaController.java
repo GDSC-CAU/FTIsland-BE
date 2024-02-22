@@ -1,6 +1,7 @@
 package com.FTIsland.BE.controller;
 
 import com.FTIsland.BE.dto.BookContentDTO;
+import com.FTIsland.BE.dto.BookVocaDescriptionDTO;
 import com.FTIsland.BE.dto.VocaDTO;
 import com.FTIsland.BE.dto.VocaDescriptionDTO;
 import com.FTIsland.BE.entity.UserVocaEntity;
@@ -42,6 +43,11 @@ public class VocaController {
     @PostMapping("/voca/list")
     public List<VocaDTO> getVocaList(@RequestBody VocaDTO vocaDTO){
         return vocaService.getVocaList(vocaDTO.getUserId()); // 해당 id의 동화 내용 list
+    }
+
+    @GetMapping("/book/voca/description")
+    public BookVocaDescriptionDTO getBookVocaDescription(@RequestParam Integer vocaId, @RequestParam String lan) {
+        return vocaService.getBookVocaDescription(vocaId, lan);
     }
 
     @GetMapping("/voca/description")

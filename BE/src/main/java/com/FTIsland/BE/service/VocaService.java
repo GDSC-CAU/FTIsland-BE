@@ -126,7 +126,7 @@ public class VocaService {
 
         return responseDTO;
     }
-    
+
 
     // 단어 설명 조회 및 번역 - 단어장
     public List<VocaDescriptionDTO> getVocaDescription(Integer vocaId, String mainLan, String subLan){
