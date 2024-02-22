@@ -1,5 +1,6 @@
 package com.FTIsland.BE.service;
 
+import com.FTIsland.BE.dto.IslandBooksDTO;
 import com.FTIsland.BE.dto.ReadDTO;
 import com.FTIsland.BE.entity.ReadEntity;
 import com.FTIsland.BE.repository.ReadRepository;
@@ -7,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,5 +57,23 @@ public class ReadService {
 
     public Optional<ReadEntity> findByBookId(int nowId) {
         return readRepository.findByBookId(nowId);
+    }
+
+    public List<ReadDTO> progress(IslandBooksDTO islandBooksDTO) {
+        List<ReadDTO> readDTOS = new ArrayList<>();
+
+        // islandid에서 힌트를 얻어서 바로 검색
+        int startNum = (islandBooksDTO.getIslandId() - 1) * 4 + 1;
+        for(int i = 0; i < 4; i++) {
+            int nowId = startNum + i;
+            Optional<ReadEntity> readEntityOptional = readRepository.findByUserIdAndBookId(islandBooksDTO.getUserId(), nowId);
+            if(readEntityOptional.isPresent()) {
+                ReadDTO readDTO = new ReadDTO(islandBooksDTO.getUserId(), readEntityOptional.get().getBookId(),
+                        readEntityOptional.get().getOffset(), readEntityOptional.get().getLimitNum(),
+                        readEntityOptional.get().getOffset() * readEntityOptional.get().getLimitNum());
+                readDTOS.add(readDTO);
+            }
+        }
+        return readDTOS;
     }
 }

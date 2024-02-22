@@ -37,20 +37,8 @@ public class IslandInfoController {
 
     @PostMapping("/book/progress")
     public List<ReadDTO> getBookInfoWithRead(@RequestBody IslandBooksDTO islandBooksDTO) {
-        List<ReadDTO> readDTOS = new ArrayList<>();
-        // islandid에서 힌트를 얻어서 바로 검색
-        int startNum = (islandBooksDTO.getIslandId() - 1) * 4 + 1;
-        for(int i = 0; i < 4; i++) {
-            int nowId = startNum + i;
-            Optional<ReadEntity> readEntityOptional = readService.findByUserIdAndBookId(islandBooksDTO.getUserId(), nowId);
-            if(readEntityOptional.isPresent()) {
-                ReadDTO readDTO = new ReadDTO(islandBooksDTO.getUserId(), readEntityOptional.get().getBookId(),
-                        readEntityOptional.get().getOffset(), readEntityOptional.get().getLimitNum(),
-                        readEntityOptional.get().getOffset() * readEntityOptional.get().getLimitNum());
-                readDTOS.add(readDTO);
-            }
-        }
-        return readDTOS;
+        return readService.progress(islandBooksDTO);
+
     }
 
     @PostMapping("/island/books")
