@@ -10,17 +10,40 @@
 ## 📌 UN-SDGs
 
 ## 📌 Architecture
+![image](https://github.com/GDSC-CAU/FTIsland-BE/assets/81238093/5f40878e-c43b-4642-8406-0ce5375903b2)
+
 
 ### Google Products
-
-### Development environments
+- Google Cloud Platform
+- Google Cloud Storage (Bucket)
+- Google Cloud SQL
+- Google translation API
+- Google text to speech API
 
 ## 📌 Start Guide
 
-### Requirements
+### Front-end
 
-### Install and Clone
+#### Requirements
 
-### Run
+#### Install and Clone
+
+#### Run
+
+### Back-end
+
+#### Requirements
+
+#### Install and Clone
+
+#### Run
 
 ## 📌 Contributors
+
+| Minkyeong Kim | Yunjin Kim | Youngeun Jun | Seungwon Choi |
+| --- | --- | --- | --- |
+|  | <img src="https://github.com/GDSC-CAU/FTIsland-BE/assets/81238093/395dcbea-2778-47d8-ad97-8566606e029a" width="150" /> |  |  |
+| Back-end | Server / Back-end | Front-end | Front-end |
+
+
+
