@@ -38,6 +38,10 @@
 
 #### Run
 
+## 📌 Screen Shots
+
+## 📌 Next Steps
+
 ## 📌 Contributors
 
 | Minkyeong Kim | Yunjin Kim | Youngeun Jun | Seungwon Choi |
