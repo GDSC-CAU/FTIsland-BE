@@ -101,7 +101,7 @@ npm dev
 - Open http://localhost:3000 with your browser to see the result.
 
 
-## Back-end
+## [Back-end](https://github.com/GDSC-CAU/FTIsland-BE)
 
 ### Requirements
 Before getting started, ensure you have the following installed:
