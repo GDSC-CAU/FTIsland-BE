@@ -71,8 +71,8 @@ npm install
 - Set the required environment variables in the .env file. For example:
 
 ```
-NEXT_PUBLIC_GOOGLE_CLOUD_API_KEY={your gcp key}
-NEXT_PUBLIC_SERVER_URL=https://..
+NEXT_PUBLIC_GOOGLE_CLOUD_API_KEY={ /* Your gcp key */ }
+NEXT_PUBLIC_SERVER_URL=http://localhost:8080
 ```
 
 ### Run
@@ -81,7 +81,7 @@ To run the front-end application, follow these steps:
 1. Development Mode:
 
 ```
-npm start
+npm dev
 ```
 
 2. Test
@@ -146,7 +146,7 @@ create database ft;
 
 | Minkyeong Kim | Yunjin Kim | Youngeun Jun | Seungwon Choi |
 | --- | --- | --- | --- |
-| <img src="https://github.com/GDSC-CAU/FTIsland-BE/assets/80468377/718adbac-97b2-4f1b-a312-4143108c8dd4" width="150" /> | <img src="https://github.com/GDSC-CAU/FTIsland-BE/assets/81238093/395dcbea-2778-47d8-ad97-8566606e029a" width="150" /> |  | <img src="https://github.com/GDSC-CAU/FTIsland-BE/assets/33658057/b6934dab-2bba-4533-982d-847684b9fcfe" width="150" /> |
+| <img src="https://github.com/GDSC-CAU/FTIsland-BE/assets/80468377/718adbac-97b2-4f1b-a312-4143108c8dd4" width="150" /> | <img src="https://github.com/GDSC-CAU/FTIsland-BE/assets/81238093/395dcbea-2778-47d8-ad97-8566606e029a" width="150" /> | <img src="https://github.com/GDSC-CAU/FTIsland-BE/assets/33658057/50800865-b2d0-4187-9a56-093453c18e92" width="150" /> | <img src="https://github.com/GDSC-CAU/FTIsland-BE/assets/33658057/b6934dab-2bba-4533-982d-847684b9fcfe" width="150" /> |
 | Back-end / AI | Server / Back-end | Front-end / Design | Front-end / Design |
 
 
