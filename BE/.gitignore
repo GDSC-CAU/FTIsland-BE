@@ -8,7 +8,6 @@ build/
 /.gradle/
 application-oauth.yml
 application.yml
-application-API-KEY.yml
 application-chatgpt.yml
 
 ### STS ###
