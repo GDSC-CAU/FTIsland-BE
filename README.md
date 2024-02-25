@@ -22,13 +22,67 @@
 
 ## 📌 Start Guide
 
-### Front-end
+<br/>
 
-#### Requirements
+## Front-end
 
-#### Install and Clone
+### Requirements
+Before getting started, ensure you have the following installed:
 
-#### Run
+- Node.js
+- npm (Node Package Manager)
+
+<br/>
+
+### Install and Clone
+1. Clone the Repository:
+
+```
+git clone https://github.com/GDSC-CAU/FTIsland-FE.git
+```
+
+2. Change Directory:
+
+```
+cd FTIsland-FE
+```
+
+3. Install Dependencies:
+
+```
+npm install
+```
+
+<br/>
+
+### Environment Variables Setup
+1. Create a .env.local File
+- Create a .env.local file in the root directory of your project.
+
+2. Set Environment Variables
+- Set the required environment variables in the .env file. For example:
+
+```
+NEXT_PUBLIC_GOOGLE_CLOUD_API_KEY={your gcp key}
+NEXT_PUBLIC_SERVER_URL=https://..
+```
+
+<br/>
+
+### Run
+To run the front-end application, follow these steps:
+
+1. Development Mode:
+
+```
+npm start
+```
+
+2. Test
+- Open http://localhost:3000 with your browser to see the result.
+
+
+<br/>
 
 ### Back-end
 
@@ -46,7 +100,7 @@
 
 | Minkyeong Kim | Yunjin Kim | Youngeun Jun | Seungwon Choi |
 | --- | --- | --- | --- |
-|  | <img src="https://github.com/GDSC-CAU/FTIsland-BE/assets/81238093/395dcbea-2778-47d8-ad97-8566606e029a" width="150" /> |  |  |
+|  | <img src="https://github.com/GDSC-CAU/FTIsland-BE/assets/81238093/395dcbea-2778-47d8-ad97-8566606e029a" width="150" /> |  | <img src="https://github.com/GDSC-CAU/FTIsland-BE/assets/33658057/b6934dab-2bba-4533-982d-847684b9fcfe" width="150" /> |
 | Back-end | Server / Back-end | Front-end | Front-end |
 
 
