@@ -3,11 +3,25 @@
 (간단한 설명)
 ### Demo video
 
+## 📌 Project Overview
+
+We noted **the phenomenon of poor pre-school language education for children when their primary caregivers are poor at the language of their country of residence in an era where there are many multicultural families.** In multicultural families, the subject of language education is children and primary caregivers.
+
+**We provide a fairy tale reading service that allows main caregivers and children to bond with each other and acquire language and culture of their country of residence.**
+
 ## 📌 Problem
+
+According to a national survey of multicultural families conducted in Korea in 2021, the biggest difficulty in raising children was Korean language instruction (26.8%) for those under the age of 5 and learning instruction (50.4%) for those over the age of 6.
+
+In a typical family, the caregiver is proficient in the language, so the child is naturally able to acquire it. However, in a multicultural family, the primary caregiver is less likely to acquire a language because the primary caregiver may be inexperienced in the language of the country of residence. The degree of language learning also has a significant impact on pre-school children's educational attainment.
 
 ## 📌 Solution
 
-## 📌 UN-SDGs
+Children's storybooks read by their parents in childhood have excellent language learning effects. So, with this in mind, we propose a "dual language storybook" solution that enables both children and primary caregivers to naturally learn languages in multicultural families.
+
+We have chosen **high quality education** among the UN's sustainable development goals, and the specific goal is **4.2 Equal Access to Quality Pre-school Education.**
+
+Caregivers can read fairy tale books with their children to acquire culture and language, and learn words. After reading the fairy tale books, the "Think" question allows them to think deeply about the contents of the fairy tale and induce them to interpret them in their own way for social learning. It also allows caregivers and children to bond by having conversations about the book.
 
 ## 📌 Architecture
 ![image](https://github.com/GDSC-CAU/FTIsland-BE/assets/81238093/5f40878e-c43b-4642-8406-0ce5375903b2)
@@ -121,6 +135,12 @@ create database ft;
 ## 📌 Screen Shots
 
 ## 📌 Next Steps
+
+1. Currently, it is for multicultural families living in Korea, and registered fairy tales are mainly for traditional fairy tales in Korea. In order to target more multicultural families in more countries, many traditional fairy tales from various countries will be registered. Traditional fairy tales allow you to feel the culture or customs of a country, and if there are traditional fairy tales from various countries, you can understand the culture by reading fairy tales about your parents' home country.
+
+2. In a multicultural family, a child's poor language proficiency due to the language proficiency of the main caregiver can also be resolved through drawing. While drawing about keywords, you can naturally acquire words and form a bond by drawing together. In the future, we will add a function of drawing fairy tale illustrations by using our own imagination about the contents of the fairy tale.
+
+3. The current version of the solution offers only Korean, English, Japanese, and Chinese, but the backend code provides both languages from countries provided by the Google translation API, so adding a country to the main/subordinate language option can support many countries without additional memory consumption or code modification.
 
 ## 📌 Contributors
 
