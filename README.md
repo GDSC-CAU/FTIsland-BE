@@ -49,7 +49,7 @@ Reading fairy tales with parents naturally helps them learn about letters and im
 
 ## 📌 Start Guide
 
-## Front-end
+## [Front-end](https://github.com/GDSC-CAU/FTIsland-FE)
 
 ### Requirements
 Before getting started, ensure you have the following installed:
