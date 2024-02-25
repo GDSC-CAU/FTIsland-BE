@@ -8,7 +8,6 @@ build/
 /.gradle/
 application-oauth.yml
 application.yml
-application-chatgpt.yml
 
 ### STS ###
 .apt_generated
