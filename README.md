@@ -1,7 +1,5 @@
 # 🏝️ Fairy-Tale Island 🏝️
 ![image](https://github.com/GDSC-CAU/FTIsland-BE/assets/81238093/f99316f4-59f0-460b-a0cd-356fd96c553b)
-(간단한 설명)
-### Demo video
 
 ## 📌 Project Overview
 
@@ -22,6 +20,9 @@ Children's storybooks read by their parents in childhood have excellent language
 We have chosen **high quality education** among the UN's sustainable development goals, and the specific goal is **4.2 Equal Access to Quality Pre-school Education.**
 
 Caregivers can read fairy tale books with their children to acquire culture and language, and learn words. After reading the fairy tale books, the "Think" question allows them to think deeply about the contents of the fairy tale and induce them to interpret them in their own way for social learning. It also allows caregivers and children to bond by having conversations about the book.
+
+## 📌 Demo Video
+
 
 ## 📌 Architecture
 ![image](https://github.com/GDSC-CAU/FTIsland-BE/assets/81238093/5f40878e-c43b-4642-8406-0ce5375903b2)
@@ -132,7 +133,24 @@ create database ft;
   Open http://localhost:8080 or use the POSTMAN to check the api operation.
 
 
-## 📌 Screen Shots
+## 📌 Fairy-Tale Island
+
+### You can explore in [🏝️ Fairy-Tale Island 🏝️](https://fairy-tale-island.vercel.app/)
+
+| Main Page | Side Menu | 
+| --- | --- | 
+| <img src="https://github.com/RumosZin/FTIsland-BE/assets/81238093/d5b263eb-6acc-482b-abac-4d5a57e4333b" width="500" /> | <img src="https://github.com/RumosZin/FTIsland-BE/assets/81238093/7ba884e8-4902-4374-a760-ed37b31d758d" width="500" /> | 
+
+| Book Title | Book Contents | 
+| --- | --- | 
+| <img src="https://github.com/RumosZin/FTIsland-BE/assets/81238093/5342c51d-9c4d-48ef-a3ff-fe7d79108475" width="500" /> | <img src="https://github.com/RumosZin/FTIsland-BE/assets/81238093/e05ce291-71e5-43b7-b922-ef24a45b9362" width="500" /> | 
+
+| My Stories | Vocabulary | 
+| --- | --- | 
+| <img src="https://github.com/RumosZin/FTIsland-BE/assets/81238093/e7f0537d-545d-45a2-a574-2d9b409776fd" width="500" /> | <img src="https://github.com/RumosZin/FTIsland-BE/assets/81238093/5352a048-4654-421e-b521-730b7e0fb261" width="500" /> | 
+
+
+
 
 ## 📌 Next Steps
 
