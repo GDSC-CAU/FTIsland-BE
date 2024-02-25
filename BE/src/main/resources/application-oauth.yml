@@ -1,0 +1,7 @@
+oauth2:
+  google:
+    client-id: #Your client-id
+    client-secret: #Your secret key
+    redirect-uri : http://localhost:8080/login/oauth2/code/google # 배포 시 외부 경로로 이동해야 함
+    token-uri : https://oauth2.googleapis.com/token
+    resource-uri : https://www.googleapis.com/oauth2/v2/userinfo
