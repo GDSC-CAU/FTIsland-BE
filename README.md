@@ -49,7 +49,7 @@ https://www.youtube.com/watch?v=JJYhN3-Z-0M
 
 ## 📌 Start Guide
 
-## [Front-end](https://github.com/GDSC-CAU/FTIsland-FE)
+## 🖥 [Front-end](https://github.com/GDSC-CAU/FTIsland-FE)
 
 ### Requirements
 Before getting started, ensure you have the following installed:
@@ -101,7 +101,7 @@ npm dev
 - Open http://localhost:3000 with your browser to see the result.
 
 
-## [Back-end](https://github.com/GDSC-CAU/FTIsland-BE)
+## 🖥 [Back-end](https://github.com/GDSC-CAU/FTIsland-BE)
 
 ### Requirements
 Before getting started, ensure you have the following installed:
