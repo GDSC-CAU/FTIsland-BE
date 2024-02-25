@@ -34,7 +34,7 @@ Reading fairy tales with parents naturally helps them learn about letters and im
   - [Kim Jung-won, Nam Kyu. (2009). Response patterns of migrant women from multicultural families expressed during the application of picture book reading programs. Children's Literature Education Research, 10 (2), 73-103.](https://www.dbpia.co.kr/Journal/articleDetail?nodeId=NODE07554024)
 
 ## 📌 Demo Video
-
+https://www.youtube.com/watch?v=JJYhN3-Z-0M
 
 ## 📌 Architecture
 ![image](https://github.com/GDSC-CAU/FTIsland-BE/assets/81238093/5f40878e-c43b-4642-8406-0ce5375903b2)
