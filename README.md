@@ -22,8 +22,6 @@
 
 ## 📌 Start Guide
 
-<br/>
-
 ## Front-end
 
 ### Requirements
@@ -31,8 +29,6 @@ Before getting started, ensure you have the following installed:
 
 - Node.js
 - npm (Node Package Manager)
-
-<br/>
 
 ### Install and Clone
 1. Clone the Repository:
@@ -53,8 +49,6 @@ cd FTIsland-FE
 npm install
 ```
 
-<br/>
-
 ### Environment Variables Setup
 1. Create a .env.local File
 - Create a .env.local file in the root directory of your project.
@@ -66,8 +60,6 @@ npm install
 NEXT_PUBLIC_GOOGLE_CLOUD_API_KEY={your gcp key}
 NEXT_PUBLIC_SERVER_URL=https://..
 ```
-
-<br/>
 
 ### Run
 To run the front-end application, follow these steps:
@@ -82,15 +74,15 @@ npm start
 - Open http://localhost:3000 with your browser to see the result.
 
 
-<br/>
+## Back-end
 
-### Back-end
+### Requirements
 
-#### Requirements
+### Install and Clone
 
-#### Install and Clone
+### Environment Variables Setup
 
-#### Run
+### Run
 
 ## 📌 Screen Shots
 
