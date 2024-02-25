@@ -77,12 +77,46 @@ npm start
 ## Back-end
 
 ### Requirements
+Before getting started, ensure you have the following installed:
+
+- MySQL
+- Java (JDK17)
+- IntelliJ IDEA
 
 ### Install and Clone
+- Clone the Repository:
+
+```
+git clone https://github.com/GDSC-CAU/FTIsland-BE.git
+```
+- Open
+1. In IntelliJ IDEA, open the folder for that clone path and select the "build.gradle" file to open it.
+2. When the gradle plug-in elephant appears, press it to add dependency.
+3. If you have a build problem, change to Build Tools in settings: IntelliJIDEA -> Gradle or vice versa.
+4. If you still have a problem, set the gradle JVM version to 17.
+
 
 ### Environment Variables Setup
+1. You must enter the API Key in the yml file to run. Running as it is may not support some of the features.
+2. The mysql setting must be as follows.
 
+- In mySQL workbench, set the root user's password to 0000.
+```
+mysql -u root
+```
+```
+set password = password('0000');
+```
+
+- Create database under the name 'ft'
+```
+create database ft;
+```
 ### Run
+- In "com.FTIsland.BE" folder, Run "BeApplication" file.
+- Test </br>
+  Open http://localhost:8080 or use the POSTMAN to check the api operation.
+
 
 ## 📌 Screen Shots
 
