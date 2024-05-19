@@ -26,12 +26,12 @@ public class ReadService {
 
             ReadEntity originEntity = byUserIdAndBookId.get();
 
-            // request로 받은 DTO의 offset과 limit을
-            Integer updateOffset = readDTO.getOffset();
+            // request로 받은 DTO의 offsetvalue과 limit을
+            Integer updateoffsetvalue = readDTO.getOffset_value();
             Integer updateLimit = readDTO.getLimitNum();
 
             // 원래 저장되어있던 entity에 update
-            originEntity.setOffset(updateOffset);
+            originEntity.setOffset_value(updateoffsetvalue);
             originEntity.setLimitNum(updateLimit);
 
             // updatedAt은 update 쿼리 발생 시 자동으로 업데이트. @UpdateTimestamp
@@ -44,8 +44,8 @@ public class ReadService {
 
             // createdAt은 create 쿼리 발생 시 자동으로 저장. @CreationTimestamp
         }
-        Integer lastPage = readDTO.getOffset() * readDTO.getLimitNum();
-        ReadDTO responseDTO = new ReadDTO(readDTO.getUserId(), readDTO.getBookId(), readDTO.getOffset(), readDTO.getLimitNum(), lastPage);
+        Integer lastPage = readDTO.getOffset_value() * readDTO.getLimitNum();
+        ReadDTO responseDTO = new ReadDTO(readDTO.getUserId(), readDTO.getBookId(), readDTO.getOffset_value(), readDTO.getLimitNum(), lastPage);
 
         return responseDTO;
     }
@@ -69,8 +69,8 @@ public class ReadService {
             Optional<ReadEntity> readEntityOptional = readRepository.findByUserIdAndBookId(islandBooksDTO.getUserId(), nowId);
             if(readEntityOptional.isPresent()) {
                 ReadDTO readDTO = new ReadDTO(islandBooksDTO.getUserId(), readEntityOptional.get().getBookId(),
-                        readEntityOptional.get().getOffset(), readEntityOptional.get().getLimitNum(),
-                        readEntityOptional.get().getOffset() * readEntityOptional.get().getLimitNum());
+                        readEntityOptional.get().getOffset_value(), readEntityOptional.get().getLimitNum(),
+                        readEntityOptional.get().getOffset_value() * readEntityOptional.get().getLimitNum());
                 readDTOS.add(readDTO);
             }
         }

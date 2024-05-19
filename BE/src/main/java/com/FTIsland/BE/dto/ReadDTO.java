@@ -14,17 +14,17 @@ import java.time.LocalDateTime;
 public class ReadDTO {
     private Integer userId;
     private Integer bookId;
-    private Integer offset;
+    private Integer offset_value;
     private Integer limitNum;
     // private Float progress;
     private Integer lastPage;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public ReadDTO(Integer userId, Integer bookId, Integer offset, Integer limitNum, Integer lastPage){
+    public ReadDTO(Integer userId, Integer bookId, Integer offsetvalue, Integer limitNum, Integer lastPage){
         this.userId = userId;
         this.bookId = bookId;
-        this.offset = offset;
+        this.offset_value = offsetvalue;
         this.limitNum = limitNum;
         this.lastPage = lastPage;
     }
