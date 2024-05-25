@@ -123,8 +123,6 @@ public class BookContentService {
                 contentVocaDTOS.add(contentVocaDTO);
             }
 
-
-
             // DTO List에 추가
             BookContentDTO bookContentDTO = new BookContentDTO().builder()
                     .bookId(ent.getBookId())

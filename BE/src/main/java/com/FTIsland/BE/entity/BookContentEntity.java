@@ -33,7 +33,7 @@ public class BookContentEntity {
     @Column
     private String image;
 
-    // 빌더 패턴 정리 끝나면 삭제
+    // 빌더 패턴 정리 끝나면 삭제 + setter 삭제
 //    public static BookContentEntity toBookContentEntity(BookContentDTO bookContentDTO) {
 //        BookContentEntity bookContentEntity = new BookContentEntity();
 //        bookContentEntity.setBookId(bookContentDTO.getBookId());

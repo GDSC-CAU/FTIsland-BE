@@ -1,7 +1,6 @@
-package com.FTIsland.BE.controller;
+package com.FTIsland.BE.bookContent.controller;
 
 import com.FTIsland.BE.dto.BookContentDTO;
-import com.FTIsland.BE.dto.BookInfoDTO;
 import com.FTIsland.BE.service.BookContentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
