@@ -3,10 +3,7 @@ package com.FTIsland.BE.dto;
 
 import com.FTIsland.BE.entity.IslandInfoEntity;
 import jakarta.persistence.criteria.CriteriaBuilder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @Setter
@@ -16,9 +13,14 @@ public class IslandInfoDTO {
     private Integer id;
     private String name;
 
+    @Builder
     public IslandInfoDTO(Integer id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public IslandInfoEntity toEntity() {
+        return IslandInfoEntity.builder().id(id).name(name).build();
     }
 
     public static IslandInfoDTO toIslandInfoDTO(IslandInfoEntity islandInfoEntity) {
