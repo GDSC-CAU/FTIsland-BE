@@ -24,7 +24,7 @@ public class BookContentService {
     private final TranslationService translationService;
     private final VocaRepository vocaRepository;
 
-    public void save() { // 동화 내용 저장 (임시로 만든 method)
+    public void save() { // 동화 내용 저장 (임시로 만든 method) -> seed data 저장하는 구문 작성 후 메서드 삭제 예정 (toEntity 관련 에러 해결)
         ArrayList<BookContentDTO> bookContentDTOS = new ArrayList<>();
 
         // 금도끼 은도끼 저장
