@@ -1,4 +1,4 @@
-package com.FTIsland.BE.service;
+package com.FTIsland.BE.bookContent.service;
 
 import com.FTIsland.BE.bookContent.dto.BookContentRequest;
 import com.FTIsland.BE.bookContent.dto.BookContentResponse;
@@ -8,6 +8,7 @@ import com.FTIsland.BE.bookContent.entity.BookContentEntity;
 import com.FTIsland.BE.entity.VocaEntity;
 import com.FTIsland.BE.bookContent.repository.BookContentRepository;
 import com.FTIsland.BE.repository.VocaRepository;
+import com.FTIsland.BE.service.TranslationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

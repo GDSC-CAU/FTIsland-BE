@@ -1,9 +1,9 @@
 package com.FTIsland.BE.controller;
 
+import com.FTIsland.BE.bookContent.service.BookContentService;
 import com.FTIsland.BE.dto.BookContentDTO;
 import com.FTIsland.BE.dto.ChatGptResponse;
 import com.FTIsland.BE.dto.QuizDTO;
-import com.FTIsland.BE.entity.QuizEntity;
 import com.FTIsland.BE.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

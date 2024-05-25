@@ -2,8 +2,7 @@ package com.FTIsland.BE.bookContent.controller;
 
 import com.FTIsland.BE.bookContent.dto.BookContentRequest;
 import com.FTIsland.BE.bookContent.dto.BookContentResponse;
-import com.FTIsland.BE.dto.BookContentDTO;
-import com.FTIsland.BE.service.BookContentService;
+import com.FTIsland.BE.bookContent.service.BookContentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
