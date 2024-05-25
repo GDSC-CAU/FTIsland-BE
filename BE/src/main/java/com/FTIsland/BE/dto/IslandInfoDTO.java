@@ -22,11 +22,4 @@ public class IslandInfoDTO {
     public IslandInfoEntity toEntity() {
         return IslandInfoEntity.builder().id(id).name(name).build();
     }
-
-    public static IslandInfoDTO toIslandInfoDTO(IslandInfoEntity islandInfoEntity) {
-        IslandInfoDTO islandInfoDTO = new IslandInfoDTO();
-        islandInfoDTO.setId(islandInfoDTO.getId());
-        islandInfoDTO.setName(islandInfoDTO.getName());
-        return islandInfoDTO;
-    }
 }
