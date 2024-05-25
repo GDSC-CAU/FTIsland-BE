@@ -126,16 +126,17 @@ public class BookContentService {
 
 
             // DTO List에 추가
-            BookContentDTO bookContentDTO = new BookContentDTO(
-                    ent.getBookId(),
-                    ent.getPage(),
-                    selectedMainLanguage,
-                    selectedSubLanguage,
-                    ent.getKorContents(),
-                    mainText,
-                    subText,
-                    ent.getImage()
-            );
+            BookContentDTO bookContentDTO = new BookContentDTO().builder()
+                    .bookId(ent.getBookId())
+                    .page(ent.getPage())
+                    .mainLan(selectedMainLanguage)
+                    .subLan(selectedSubLanguage)
+                    .korContents(ent.getKorContents())
+                    .mainContents(mainText)
+                    .subContents(subText)
+                    .image(ent.getImage())
+                    .build();
+
             bookContentDTO.setVocaList(contentVocaDTOS);
             bookContentDTOS.add(bookContentDTO);
         }
