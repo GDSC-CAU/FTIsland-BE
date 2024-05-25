@@ -1,6 +1,8 @@
 package com.FTIsland.BE.island.service;
 
 import com.FTIsland.BE.island.dto.IslandInfoDTO;
+import com.FTIsland.BE.island.dto.IslandInfoRequest;
+import com.FTIsland.BE.island.dto.IslandInfoResponse;
 import com.FTIsland.BE.island.entity.IslandInfoEntity;
 import com.FTIsland.BE.island.repository.IslandInfoRepository;
 import lombok.RequiredArgsConstructor;
@@ -15,9 +17,16 @@ public class IslandInfoService {
     private final IslandInfoRepository islandInfoRepository;
 
     @Transactional
-    public IslandInfoDTO findById(Integer islandId) {
-        Optional<IslandInfoEntity> islandInfoEntity = islandInfoRepository.findById(islandId);
-        IslandInfoDTO islandInfoDTO = new IslandInfoDTO().builder().id(islandInfoEntity.get().getId()).name(islandInfoEntity.get().getName()).build();
-        return islandInfoDTO;
+    public IslandInfoResponse findById(IslandInfoRequest islandInfoRequest) {
+        Optional<IslandInfoEntity> islandInfoEntity = islandInfoRepository.findById(islandInfoRequest.getId());
+        if(islandInfoEntity.isPresent()) {
+            IslandInfoResponse islandInfoResponse
+                    = new IslandInfoResponse().builder().id(islandInfoEntity.get().getId()).name(islandInfoEntity.get().getName()).build();
+            return islandInfoResponse;
+        }
+        else{
+            return null;
+        }
+
     }
 }
