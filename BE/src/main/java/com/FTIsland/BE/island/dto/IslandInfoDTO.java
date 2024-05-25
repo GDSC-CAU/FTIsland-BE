@@ -1,7 +1,6 @@
-package com.FTIsland.BE.dto;
+package com.FTIsland.BE.island.dto;
 
-
-import com.FTIsland.BE.entity.IslandInfoEntity;
+import com.FTIsland.BE.island.entity.IslandInfoEntity;
 import lombok.*;
 
 @Getter

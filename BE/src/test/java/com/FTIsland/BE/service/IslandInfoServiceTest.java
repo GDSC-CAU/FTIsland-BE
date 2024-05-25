@@ -1,7 +1,7 @@
 package com.FTIsland.BE.service;
 
-import com.FTIsland.BE.dto.IslandInfoDTO;
-import org.junit.jupiter.api.BeforeEach;
+import com.FTIsland.BE.island.dto.IslandInfoDTO;
+import com.FTIsland.BE.island.service.IslandInfoService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

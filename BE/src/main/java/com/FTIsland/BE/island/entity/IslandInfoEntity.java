@@ -1,11 +1,7 @@
-package com.FTIsland.BE.entity;
+package com.FTIsland.BE.island.entity;
 
-import com.FTIsland.BE.dto.IslandInfoDTO;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Setter

@@ -1,20 +1,16 @@
-package com.FTIsland.BE.controller;
+package com.FTIsland.BE.island.controller;
 
-import com.FTIsland.BE.dto.BookInfoDTO;
 import com.FTIsland.BE.dto.IslandBooksDTO;
-import com.FTIsland.BE.dto.IslandInfoDTO;
 import com.FTIsland.BE.dto.ReadDTO;
 import com.FTIsland.BE.entity.BookInfoEntity;
-import com.FTIsland.BE.entity.ReadEntity;
+import com.FTIsland.BE.island.dto.IslandInfoDTO;
 import com.FTIsland.BE.service.BookInfoService;
-import com.FTIsland.BE.service.IslandInfoService;
+import com.FTIsland.BE.island.service.IslandInfoService;
 import com.FTIsland.BE.service.ReadService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

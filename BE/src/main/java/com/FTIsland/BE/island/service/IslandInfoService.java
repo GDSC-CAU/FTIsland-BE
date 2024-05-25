@@ -1,12 +1,11 @@
-package com.FTIsland.BE.service;
+package com.FTIsland.BE.island.service;
 
-import com.FTIsland.BE.dto.IslandInfoDTO;
-import com.FTIsland.BE.entity.IslandInfoEntity;
-import com.FTIsland.BE.repository.IslandInfoRepository;
+import com.FTIsland.BE.island.dto.IslandInfoDTO;
+import com.FTIsland.BE.island.entity.IslandInfoEntity;
+import com.FTIsland.BE.island.repository.IslandInfoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.Optional;
 
 @Service
