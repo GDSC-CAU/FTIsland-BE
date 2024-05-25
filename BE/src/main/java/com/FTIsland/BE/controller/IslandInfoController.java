@@ -27,9 +27,6 @@ public class IslandInfoController {
     private final BookInfoService bookInfoService;
     private final ReadService readService;
 
-    @RequestMapping("/saveIslandInfo")
-    public void saveIslandInfo() {islandInfoService.save();}
-
     @GetMapping("/island/info")
     public IslandInfoDTO getIslandInfoById(@RequestParam Integer islandId) {
         return islandInfoService.findById(islandId);
