@@ -1,7 +1,8 @@
 package com.FTIsland.BE.controller;
 
+import com.FTIsland.BE.bookContent.dto.BookContentRequest;
+import com.FTIsland.BE.bookContent.dto.BookContentResponse;
 import com.FTIsland.BE.bookContent.service.BookContentService;
-import com.FTIsland.BE.dto.BookContentDTO;
 import com.FTIsland.BE.dto.ChatGptResponse;
 import com.FTIsland.BE.dto.QuizDTO;
 import com.FTIsland.BE.service.*;
@@ -40,40 +41,40 @@ public class QuizController {
         // 책 - 사용자 레벨 쌍의 조합으로 저장되어있는 생각해보기 질문이 있는지 확인
         List<String> savedQuiz = quizService.findQuiz(quizDTO.getBookId(), userLevel);
 
-        if(savedQuiz.isEmpty()){ // 없으면 새로 생성 후 저장
+        if(savedQuiz.isEmpty()){ // A. 없으면 새로 생성 후 저장
             // 책의 contents 조회 - 동화 제목만으로는 버전이 다를 수 있기 때문에
             // 1. bookContentService의 findByBookId method를 쓰기 위해 QuizDTO -> BookContentDTO 변환
-            BookContentDTO bookContentDTO = new BookContentDTO();
-            bookContentDTO.setBookId(quizDTO.getBookId());
-            bookContentDTO.setMainLan(quizDTO.getMainLan());
-            bookContentDTO.setSubLan(quizDTO.getSubLan());
-            // 2. content List 조회
-            List<BookContentDTO> bookContentDTOS = bookContentService.findByBookId(bookContentDTO); // **** bookContentDTO : BookContentRequest 형식으로 변경 필요!! ****
-            List<String> bookContentList = new ArrayList<>();
-            for(BookContentDTO dto : bookContentDTOS){
-                bookContentList.add(dto.getKorContents());
-            }
-            String bookContents = String.join(" ", bookContentList);
-            // System.out.println(bookContents);
+            BookContentRequest bookContentRequest = new BookContentRequest();
+            bookContentRequest.setBookId(quizDTO.getBookId());
+            bookContentRequest.setMainLan(quizDTO.getMainLan());
+            bookContentRequest.setSubLan(quizDTO.getSubLan());
 
-            // 퀴즈 생성
+            // 2. Content list 조회 및 한 줄로 합쳐진 Content 생성
+            List<BookContentResponse> bookContentResponses = bookContentService.findByBookId(bookContentRequest);
+            List<String> bookContentList = new ArrayList<>(); // 퀴즈의 기반이 될 내용 모음 list
+            for(BookContentResponse dto : bookContentResponses){
+                bookContentList.add(dto.getKorContents()); // 조회한 내용 한 줄씩 추가
+            }
+            String bookContents = String.join(" ", bookContentList); // list를 한 줄의 string으로 합치기.
+
+            // 3. AI로 퀴즈 생성
             ChatGptResponse chatGptResponse = null;
             chatGptResponse = chatGptService.askQuestion(bookTitle, userLevel, bookContents);
             String threeQuiz = chatGptResponse.getChoices().get(0).getMessage().getContent();
             // System.out.println(threeQuiz);
 
-            // 생성된 퀴즈 3개를 파싱하고 저장
+            // 4. 생성된 퀴즈 3개를 파싱하고 저장
             List<String> quizs = quizService.makeQuiz(threeQuiz);
             quizService.saveQuiz(quizs, quizDTO.getBookId(), userLevel);
 
-            // 해당 퀴즈 리스트를 주언어, 서브언어로 번역 후 반환
+            // 5. 해당 퀴즈 리스트를 주언어, 서브언어로 번역 후 반환
             return quizService.translationQuiz(
                     quizs,
                     quizDTO.getMainLan(),
                     quizDTO.getSubLan()
             );
 
-        } else { // 있으면 조회한 질문을 그대로 번역 후 반환
+        } else { // B. 있으면 조회한 질문을 그대로 번역 후 반환
             return quizService.translationQuiz(
                     savedQuiz,
                     quizDTO.getMainLan(),
