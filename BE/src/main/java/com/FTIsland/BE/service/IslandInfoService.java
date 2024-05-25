@@ -5,6 +5,7 @@ import com.FTIsland.BE.entity.IslandInfoEntity;
 import com.FTIsland.BE.repository.IslandInfoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -12,14 +13,13 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class IslandInfoService {
+
     private final IslandInfoRepository islandInfoRepository;
-    
+
+    @Transactional
     public IslandInfoDTO findById(Integer islandId) {
         Optional<IslandInfoEntity> islandInfoEntity = islandInfoRepository.findById(islandId);
-        if(islandInfoEntity.isPresent()) {
-            IslandInfoDTO islandInfoDTO = new IslandInfoDTO(islandInfoEntity.get().getId(), islandInfoEntity.get().getName());
-            return islandInfoDTO;
-        }
-        else return null;
+        IslandInfoDTO islandInfoDTO = new IslandInfoDTO().builder().id(islandInfoEntity.get().getId()).name(islandInfoEntity.get().getName()).build();
+        return islandInfoDTO;
     }
 }
