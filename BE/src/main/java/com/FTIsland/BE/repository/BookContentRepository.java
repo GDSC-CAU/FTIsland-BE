@@ -1,6 +1,6 @@
 package com.FTIsland.BE.repository;
 
-import com.FTIsland.BE.entity.BookContentEntity;
+import com.FTIsland.BE.bookContent.entity.BookContentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

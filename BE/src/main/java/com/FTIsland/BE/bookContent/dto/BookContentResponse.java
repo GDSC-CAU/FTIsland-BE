@@ -1,7 +1,7 @@
 package com.FTIsland.BE.bookContent.dto;
 
 import com.FTIsland.BE.dto.ContentVocaDTO;
-import com.FTIsland.BE.entity.BookContentEntity;
+import com.FTIsland.BE.bookContent.entity.BookContentEntity;
 import lombok.*;
 
 import java.util.List;

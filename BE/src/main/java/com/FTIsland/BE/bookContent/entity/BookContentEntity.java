@@ -1,4 +1,4 @@
-package com.FTIsland.BE.entity;
+package com.FTIsland.BE.bookContent.entity;
 
 import com.FTIsland.BE.dto.BookContentDTO;
 import jakarta.persistence.*;
@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Setter
 @Getter
 @Table(name = "bookcontent")
 @NoArgsConstructor
@@ -32,18 +31,6 @@ public class BookContentEntity {
 
     @Column
     private String image;
-
-    // 빌더 패턴 정리 끝나면 삭제 + setter 삭제
-//    public static BookContentEntity toBookContentEntity(BookContentDTO bookContentDTO) {
-//        BookContentEntity bookContentEntity = new BookContentEntity();
-//        bookContentEntity.setBookId(bookContentDTO.getBookId());
-//        bookContentEntity.setPage(bookContentDTO.getPage());
-//        bookContentEntity.setKorContents(bookContentDTO.getKorContents()); //나중에 수정
-//        bookContentEntity.setImage(bookContentDTO.getImage());
-//
-//        return bookContentEntity;
-//
-//    }
 
     @Builder
     public BookContentEntity(Integer bookId, Integer page, String korContents, String image){
