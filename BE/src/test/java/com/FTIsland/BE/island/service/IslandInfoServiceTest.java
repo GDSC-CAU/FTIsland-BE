@@ -1,6 +1,9 @@
 package com.FTIsland.BE.island.service;
 
 import com.FTIsland.BE.island.dto.IslandInfoDTO;
+import com.FTIsland.BE.island.dto.IslandInfoRequest;
+import com.FTIsland.BE.island.dto.IslandInfoResponse;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,13 +14,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 class IslandInfoServiceTest {
 
     @Autowired
+    ObjectMapper objectMapper;
+
+    @Autowired
     private IslandInfoService islandInfoService;
 
     @Test
     @DisplayName("섬 정보 불러오기 서비스 테스트")
     void getIslandInfo() {
-        IslandInfoDTO islandInfoDTO =  islandInfoService.findById(1);
-        assertThat(islandInfoDTO.getId()).isEqualTo(1);
-        assertThat(islandInfoDTO.getName()).isEqualTo("지혜");
+        // given
+        Integer id = 1;
+        // when
+        IslandInfoRequest request = new IslandInfoRequest().builder().id(id).build();
+        IslandInfoResponse islandInfoResponse =  islandInfoService.findById(request);
+        assertThat(islandInfoResponse.getId()).isEqualTo(1);
+        assertThat(islandInfoResponse.getName()).isEqualTo("지혜");
     }
 }
