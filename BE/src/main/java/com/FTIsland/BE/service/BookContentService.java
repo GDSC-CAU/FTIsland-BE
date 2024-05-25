@@ -1,5 +1,6 @@
 package com.FTIsland.BE.service;
 
+import com.FTIsland.BE.bookContent.dto.BookContentRequest;
 import com.FTIsland.BE.dto.BookContentDTO;
 import com.FTIsland.BE.dto.BookInfoDTO;
 import com.FTIsland.BE.dto.ContentVocaDTO;
@@ -73,33 +74,30 @@ public class BookContentService {
         }
     }
 
-    public List<BookContentDTO> findByBookId(BookContentDTO requestDTO) {
+    public List<BookContentDTO> findByBookId(BookContentRequest requestDTO) {
+        // bookId를 통한 BookContentEntity 조회
         Integer bookId = requestDTO.getBookId();
-
         List<BookContentEntity> byBookId = bookContentRepository.findByBookId(bookId);
+
+        // return값 정의
         List<BookContentDTO> bookContentDTOS = new ArrayList<>();
 
-        String selectedMainLanguage = "ko";
-        String selectedSubLanguage = "ko";
-
+        // 번역 로직 - 한 페이지(한 줄)씩 번역이라서 for문 사용
         for(BookContentEntity ent : byBookId){
-            // 번역 로직
 
-            // 1. 주, 보조 언어 텍스트 둘 다 한국어를 기본으로 설정
+            // 1. 주, 보조 언어 텍스트(내용 한 줄) 둘 다 한국어를 기본으로 설정
             String mainText = ent.getKorContents();
             String subText = ent.getKorContents();
 
             // 2. 요청한 언어에 맞게 번역
             if (!requestDTO.getMainLan().equals("ko")){ // 주 언어 한국어가 아니라면 번역
-                selectedMainLanguage = requestDTO.getMainLan();
-                mainText = translationService.test(selectedMainLanguage, mainText);
+                mainText = translationService.test(requestDTO.getMainLan(), mainText);
             }
             if (!requestDTO.getSubLan().equals("ko")){ // 보조 언어가 한국어가 아니라면 번역
-                selectedSubLanguage = requestDTO.getSubLan();
-                subText = translationService.test(selectedSubLanguage, subText);
+                subText = translationService.test(requestDTO.getSubLan(), subText);
             }
 
-            // 해당 페이지의 vocaId, word, subWord 가져오기
+            // 3. 해당 페이지의 vocaId, word, subWord 가져오기
             var vocaEntities = vocaRepository.findByBookIdAndPage(ent.getBookId(), ent.getPage());
             List<ContentVocaDTO> contentVocaDTOS = new ArrayList<>();
 
@@ -111,12 +109,10 @@ public class BookContentService {
                 String subWord = entity.getWord();
 
                 if (!requestDTO.getMainLan().equals("ko")){ // 주 언어 한국어가 아니라면 번역
-                    selectedMainLanguage = requestDTO.getMainLan();
-                    mainWord = translationService.test(selectedMainLanguage, mainWord);
+                    mainWord = translationService.test(requestDTO.getMainLan(), mainWord);
                 }
                 if (!requestDTO.getSubLan().equals("ko")){ // 보조 언어가 한국어가 아니라면 번역
-                    selectedSubLanguage = requestDTO.getSubLan();
-                    subWord = translationService.test(selectedSubLanguage, subWord);
+                    subWord = translationService.test(requestDTO.getSubLan(), subWord);
                 }
                 contentVocaDTO.setWord(mainWord);
                 contentVocaDTO.setSubWord(subWord);
@@ -127,8 +123,8 @@ public class BookContentService {
             BookContentDTO bookContentDTO = new BookContentDTO().builder()
                     .bookId(ent.getBookId())
                     .page(ent.getPage())
-                    .mainLan(selectedMainLanguage)
-                    .subLan(selectedSubLanguage)
+                    .mainLan(requestDTO.getMainLan())
+                    .subLan(requestDTO.getSubLan())
                     .korContents(ent.getKorContents())
                     .mainContents(mainText)
                     .subContents(subText)
