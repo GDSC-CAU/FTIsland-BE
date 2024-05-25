@@ -6,7 +6,7 @@ import com.FTIsland.BE.dto.BookContentDTO;
 import com.FTIsland.BE.dto.ContentVocaDTO;
 import com.FTIsland.BE.bookContent.entity.BookContentEntity;
 import com.FTIsland.BE.entity.VocaEntity;
-import com.FTIsland.BE.repository.BookContentRepository;
+import com.FTIsland.BE.bookContent.repository.BookContentRepository;
 import com.FTIsland.BE.repository.VocaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
