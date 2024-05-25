@@ -26,7 +26,7 @@ public class BookContentService {
 
     public void save() { // 동화 내용 저장 (임시로 만든 method)
         ArrayList<BookContentDTO> bookContentDTOS = new ArrayList<>();
-        
+
         // 금도끼 은도끼 저장
         bookContentDTOS.add(new BookContentDTO(1, 0, "","","옛날 어느 마을에 정직하고 마음씨 착한 나무꾼이 살고 있었어요.","", "", "https://storage.googleapis.com/ft-island-image/goldsilver0.webp"));
         bookContentDTOS.add(new BookContentDTO(1, 1, "","","어느 날 나무꾼이 나무를 베고 있었는데, 도끼가 연못에 빠지고 말았어요.","", "", "https://storage.googleapis.com/ft-island-image/goldsilver1.webp"));
@@ -61,9 +61,6 @@ public class BookContentService {
 
         bookContentDTOS.add(new BookContentDTO(2, 3, "","","친화력이 좋은 치치는 늑대와 바로 친해졌고, 함께 그림자 놀이를 하며 놀았어요.","", "", "https://storage.googleapis.com/ft-island-image/shadow2.webp"));
         bookContentDTOS.add(new BookContentDTO(2, 4, "","","여우를 사냥하려고 숲 주변에 있던 사냥꾼이, 치치와 늑대의 그림자를 보고 줄행랑 쳤답니다!","", "", "https://storage.googleapis.com/ft-island-image/shadow3.webp"));
-
-
-
 
         for (BookContentDTO bookContentDTO : bookContentDTOS) {
             BookContentEntity bookContentEntity = BookContentEntity.toBookContentEntity(bookContentDTO);
