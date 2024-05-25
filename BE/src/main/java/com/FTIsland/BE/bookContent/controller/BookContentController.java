@@ -1,6 +1,7 @@
 package com.FTIsland.BE.bookContent.controller;
 
 import com.FTIsland.BE.bookContent.dto.BookContentRequest;
+import com.FTIsland.BE.bookContent.dto.BookContentResponse;
 import com.FTIsland.BE.dto.BookContentDTO;
 import com.FTIsland.BE.service.BookContentService;
 import lombok.RequiredArgsConstructor;
@@ -21,7 +22,7 @@ public class BookContentController {
     }
 
     @PostMapping("/book/content")
-    public List<BookContentDTO> getBookInfoById(@RequestBody BookContentRequest bookContentRequest){
+    public List<BookContentResponse> getBookInfoById(@RequestBody BookContentRequest bookContentRequest){
         return bookContentService.findByBookId(bookContentRequest); // 해당 id의 동화 내용 list
     }
 
