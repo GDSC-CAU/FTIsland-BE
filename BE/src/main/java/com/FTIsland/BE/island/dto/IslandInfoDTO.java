@@ -2,7 +2,6 @@ package com.FTIsland.BE.dto;
 
 
 import com.FTIsland.BE.entity.IslandInfoEntity;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.*;
 
 @Getter

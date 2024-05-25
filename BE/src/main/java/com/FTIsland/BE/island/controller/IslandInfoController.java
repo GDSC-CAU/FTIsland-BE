@@ -35,7 +35,6 @@ public class IslandInfoController {
     @PostMapping("/book/progress")
     public List<ReadDTO> getBookInfoWithRead(@RequestBody IslandBooksDTO islandBooksDTO) {
         return readService.progress(islandBooksDTO);
-
     }
 
     @PostMapping("/island/books")
