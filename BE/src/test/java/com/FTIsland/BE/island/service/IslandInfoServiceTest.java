@@ -1,7 +1,6 @@
-package com.FTIsland.BE.service;
+package com.FTIsland.BE.island.service;
 
 import com.FTIsland.BE.island.dto.IslandInfoDTO;
-import com.FTIsland.BE.island.service.IslandInfoService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ class IslandInfoServiceTest {
     private IslandInfoService islandInfoService;
 
     @Test
-    @DisplayName("섬 정보 불러오기 테스트")
+    @DisplayName("섬 정보 불러오기 서비스 테스트")
     void getIslandInfo() {
         IslandInfoDTO islandInfoDTO =  islandInfoService.findById(1);
         assertThat(islandInfoDTO.getId()).isEqualTo(1);
