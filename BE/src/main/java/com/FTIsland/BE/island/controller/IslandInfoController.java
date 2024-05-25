@@ -5,6 +5,7 @@ import com.FTIsland.BE.dto.ReadDTO;
 import com.FTIsland.BE.entity.BookInfoEntity;
 import com.FTIsland.BE.island.dto.IslandInfoDTO;
 import com.FTIsland.BE.island.dto.IslandInfoRequest;
+import com.FTIsland.BE.island.dto.IslandInfoResponse;
 import com.FTIsland.BE.service.BookInfoService;
 import com.FTIsland.BE.island.service.IslandInfoService;
 import com.FTIsland.BE.service.ReadService;
@@ -25,7 +26,7 @@ public class IslandInfoController {
     private final ReadService readService;
 
     @GetMapping("/island/info")
-    public IslandInfoDTO getIslandInfoById(@RequestBody IslandInfoRequest islandInfoRequest) {
+    public IslandInfoResponse getIslandInfoById(@RequestBody IslandInfoRequest islandInfoRequest) {
         return islandInfoService.findById(islandInfoRequest);
     }
 
