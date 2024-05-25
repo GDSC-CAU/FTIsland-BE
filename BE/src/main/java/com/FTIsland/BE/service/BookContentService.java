@@ -1,6 +1,7 @@
 package com.FTIsland.BE.service;
 
 import com.FTIsland.BE.bookContent.dto.BookContentRequest;
+import com.FTIsland.BE.bookContent.dto.BookContentResponse;
 import com.FTIsland.BE.dto.BookContentDTO;
 import com.FTIsland.BE.dto.BookInfoDTO;
 import com.FTIsland.BE.dto.ContentVocaDTO;
@@ -74,13 +75,13 @@ public class BookContentService {
         }
     }
 
-    public List<BookContentDTO> findByBookId(BookContentRequest requestDTO) {
+    public List<BookContentResponse> findByBookId(BookContentRequest requestDTO) {
         // bookId를 통한 BookContentEntity 조회
         Integer bookId = requestDTO.getBookId();
         List<BookContentEntity> byBookId = bookContentRepository.findByBookId(bookId);
 
         // return값 정의
-        List<BookContentDTO> bookContentDTOS = new ArrayList<>();
+        List<BookContentResponse> bookContentResponses = new ArrayList<>();
 
         // 번역 로직 - 한 페이지(한 줄)씩 번역이라서 for문 사용
         for(BookContentEntity ent : byBookId){
@@ -120,7 +121,7 @@ public class BookContentService {
             }
 
             // DTO List에 추가
-            BookContentDTO bookContentDTO = new BookContentDTO().builder()
+            BookContentResponse bookContentResponse = new BookContentResponse().builder()
                     .bookId(ent.getBookId())
                     .page(ent.getPage())
                     .mainLan(requestDTO.getMainLan())
@@ -131,13 +132,13 @@ public class BookContentService {
                     .image(ent.getImage())
                     .build();
 
-            bookContentDTO.setVocaList(contentVocaDTOS);
-            bookContentDTOS.add(bookContentDTO);
+            bookContentResponse.setVocaList(contentVocaDTOS);
+            bookContentResponses.add(bookContentResponse);
         }
 
         // page 순으로 정렬
-        bookContentDTOS = bookContentDTOS.stream().sorted(Comparator.comparing(BookContentDTO::getPage)).collect(Collectors.toList());
+        bookContentResponses = bookContentResponses.stream().sorted(Comparator.comparing(BookContentResponse::getPage)).collect(Collectors.toList());
 
-        return bookContentDTOS;
+        return bookContentResponses;
     }
 }

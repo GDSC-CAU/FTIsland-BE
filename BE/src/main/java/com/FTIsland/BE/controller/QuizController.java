@@ -48,7 +48,7 @@ public class QuizController {
             bookContentDTO.setMainLan(quizDTO.getMainLan());
             bookContentDTO.setSubLan(quizDTO.getSubLan());
             // 2. content List 조회
-            List<BookContentDTO> bookContentDTOS = bookContentService.findByBookId(bookContentDTO);
+            List<BookContentDTO> bookContentDTOS = bookContentService.findByBookId(bookContentDTO); // **** bookContentDTO : BookContentRequest 형식으로 변경 필요!! ****
             List<String> bookContentList = new ArrayList<>();
             for(BookContentDTO dto : bookContentDTOS){
                 bookContentList.add(dto.getKorContents());
