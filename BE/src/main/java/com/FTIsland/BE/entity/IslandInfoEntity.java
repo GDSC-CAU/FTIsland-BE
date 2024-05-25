@@ -20,13 +20,6 @@ public class IslandInfoEntity {
     @Column
     private String name;
 
-    public static IslandInfoEntity toIslandInfoEntity(IslandInfoDTO islandInfoDTO) {
-        IslandInfoEntity islandInfoEntity = new IslandInfoEntity();
-        islandInfoEntity.setId(islandInfoDTO.getId());
-        islandInfoEntity.setName(islandInfoDTO.getName());
-        return islandInfoEntity;
-    }
-
     @Builder
     public IslandInfoEntity(Integer id, String name) {
         this.id = id;
