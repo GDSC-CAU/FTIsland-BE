@@ -5,7 +5,6 @@ import lombok.*;
 
 @Getter
 @NoArgsConstructor
-@ToString
 public class IslandInfoResponse {
     private Integer id;
     private String name;

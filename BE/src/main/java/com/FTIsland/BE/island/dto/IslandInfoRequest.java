@@ -4,7 +4,6 @@ import lombok.*;
 
 @Getter
 @NoArgsConstructor
-@ToString
 public class IslandInfoRequest {
     private Integer id;
 
