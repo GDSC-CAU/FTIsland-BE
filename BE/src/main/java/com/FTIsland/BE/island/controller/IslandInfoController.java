@@ -3,7 +3,6 @@ package com.FTIsland.BE.island.controller;
 import com.FTIsland.BE.dto.IslandBooksDTO;
 import com.FTIsland.BE.dto.ReadDTO;
 import com.FTIsland.BE.entity.BookInfoEntity;
-import com.FTIsland.BE.island.dto.IslandInfoDTO;
 import com.FTIsland.BE.island.dto.IslandInfoRequest;
 import com.FTIsland.BE.island.dto.IslandInfoResponse;
 import com.FTIsland.BE.service.BookInfoService;

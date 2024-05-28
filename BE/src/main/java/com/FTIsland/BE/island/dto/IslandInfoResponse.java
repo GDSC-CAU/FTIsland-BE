@@ -4,7 +4,6 @@ import com.FTIsland.BE.island.entity.IslandInfoEntity;
 import lombok.*;
 
 @Getter
-@Setter
 @NoArgsConstructor
 @ToString
 public class IslandInfoResponse {

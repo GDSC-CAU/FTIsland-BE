@@ -1,6 +1,5 @@
 package com.FTIsland.BE.island.service;
 
-import com.FTIsland.BE.island.dto.IslandInfoDTO;
 import com.FTIsland.BE.island.dto.IslandInfoRequest;
 import com.FTIsland.BE.island.dto.IslandInfoResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
