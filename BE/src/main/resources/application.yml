@@ -19,6 +19,7 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update # table 계속 drop하지 않도록 create -> update로 바꿈.
+    defer-datasource-initialization: true
 
   # oauth 설정
   profiles:
@@ -29,3 +30,8 @@ spring:
     group:
       "local": "local, jwt, oauth"
     active: local
+
+  # sql 설정
+  sql:
+    init:
+      mode: always # 최초 삽입 - always / 이후 - never

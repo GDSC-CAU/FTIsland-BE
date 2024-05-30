@@ -1,20 +1,17 @@
-package com.FTIsland.BE.controller;
+package com.FTIsland.BE.island.controller;
 
-import com.FTIsland.BE.dto.BookInfoDTO;
 import com.FTIsland.BE.dto.IslandBooksDTO;
-import com.FTIsland.BE.dto.IslandInfoDTO;
 import com.FTIsland.BE.dto.ReadDTO;
 import com.FTIsland.BE.entity.BookInfoEntity;
-import com.FTIsland.BE.entity.ReadEntity;
+import com.FTIsland.BE.island.dto.IslandInfoRequest;
+import com.FTIsland.BE.island.dto.IslandInfoResponse;
 import com.FTIsland.BE.service.BookInfoService;
-import com.FTIsland.BE.service.IslandInfoService;
+import com.FTIsland.BE.island.service.IslandInfoService;
 import com.FTIsland.BE.service.ReadService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,18 +24,14 @@ public class IslandInfoController {
     private final BookInfoService bookInfoService;
     private final ReadService readService;
 
-    @RequestMapping("/saveIslandInfo")
-    public void saveIslandInfo() {islandInfoService.save();}
-
     @GetMapping("/island/info")
-    public IslandInfoDTO getIslandInfoById(@RequestParam Integer islandId) {
-        return islandInfoService.findById(islandId);
+    public IslandInfoResponse getIslandInfoById(@RequestBody IslandInfoRequest islandInfoRequest) {
+        return islandInfoService.findById(islandInfoRequest);
     }
 
     @PostMapping("/book/progress")
     public List<ReadDTO> getBookInfoWithRead(@RequestBody IslandBooksDTO islandBooksDTO) {
         return readService.progress(islandBooksDTO);
-
     }
 
     @PostMapping("/island/books")
