@@ -3,7 +3,6 @@ package com.FTIsland.BE.bookContent.dto;
 import lombok.*;
 
 @Getter
-@Setter
 @NoArgsConstructor
 @ToString
 public class BookContentRequest {
