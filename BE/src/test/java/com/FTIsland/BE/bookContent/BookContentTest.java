@@ -8,7 +8,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 public class BookContentTest {
@@ -30,6 +33,7 @@ public class BookContentTest {
         List<BookContentResponse> bookContentResponse = bookContentService.findByBookId(bookContentRequest);
 
         // then
+        assertThat(bookContentResponse).isNotEmpty();   // TODO: DB에 저장된 값과도 비교
 
     }
 

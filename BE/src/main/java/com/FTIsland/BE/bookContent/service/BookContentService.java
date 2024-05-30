@@ -24,7 +24,7 @@ public class BookContentService {
     private final TranslationService translationService;
     private final VocaRepository vocaRepository;
 
-    public void save() { // 동화 내용 저장 (임시로 만든 method) -> seed data 저장하는 구문 작성 후 메서드 삭제 예정 (toEntity 관련 에러 해결)
+    public void save() { // 동화 내용 저장 (임시로 만든 method) -> TODO: seed data 저장하는 구문 작성 후 메서드 삭제 예정 (toEntity 관련 에러 해결)
         ArrayList<BookContentDTO> bookContentDTOS = new ArrayList<>();
 
         // 금도끼 은도끼 저장
@@ -63,7 +63,7 @@ public class BookContentService {
         bookContentDTOS.add(new BookContentDTO(2, 4, "","","여우를 사냥하려고 숲 주변에 있던 사냥꾼이, 치치와 늑대의 그림자를 보고 줄행랑 쳤답니다!","", "", "https://storage.googleapis.com/ft-island-image/shadow3.webp"));
 
         for (BookContentDTO bookContentDTO : bookContentDTOS) {
-            BookContentEntity bookContentEntity = BookContentEntity.toBookContentEntity(bookContentDTO);
+            BookContentEntity bookContentEntity = BookContentEntity.toBookContentEntity(bookContentDTO); // TODO: seed data 저장 코드 작성 후 없애기
             bookContentRepository.save(bookContentEntity);
         }
     }
