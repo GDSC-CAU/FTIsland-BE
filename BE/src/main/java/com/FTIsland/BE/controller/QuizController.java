@@ -62,7 +62,6 @@ public class QuizController {
             ChatGptResponse chatGptResponse = null;
             chatGptResponse = chatGptService.askQuestion(bookTitle, userLevel, bookContents);
             String threeQuiz = chatGptResponse.getChoices().get(0).getMessage().getContent();
-            // System.out.println(threeQuiz);
 
             // 4. 생성된 퀴즈 3개를 파싱하고 저장
             List<String> quizs = quizService.makeQuiz(threeQuiz);
