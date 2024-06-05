@@ -1,12 +1,12 @@
-package com.FTIsland.BE.entity;
+package com.FTIsland.BE.island.entity;
 
 import com.FTIsland.BE.dto.BookInfoDTO;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Setter
 @Getter
 @Table(name = "bookinfo")
 public class BookInfoEntity {
@@ -36,7 +36,17 @@ public class BookInfoEntity {
     @Column
     private Integer islandId;
 
-    // 나중에 islandId 추가
+    @Builder
+    public BookInfoEntity (Integer id, String title, String description, String category, String country, Integer totalPage, String image, Integer islandId) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.category = category;
+        this.country = country;
+        this.totalPage = totalPage;
+        this.image = image;
+        this.islandId = islandId;
+    }
 
     public static BookInfoEntity toBookInfoEntity(BookInfoDTO bookInfoDTO){
         BookInfoEntity bookInfoEntity = new BookInfoEntity();
