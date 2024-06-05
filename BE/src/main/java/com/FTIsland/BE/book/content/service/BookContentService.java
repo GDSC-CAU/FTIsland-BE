@@ -122,10 +122,10 @@ public class BookContentService {
                     .korContents(ent.getKorContents())
                     .mainContents(mainText)
                     .subContents(subText)
+                    .vocaList(contentVocaDTOS)
                     .image(ent.getImage())
                     .build();
 
-            bookContentResponse.setVocaList(contentVocaDTOS);
             bookContentResponses.add(bookContentResponse);
         }
 
