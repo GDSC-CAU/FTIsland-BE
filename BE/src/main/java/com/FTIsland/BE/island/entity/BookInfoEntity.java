@@ -50,17 +50,17 @@ public class BookInfoEntity {
         this.islandId = islandId;
     }
 
-    public static BookInfoEntity toBookInfoEntity(BookInfoDTO bookInfoDTO){
-        BookInfoEntity bookInfoEntity = new BookInfoEntity();
-        bookInfoEntity.setId(bookInfoDTO.getId());
-        bookInfoEntity.setTitle(bookInfoDTO.getTitle());
-        bookInfoEntity.setDescription(bookInfoDTO.getDescription());
-        bookInfoEntity.setCategory(bookInfoDTO.getCategory());
-        bookInfoEntity.setCountry(bookInfoDTO.getCountry());
-        bookInfoEntity.setTotalPage(bookInfoDTO.getTotalPage());
-        bookInfoEntity.setImage(bookInfoDTO.getImage());
-        bookInfoEntity.setIslandId(bookInfoDTO.getIslandId());
-        return bookInfoEntity;
-    }
+//    public static BookInfoEntity toBookInfoEntity(BookInfoDTO bookInfoDTO){
+//        BookInfoEntity bookInfoEntity = new BookInfoEntity();
+//        bookInfoEntity.setId(bookInfoDTO.getId());
+//        bookInfoEntity.setTitle(bookInfoDTO.getTitle());
+//        bookInfoEntity.setDescription(bookInfoDTO.getDescription());
+//        bookInfoEntity.setCategory(bookInfoDTO.getCategory());
+//        bookInfoEntity.setCountry(bookInfoDTO.getCountry());
+//        bookInfoEntity.setTotalPage(bookInfoDTO.getTotalPage());
+//        bookInfoEntity.setImage(bookInfoDTO.getImage());
+//        bookInfoEntity.setIslandId(bookInfoDTO.getIslandId());
+//        return bookInfoEntity;
+//    }
 
 }
