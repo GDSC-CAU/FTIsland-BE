@@ -1,11 +1,14 @@
-package com.FTIsland.BE.service;
+package com.FTIsland.BE.book.content.service;
 
+import com.FTIsland.BE.book.content.entity.BookContentEntity;
+import com.FTIsland.BE.book.content.dto.BookContentRequest;
+import com.FTIsland.BE.book.content.dto.BookContentResponse;
 import com.FTIsland.BE.dto.BookContentDTO;
 import com.FTIsland.BE.dto.ContentVocaDTO;
-import com.FTIsland.BE.entity.BookContentEntity;
 import com.FTIsland.BE.entity.VocaEntity;
-import com.FTIsland.BE.repository.BookContentRepository;
+import com.FTIsland.BE.book.content.repository.BookContentRepository;
 import com.FTIsland.BE.repository.VocaRepository;
+import com.FTIsland.BE.service.TranslationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +24,9 @@ public class BookContentService {
     private final TranslationService translationService;
     private final VocaRepository vocaRepository;
 
-    public void save() { // 동화 내용 저장 (임시로 만든 method)
+    public void save() { // 동화 내용 저장 (임시로 만든 method) -> TODO: seed data 저장하는 구문 작성 후 메서드 삭제 예정 (toEntity 관련 에러 해결)
         ArrayList<BookContentDTO> bookContentDTOS = new ArrayList<>();
-        
+
         // 금도끼 은도끼 저장
         bookContentDTOS.add(new BookContentDTO(1, 0, "","","옛날 어느 마을에 정직하고 마음씨 착한 나무꾼이 살고 있었어요.","", "", "https://storage.googleapis.com/ft-island-image/goldsilver0.webp"));
         bookContentDTOS.add(new BookContentDTO(1, 1, "","","어느 날 나무꾼이 나무를 베고 있었는데, 도끼가 연못에 빠지고 말았어요.","", "", "https://storage.googleapis.com/ft-island-image/goldsilver1.webp"));
@@ -59,42 +62,36 @@ public class BookContentService {
         bookContentDTOS.add(new BookContentDTO(2, 3, "","","친화력이 좋은 치치는 늑대와 바로 친해졌고, 함께 그림자 놀이를 하며 놀았어요.","", "", "https://storage.googleapis.com/ft-island-image/shadow2.webp"));
         bookContentDTOS.add(new BookContentDTO(2, 4, "","","여우를 사냥하려고 숲 주변에 있던 사냥꾼이, 치치와 늑대의 그림자를 보고 줄행랑 쳤답니다!","", "", "https://storage.googleapis.com/ft-island-image/shadow3.webp"));
 
-
-
-
         for (BookContentDTO bookContentDTO : bookContentDTOS) {
-            BookContentEntity bookContentEntity = BookContentEntity.toBookContentEntity(bookContentDTO);
+            BookContentEntity bookContentEntity = BookContentEntity.toBookContentEntity(bookContentDTO); // TODO: seed data 저장 코드 작성 후 없애기
             bookContentRepository.save(bookContentEntity);
         }
     }
 
-    public List<BookContentDTO> findByBookId(BookContentDTO requestDTO) {
+    public List<BookContentResponse> findByBookId(BookContentRequest requestDTO) {
+        // bookId를 통한 BookContentEntity 조회
         Integer bookId = requestDTO.getBookId();
-
         List<BookContentEntity> byBookId = bookContentRepository.findByBookId(bookId);
-        List<BookContentDTO> bookContentDTOS = new ArrayList<>();
 
-        String selectedMainLanguage = "ko";
-        String selectedSubLanguage = "ko";
+        // return값 정의
+        List<BookContentResponse> bookContentResponses = new ArrayList<>();
 
+        // 번역 로직 - 한 페이지(한 줄)씩 번역이라서 for문 사용
         for(BookContentEntity ent : byBookId){
-            // 번역 로직
 
-            // 1. 주, 보조 언어 텍스트 둘 다 한국어를 기본으로 설정
+            // 1. 주, 보조 언어 텍스트(내용 한 줄) 둘 다 한국어를 기본으로 설정
             String mainText = ent.getKorContents();
             String subText = ent.getKorContents();
 
             // 2. 요청한 언어에 맞게 번역
             if (!requestDTO.getMainLan().equals("ko")){ // 주 언어 한국어가 아니라면 번역
-                selectedMainLanguage = requestDTO.getMainLan();
-                mainText = translationService.test(selectedMainLanguage, mainText);
+                mainText = translationService.test(requestDTO.getMainLan(), mainText);
             }
             if (!requestDTO.getSubLan().equals("ko")){ // 보조 언어가 한국어가 아니라면 번역
-                selectedSubLanguage = requestDTO.getSubLan();
-                subText = translationService.test(selectedSubLanguage, subText);
+                subText = translationService.test(requestDTO.getSubLan(), subText);
             }
 
-            // 해당 페이지의 vocaId, word, subWord 가져오기
+            // 3. 해당 페이지의 vocaId, word, subWord 가져오기
             var vocaEntities = vocaRepository.findByBookIdAndPage(ent.getBookId(), ent.getPage());
             List<ContentVocaDTO> contentVocaDTOS = new ArrayList<>();
 
@@ -106,38 +103,35 @@ public class BookContentService {
                 String subWord = entity.getWord();
 
                 if (!requestDTO.getMainLan().equals("ko")){ // 주 언어 한국어가 아니라면 번역
-                    selectedMainLanguage = requestDTO.getMainLan();
-                    mainWord = translationService.test(selectedMainLanguage, mainWord);
+                    mainWord = translationService.test(requestDTO.getMainLan(), mainWord);
                 }
                 if (!requestDTO.getSubLan().equals("ko")){ // 보조 언어가 한국어가 아니라면 번역
-                    selectedSubLanguage = requestDTO.getSubLan();
-                    subWord = translationService.test(selectedSubLanguage, subWord);
+                    subWord = translationService.test(requestDTO.getSubLan(), subWord);
                 }
                 contentVocaDTO.setWord(mainWord);
                 contentVocaDTO.setSubWord(subWord);
                 contentVocaDTOS.add(contentVocaDTO);
             }
 
-
-
             // DTO List에 추가
-            BookContentDTO bookContentDTO = new BookContentDTO(
-                    ent.getBookId(),
-                    ent.getPage(),
-                    selectedMainLanguage,
-                    selectedSubLanguage,
-                    ent.getKorContents(),
-                    mainText,
-                    subText,
-                    ent.getImage()
-            );
-            bookContentDTO.setVocaList(contentVocaDTOS);
-            bookContentDTOS.add(bookContentDTO);
+            BookContentResponse bookContentResponse = new BookContentResponse().builder()
+                    .bookId(ent.getBookId())
+                    .page(ent.getPage())
+                    .mainLan(requestDTO.getMainLan())
+                    .subLan(requestDTO.getSubLan())
+                    .korContents(ent.getKorContents())
+                    .mainContents(mainText)
+                    .subContents(subText)
+                    .vocaList(contentVocaDTOS)
+                    .image(ent.getImage())
+                    .build();
+
+            bookContentResponses.add(bookContentResponse);
         }
 
         // page 순으로 정렬
-        bookContentDTOS = bookContentDTOS.stream().sorted(Comparator.comparing(BookContentDTO::getPage)).collect(Collectors.toList());
+        bookContentResponses = bookContentResponses.stream().sorted(Comparator.comparing(BookContentResponse::getPage)).collect(Collectors.toList());
 
-        return bookContentDTOS;
+        return bookContentResponses;
     }
 }

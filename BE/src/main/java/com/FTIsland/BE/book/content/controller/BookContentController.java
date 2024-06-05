@@ -1,8 +1,8 @@
-package com.FTIsland.BE.controller;
+package com.FTIsland.BE.book.content.controller;
 
-import com.FTIsland.BE.dto.BookContentDTO;
-import com.FTIsland.BE.dto.BookInfoDTO;
-import com.FTIsland.BE.service.BookContentService;
+import com.FTIsland.BE.book.content.service.BookContentService;
+import com.FTIsland.BE.book.content.dto.BookContentRequest;
+import com.FTIsland.BE.book.content.dto.BookContentResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +21,8 @@ public class BookContentController {
     }
 
     @PostMapping("/book/content")
-    public List<BookContentDTO> getBookInfoById(@RequestBody BookContentDTO bookContentDTO){
-        return bookContentService.findByBookId(bookContentDTO); // 해당 id의 동화 내용 list
+    public List<BookContentResponse> getBookInfoById(@RequestBody BookContentRequest bookContentRequest){
+        return bookContentService.findByBookId(bookContentRequest); // 해당 id의 동화 내용 list
     }
 
 }
