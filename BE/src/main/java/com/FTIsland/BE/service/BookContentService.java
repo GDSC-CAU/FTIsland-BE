@@ -1,22 +1,17 @@
 package com.FTIsland.BE.service;
 
 import com.FTIsland.BE.dto.BookContentDTO;
-import com.FTIsland.BE.dto.BookInfoDTO;
 import com.FTIsland.BE.dto.ContentVocaDTO;
 import com.FTIsland.BE.entity.BookContentEntity;
-import com.FTIsland.BE.entity.BookInfoEntity;
 import com.FTIsland.BE.entity.VocaEntity;
 import com.FTIsland.BE.repository.BookContentRepository;
-import com.FTIsland.BE.repository.BookInfoRepository;
 import com.FTIsland.BE.repository.VocaRepository;
-import com.google.cloud.translate.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
