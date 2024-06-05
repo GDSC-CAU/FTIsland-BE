@@ -1,6 +1,6 @@
 package com.FTIsland.BE.dto;
 
-import com.FTIsland.BE.entity.BookInfoEntity;
+import com.FTIsland.BE.island.entity.BookInfoEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -1,7 +1,7 @@
 package com.FTIsland.BE.island.controller;
 
 import com.FTIsland.BE.dto.IslandBooksDTO;
-import com.FTIsland.BE.entity.BookInfoEntity;
+import com.FTIsland.BE.island.entity.BookInfoEntity;
 import com.FTIsland.BE.island.dto.IslandBooksRequest;
 import com.FTIsland.BE.service.BookInfoService;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +26,8 @@ public class IslandBooksController {
         // userId가 -1이라면 비회원이므로 book info db를 island id로 검색한 결과만 리턴
         // 비회원인 경우 반환 정상
         List<IslandBooksDTO> islandBooksDTOList = new ArrayList<>();
+        // 섬 id를 이용해서 섬에 속한 책 정보를 가져옴
+        // 섬 : 책 = 일 : 다 릴레이션 필요
         List<Optional<BookInfoEntity>> bookInfoEntityList = bookInfoService.findNameByIslandId(islandBooksRequest.getIslandId());
 
         // IslandBooksDTO로 변환해서 list로 리턴
