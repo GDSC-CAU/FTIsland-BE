@@ -20,11 +20,6 @@ import java.util.List;
 public class BookInfoController {
     private final BookInfoService bookInfoService;
 
-    @RequestMapping("/saveBookInfo")
-    public void saveBookInfo(){ // DB에 동화 정보 저장
-        bookInfoService.save();
-    }
-
     @GetMapping("/book/info")
     public BookInfoDTO getBookInfoById(@RequestParam Integer bookId){
         return bookInfoService.findById(bookId); // 해당 id의 동화가 있다면 DTO, 없다면 null return
