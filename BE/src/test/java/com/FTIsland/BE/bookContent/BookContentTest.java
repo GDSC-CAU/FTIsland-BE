@@ -1,8 +1,8 @@
 package com.FTIsland.BE.bookContent;
 
-import com.FTIsland.BE.bookContent.dto.BookContentRequest;
-import com.FTIsland.BE.bookContent.dto.BookContentResponse;
-import com.FTIsland.BE.bookContent.service.BookContentService;
+import com.FTIsland.BE.book.bookContent.dto.BookContentRequest;
+import com.FTIsland.BE.book.bookContent.dto.BookContentResponse;
+import com.FTIsland.BE.book.bookContent.service.BookContentService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

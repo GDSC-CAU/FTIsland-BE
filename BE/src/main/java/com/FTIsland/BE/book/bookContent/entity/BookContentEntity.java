@@ -1,4 +1,4 @@
-package com.FTIsland.BE.bookContent.entity;
+package com.FTIsland.BE.book.bookContent.entity;
 
 import com.FTIsland.BE.dto.BookContentDTO;
 import jakarta.persistence.*;

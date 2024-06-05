@@ -1,12 +1,12 @@
-package com.FTIsland.BE.bookContent.service;
+package com.FTIsland.BE.book.bookContent.service;
 
-import com.FTIsland.BE.bookContent.dto.BookContentRequest;
-import com.FTIsland.BE.bookContent.dto.BookContentResponse;
+import com.FTIsland.BE.book.bookContent.entity.BookContentEntity;
+import com.FTIsland.BE.book.bookContent.dto.BookContentRequest;
+import com.FTIsland.BE.book.bookContent.dto.BookContentResponse;
 import com.FTIsland.BE.dto.BookContentDTO;
 import com.FTIsland.BE.dto.ContentVocaDTO;
-import com.FTIsland.BE.bookContent.entity.BookContentEntity;
 import com.FTIsland.BE.entity.VocaEntity;
-import com.FTIsland.BE.bookContent.repository.BookContentRepository;
+import com.FTIsland.BE.book.bookContent.repository.BookContentRepository;
 import com.FTIsland.BE.repository.VocaRepository;
 import com.FTIsland.BE.service.TranslationService;
 import lombok.RequiredArgsConstructor;
