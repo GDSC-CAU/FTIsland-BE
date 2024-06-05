@@ -14,7 +14,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
-public class BookContentTest {
+public class BookContentServiceTest {
     @Autowired
     private BookContentService bookContentService;
 
