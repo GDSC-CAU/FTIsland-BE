@@ -44,10 +44,11 @@ public class QuizController {
         if(savedQuiz.isEmpty()){ // A. 없으면 새로 생성 후 저장
             // 책의 contents 조회 - 동화 제목만으로는 버전이 다를 수 있기 때문에
             // 1. bookContentService의 findByBookId method를 쓰기 위해 QuizDTO -> BookContentDTO 변환
-            BookContentRequest bookContentRequest = new BookContentRequest();
-            bookContentRequest.setBookId(quizDTO.getBookId());
-            bookContentRequest.setMainLan(quizDTO.getMainLan());
-            bookContentRequest.setSubLan(quizDTO.getSubLan());
+            BookContentRequest bookContentRequest = new BookContentRequest().builder()
+                    .bookId(quizDTO.getBookId())
+                    .mainLan(quizDTO.getMainLan())
+                    .subLan(quizDTO.getSubLan())
+                    .build();
 
             // 2. Content list 조회 및 한 줄로 합쳐진 Content 생성
             List<BookContentResponse> bookContentResponses = bookContentService.findByBookId(bookContentRequest);
