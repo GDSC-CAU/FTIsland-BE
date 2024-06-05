@@ -1,8 +1,8 @@
 package com.FTIsland.BE.controller;
 
-import com.FTIsland.BE.book.bookContent.dto.BookContentRequest;
-import com.FTIsland.BE.book.bookContent.dto.BookContentResponse;
-import com.FTIsland.BE.book.bookContent.service.BookContentService;
+import com.FTIsland.BE.book.content.dto.BookContentRequest;
+import com.FTIsland.BE.book.content.dto.BookContentResponse;
+import com.FTIsland.BE.book.content.service.BookContentService;
 import com.FTIsland.BE.dto.ChatGptResponse;
 import com.FTIsland.BE.dto.QuizDTO;
 import com.FTIsland.BE.service.*;

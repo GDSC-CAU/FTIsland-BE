@@ -1,6 +1,6 @@
-package com.FTIsland.BE.book.bookContent.dto;
+package com.FTIsland.BE.book.content.dto;
 
-import com.FTIsland.BE.book.bookContent.entity.BookContentEntity;
+import com.FTIsland.BE.book.content.entity.BookContentEntity;
 import com.FTIsland.BE.dto.ContentVocaDTO;
 import lombok.*;
 

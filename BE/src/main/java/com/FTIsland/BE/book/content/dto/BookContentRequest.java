@@ -1,4 +1,4 @@
-package com.FTIsland.BE.book.bookContent.dto;
+package com.FTIsland.BE.book.content.dto;
 
 import lombok.*;
 

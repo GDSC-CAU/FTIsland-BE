@@ -1,8 +1,8 @@
-package com.FTIsland.BE.book.bookContent.controller;
+package com.FTIsland.BE.book.content.controller;
 
-import com.FTIsland.BE.book.bookContent.service.BookContentService;
-import com.FTIsland.BE.book.bookContent.dto.BookContentRequest;
-import com.FTIsland.BE.book.bookContent.dto.BookContentResponse;
+import com.FTIsland.BE.book.content.service.BookContentService;
+import com.FTIsland.BE.book.content.dto.BookContentRequest;
+import com.FTIsland.BE.book.content.dto.BookContentResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;

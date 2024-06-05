@@ -1,11 +1,9 @@
-package com.FTIsland.BE.book.bookContent.entity;
+package com.FTIsland.BE.book.content.entity;
 
-import com.FTIsland.BE.dto.BookContentDTO;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Getter
