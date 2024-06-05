@@ -8,7 +8,6 @@ import java.util.List;
 
 @Getter
 @NoArgsConstructor
-@ToString
 public class BookContentResponse {
     private Integer bookId; //bookName도 추가?
     private Integer page;
