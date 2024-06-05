@@ -20,7 +20,7 @@ public class BookContentResponse {
     private String image;
 
     @Builder
-    public BookContentResponse(Integer bookId, Integer page, String mainLan, String subLan, String korContents, String mainContents, String subContents, String image){
+    public BookContentResponse(Integer bookId, Integer page, String mainLan, String subLan, String korContents, String mainContents, String subContents, List<ContentVocaDTO> vocaList, String image){
         this.bookId = bookId;
         this.page = page;
         this.mainLan = mainLan;
@@ -28,6 +28,7 @@ public class BookContentResponse {
         this.korContents = korContents;
         this.mainContents = mainContents;
         this.subContents = subContents;
+        this.vocaList = vocaList;
         this.image = image;
     }
 
