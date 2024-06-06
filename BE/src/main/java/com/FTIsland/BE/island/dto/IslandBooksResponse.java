@@ -1,13 +1,9 @@
 package com.FTIsland.BE.island.dto;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @Getter
 @NoArgsConstructor
-@ToString
 public class IslandBooksResponse {
     private Integer userId;
     private Integer bookId;
@@ -18,7 +14,6 @@ public class IslandBooksResponse {
     private String country;
     private Integer totalPage;
     private String image;
-    // private float progress;
 
     @Builder
     public IslandBooksResponse(Integer userId, Integer bookId, Integer islandId, String title, String description,
@@ -32,7 +27,6 @@ public class IslandBooksResponse {
         this.country = country;
         this.totalPage = totalPage;
         this.image = image;
-        // this.progress = progress;
     }
 }
 
