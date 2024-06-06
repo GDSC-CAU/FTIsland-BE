@@ -2,15 +2,13 @@ package com.FTIsland.BE.island.entity;
 
 import com.FTIsland.BE.dto.BookInfoDTO;
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
 @Table(name = "bookinfo")
 @NoArgsConstructor
+@ToString
 public class BookInfoEntity {
 
     @Id
@@ -35,11 +33,8 @@ public class BookInfoEntity {
     @Column
     private String image;
 
-    @Column
-    private Integer islandId;
-
     @Builder
-    public BookInfoEntity (Integer id, String title, String description, String category, String country, Integer totalPage, String image, Integer islandId) {
+    public BookInfoEntity (Integer id, String title, String description, String category, String country, Integer totalPage, String image) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -47,7 +42,6 @@ public class BookInfoEntity {
         this.country = country;
         this.totalPage = totalPage;
         this.image = image;
-        this.islandId = islandId;
     }
 
 //    public static BookInfoEntity toBookInfoEntity(BookInfoDTO bookInfoDTO){
@@ -62,5 +56,9 @@ public class BookInfoEntity {
 //        bookInfoEntity.setIslandId(bookInfoDTO.getIslandId());
 //        return bookInfoEntity;
 //    }
+
+    @ManyToOne
+    @JoinColumn(name = "islandId", referencedColumnName = "id")
+    private IslandInfoEntity islandInfoEntity;
 
 }

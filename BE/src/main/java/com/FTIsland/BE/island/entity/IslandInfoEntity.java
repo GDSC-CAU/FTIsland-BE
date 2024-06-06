@@ -3,6 +3,7 @@ package com.FTIsland.BE.island.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,6 +24,10 @@ public class IslandInfoEntity {
         this.name = name;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "islandinfo")
-    private List<BookInfoEntity> bookInfos;
+    @OneToMany(mappedBy = "islandInfoEntity")
+    private List<BookInfoEntity> bookInfos = new ArrayList<>();
+
+    public List<BookInfoEntity> getBookInfos() {
+        return bookInfos;
+    }
 }
