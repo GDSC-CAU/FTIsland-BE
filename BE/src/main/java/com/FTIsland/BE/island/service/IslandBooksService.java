@@ -16,9 +16,8 @@ public class IslandBooksService {
     private final BookInfoRepository bookInfoRepository;
 
     @Transactional
-    public List<Optional<BookInfoEntity>> findNameByIslandId(Integer islandId) {
-        List<Optional<BookInfoEntity>> bookInfoEntityList = bookInfoRepository.findByIslandId(islandId);
+    public List<BookInfoEntity> findNameByIslandId(Integer islandId) {
+        List<BookInfoEntity> bookInfoEntityList = bookInfoRepository.findByIslandInfoEntityId(islandId);
         return bookInfoEntityList;
-
     }
 }
