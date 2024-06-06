@@ -26,8 +26,4 @@ public class IslandInfoEntity {
 
     @OneToMany(mappedBy = "islandInfoEntity")
     private List<BookInfoEntity> bookInfos = new ArrayList<>();
-
-    public List<BookInfoEntity> getBookInfos() {
-        return bookInfos;
-    }
 }
