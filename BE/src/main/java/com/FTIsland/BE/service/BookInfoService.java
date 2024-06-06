@@ -4,12 +4,16 @@ import com.FTIsland.BE.dto.BookInfoDTO;
 import com.FTIsland.BE.island.entity.BookInfoEntity;
 import com.FTIsland.BE.repository.BookInfoRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class BookInfoService {
@@ -37,10 +41,9 @@ public class BookInfoService {
         }
     }
 
-    public List<Optional<BookInfoEntity>> findNameByIslandId(Integer islandId) {
-        List<Optional<BookInfoEntity>> bookInfoEntityList = bookInfoRepository.findByIslandId(islandId);
+    public List<BookInfoEntity> findBookInfoByIslandId(Integer islandId) {
+        List<BookInfoEntity> bookInfoEntityList = bookInfoRepository.findByIslandInfoEntityId(islandId);
         return bookInfoEntityList;
-
     }
 
     public String findDescriptionByBookId(Integer bookId) {
