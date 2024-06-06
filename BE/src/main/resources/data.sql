@@ -35,3 +35,11 @@ INSERT INTO bookcontent (book_id, page, kor_contents, image) VALUES
 (2, 2, '살금 살금 그림자를 따라가보니... 늑대가 그림자로 장난을 치고 있었어요!', 'https://storage.googleapis.com/ft-island-image/shadow1.webp'),
 (2, 3, '친화력이 좋은 치치는 늑대와 바로 친해졌고, 함께 그림자 놀이를 하며 놀았어요.', 'https://storage.googleapis.com/ft-island-image/shadow2.webp'),
 (2, 4, '여우를 사냥하려고 숲 주변에 있던 사냥꾼이, 치치와 늑대의 그림자를 보고 줄행랑 쳤답니다!', 'https://storage.googleapis.com/ft-island-image/shadow3.webp');
+
+-- user
+INSERT INTO user (input_id, input_password, name, level, main_language, sub_language, is_parent) VALUES
+('testUser1', 'password1', 'Test User 1', 1, 'ko', 'en', false),
+('testUser2', 'password2', 'Test User 2', 2, 'ko', 'en', true),
+('testUser3', 'password3', 'Test User 3', 3, 'ko', 'en', false),
+('testUser4', 'password4', 'Test User 4', 4, 'ko', 'en', true),
+('testUser5', 'password5', 'Test User 5', 5, 'ko', 'en', false);
