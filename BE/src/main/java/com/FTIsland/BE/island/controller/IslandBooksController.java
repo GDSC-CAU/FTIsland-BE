@@ -24,14 +24,14 @@ public class IslandBooksController {
 
     @GetMapping("/island/books")
     public List<IslandBooksResponse> getBookInfoByIslandId(@RequestBody IslandBooksRequest islandBooksRequest) {
-        // userId가 -1이라면 비회원이므로 book info db를 island id로 검색한 결과만 리턴
-        // 비회원인 경우 반환 정상
 
         List<BookInfoEntity> bookInfoEntityList = bookInfoService.findBookInfoByIslandId(islandBooksRequest.getIslandId());
         List<IslandBooksResponse> collect = bookInfoEntityList
                 .stream()
                 .map(m -> new IslandBooksResponse().builder()
+                        .userId(islandBooksRequest.getUserId())
                         .bookId(m.getId())
+                        .islandId(m.getId())
                         .title(m.getTitle())
                         .description(m.getDescription())
                         .category(m.getCategory())
