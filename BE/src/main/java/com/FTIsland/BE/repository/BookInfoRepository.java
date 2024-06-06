@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface BookInfoRepository extends JpaRepository<BookInfoEntity, Integer> {
     Optional<BookInfoEntity> findById(Integer id);
-    List<Optional<BookInfoEntity>> findByIslandId(Integer islandId);
+    List<BookInfoEntity> findByIslandInfoEntityId(Integer islandId);
 }
