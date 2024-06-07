@@ -1,6 +1,7 @@
 package com.FTIsland.BE.island.service;
 
 import com.FTIsland.BE.island.entity.BookInfoEntity;
+import com.FTIsland.BE.island.entity.Island;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -29,6 +30,6 @@ class IslandBooksServiceTest {
         List<BookInfoEntity> bookInfoEntities = islandBooksService.findBookInfoByIslandId(islandId);
 
         // then
-        assertThat(bookInfoEntities.size()).isEqualTo(4);
+        assertThat(bookInfoEntities.size()).isEqualTo(Island.BOOKS_PER_ISLAND.getBooks_per_island());
     }
 }
