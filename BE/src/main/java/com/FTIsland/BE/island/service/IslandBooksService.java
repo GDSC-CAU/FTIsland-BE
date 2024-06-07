@@ -18,10 +18,4 @@ public class IslandBooksService {
     public List<BookInfoEntity> findBookInfoByIslandId(Integer islandId) {
         return bookInfoRepository.findByIslandInfoEntityId(islandId);
     }
-
-    @Transactional
-    public List<BookInfoEntity> findNameByIslandId(Integer islandId) {
-        List<BookInfoEntity> bookInfoEntityList = bookInfoRepository.findByIslandInfoEntityId(islandId);
-        return bookInfoEntityList;
-    }
 }
