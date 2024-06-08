@@ -44,19 +44,6 @@ public class BookInfoEntity {
         this.image = image;
     }
 
-//    public static BookInfoEntity toBookInfoEntity(BookInfoDTO bookInfoDTO){
-//        BookInfoEntity bookInfoEntity = new BookInfoEntity();
-//        bookInfoEntity.setId(bookInfoDTO.getId());
-//        bookInfoEntity.setTitle(bookInfoDTO.getTitle());
-//        bookInfoEntity.setDescription(bookInfoDTO.getDescription());
-//        bookInfoEntity.setCategory(bookInfoDTO.getCategory());
-//        bookInfoEntity.setCountry(bookInfoDTO.getCountry());
-//        bookInfoEntity.setTotalPage(bookInfoDTO.getTotalPage());
-//        bookInfoEntity.setImage(bookInfoDTO.getImage());
-//        bookInfoEntity.setIslandId(bookInfoDTO.getIslandId());
-//        return bookInfoEntity;
-//    }
-
     @ManyToOne
     @JoinColumn(name = "islandId", referencedColumnName = "id")
     private IslandInfoEntity islandInfoEntity;
