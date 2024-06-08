@@ -1,6 +1,6 @@
 package com.FTIsland.BE.dto;
 
-import com.FTIsland.BE.entity.BookInfoEntity;
+import com.FTIsland.BE.book.info.entity.BookInfoEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,7 +29,7 @@ public class BookInfoDTO {
         bookInfoDTO.setCountry(bookInfoEntity.getCountry());
         bookInfoDTO.setTotalPage(bookInfoEntity.getTotalPage());
         bookInfoDTO.setImage(bookInfoEntity.getImage());
-        bookInfoDTO.setIslandId(bookInfoEntity.getIslandId());
+        //bookInfoDTO.setIslandId(bookInfoEntity.getIslandId());
         return bookInfoDTO;
     }
 

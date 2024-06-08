@@ -23,9 +23,12 @@ class IslandInfoServiceTest {
     void getIslandInfo() {
         // given
         Integer id = 1;
+
         // when
         IslandInfoRequest request = new IslandInfoRequest().builder().id(id).build();
         IslandInfoResponse islandInfoResponse =  islandInfoService.findById(request);
+
+        // then
         assertThat(islandInfoResponse.getId()).isEqualTo(1);
         assertThat(islandInfoResponse.getName()).isEqualTo("지혜");
     }

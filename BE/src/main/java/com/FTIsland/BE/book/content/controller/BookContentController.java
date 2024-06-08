@@ -15,11 +15,6 @@ import java.util.List;
 public class BookContentController {
     private final BookContentService bookContentService;
 
-    @RequestMapping("/saveBookContent")
-    public void saveBookContent(){ // DB에 동화 정보 저장
-        bookContentService.save();
-    }
-
     @PostMapping("/book/content")
     public List<BookContentResponse> getBookInfoById(@RequestBody BookContentRequest bookContentRequest){
         return bookContentService.findByBookId(bookContentRequest); // 해당 id의 동화 내용 list

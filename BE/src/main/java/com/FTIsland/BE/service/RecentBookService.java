@@ -1,7 +1,7 @@
 package com.FTIsland.BE.service;
 
 import com.FTIsland.BE.dto.RecentBookDTO;
-import com.FTIsland.BE.entity.BookInfoEntity;
+import com.FTIsland.BE.book.info.entity.BookInfoEntity;
 import com.FTIsland.BE.entity.ReadEntity;
 import com.FTIsland.BE.repository.BookInfoRepository;
 import com.FTIsland.BE.repository.ReadRepository;

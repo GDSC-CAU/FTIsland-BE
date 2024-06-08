@@ -1,10 +1,13 @@
 package com.FTIsland.BE.island.entity;
 
+import com.FTIsland.BE.book.info.entity.BookInfoEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-@Setter
 @Getter
 @Table(name = "islandinfo")
 @NoArgsConstructor
@@ -21,4 +24,7 @@ public class IslandInfoEntity {
         this.id = id;
         this.name = name;
     }
+
+    @OneToMany(mappedBy = "islandInfoEntity")
+    private List<BookInfoEntity> bookInfos = new ArrayList<>();
 }

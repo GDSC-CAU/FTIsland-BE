@@ -1,7 +1,7 @@
 package com.FTIsland.BE.service;
 
 import com.FTIsland.BE.dto.*;
-import com.FTIsland.BE.entity.BookInfoEntity;
+import com.FTIsland.BE.book.info.entity.BookInfoEntity;
 import com.FTIsland.BE.entity.User;
 import com.FTIsland.BE.entity.UserVocaEntity;
 import com.FTIsland.BE.entity.VocaEntity;
@@ -9,12 +9,10 @@ import com.FTIsland.BE.repository.BookInfoRepository;
 import com.FTIsland.BE.repository.UserRepository;
 import com.FTIsland.BE.repository.UserVocaRepository;
 import com.FTIsland.BE.repository.VocaRepository;
-import com.nimbusds.openid.connect.sdk.assurance.request.VerifiedClaimsSetRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

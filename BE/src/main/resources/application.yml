@@ -34,4 +34,4 @@ spring:
   # sql 설정
   sql:
     init:
-      mode: always # 최초 삽입 - always / 이후 - never
+      mode: never # 최초 삽입 - always / 이후 - never
