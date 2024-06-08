@@ -1,23 +1,18 @@
 package com.FTIsland.BE.entity;
 
+import com.FTIsland.BE.base.BaseEntity;
 import com.FTIsland.BE.dto.SignUpDTO;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
-
-
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
-@Builder
 @Table(name = "user")
 @Slf4j
-@AllArgsConstructor
-public class User {
+public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
