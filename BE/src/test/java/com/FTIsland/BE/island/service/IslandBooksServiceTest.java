@@ -1,6 +1,6 @@
 package com.FTIsland.BE.island.service;
 
-import com.FTIsland.BE.island.entity.BookInfoEntity;
+import com.FTIsland.BE.book.info.entity.BookInfoEntity;
 import com.FTIsland.BE.island.entity.Island;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;

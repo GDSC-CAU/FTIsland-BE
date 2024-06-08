@@ -1,7 +1,7 @@
 package com.FTIsland.BE.service;
 
 import com.FTIsland.BE.dto.*;
-import com.FTIsland.BE.island.entity.BookInfoEntity;
+import com.FTIsland.BE.book.info.entity.BookInfoEntity;
 import com.FTIsland.BE.entity.User;
 import com.FTIsland.BE.entity.UserVocaEntity;
 import com.FTIsland.BE.entity.VocaEntity;

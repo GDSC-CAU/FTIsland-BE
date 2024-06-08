@@ -1,7 +1,7 @@
 package com.FTIsland.BE.service;
 
 import com.FTIsland.BE.dto.BookInfoDTO;
-import com.FTIsland.BE.island.entity.BookInfoEntity;
+import com.FTIsland.BE.book.info.entity.BookInfoEntity;
 import com.FTIsland.BE.repository.BookInfoRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

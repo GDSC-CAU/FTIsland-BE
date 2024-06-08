@@ -1,5 +1,6 @@
 package com.FTIsland.BE.island.entity;
 
+import com.FTIsland.BE.book.info.entity.BookInfoEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

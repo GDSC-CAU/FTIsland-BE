@@ -1,6 +1,6 @@
-package com.FTIsland.BE.island.entity;
+package com.FTIsland.BE.book.info.entity;
 
-import com.FTIsland.BE.dto.BookInfoDTO;
+import com.FTIsland.BE.island.entity.IslandInfoEntity;
 import jakarta.persistence.*;
 import lombok.*;
 

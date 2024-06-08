@@ -1,7 +1,7 @@
 package com.FTIsland.BE.island.controller;
 
 import com.FTIsland.BE.island.dto.IslandBooksRequest;
-import com.FTIsland.BE.island.entity.BookInfoEntity;
+import com.FTIsland.BE.book.info.entity.BookInfoEntity;
 import com.FTIsland.BE.island.dto.IslandBooksResponse;
 import com.FTIsland.BE.island.service.IslandBooksService;
 import lombok.RequiredArgsConstructor;
