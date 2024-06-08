@@ -1,4 +1,4 @@
-package com.FTIsland.BE.dto;
+package com.FTIsland.BE.book.feedback.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
