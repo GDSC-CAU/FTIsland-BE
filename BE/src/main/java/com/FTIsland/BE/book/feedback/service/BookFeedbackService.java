@@ -50,8 +50,7 @@ public class BookFeedbackService {
             return new ResponseDTO<>(HttpServletResponse.SC_OK, "", null);
         }
 
-        user.updateLevel(feedback);
+        user.updateLevel(user.getLevel() + feedback);
         return new ResponseDTO<>(HttpServletResponse.SC_OK, "피드백 업데이트를 완료했습니다.", null);
-
     }
 }
