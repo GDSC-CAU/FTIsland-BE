@@ -49,4 +49,19 @@ public class User extends BaseEntity {
         user.setSubLanguage(signUpDTO.getSubLanguage());
         return user;
     }
+
+    public void update(Integer id, String inputId, String inputPassword, String name, int level, String mainLanguage, String subLanguage, boolean isParent) {
+        this.id = id;
+        this.inputId = inputId;
+        this.inputPassword = inputPassword;
+        this.name = name;
+        this.level = level;
+        this.mainLanguage = mainLanguage;
+        this.subLanguage = subLanguage;
+        this.isParent = isParent;
+    }
+
+    public void updateLevel(int level) {
+        this.level = level;
+    }
 }
