@@ -27,10 +27,11 @@ public class BookFeedbackService {
         Integer userId = bookFeedbackRequest.getUserId();
         Integer feedback = bookFeedbackRequest.getFeedback();
 
-        /*
-         * 사용자가 없는 경우
-         */
         User user = userRepository.findById(userId).orElse(null);
+
+        /*
+         * (예외) 사용자가 없는 경우
+         */
         if (user == null) {
             return new ResponseDTO<>(HttpServletResponse.SC_NOT_FOUND, "사용자를 찾을 수 없습니다.", null);
         }
@@ -49,8 +50,7 @@ public class BookFeedbackService {
             return new ResponseDTO<>(HttpServletResponse.SC_OK, "", null);
         }
 
-        user.setLevel(user.getLevel() + feedback);
-        userRepository.save(user); // 사용자 정보 저장
+        user.updateLevel(feedback);
         return new ResponseDTO<>(HttpServletResponse.SC_OK, "피드백 업데이트를 완료했습니다.", null);
 
     }
