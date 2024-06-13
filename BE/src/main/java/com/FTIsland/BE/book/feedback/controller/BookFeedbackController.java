@@ -3,7 +3,6 @@ package com.FTIsland.BE.book.feedback.controller;
 import com.FTIsland.BE.book.feedback.dto.BookFeedbackRequest;
 import com.FTIsland.BE.dto.ResponseDTO;
 import com.FTIsland.BE.book.feedback.service.BookFeedbackService;
-import com.FTIsland.BE.response.ResponseData;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
