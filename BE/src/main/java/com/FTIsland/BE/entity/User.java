@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @Table(name = "user")
 @Slf4j
 public class User extends BaseEntity {
