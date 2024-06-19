@@ -43,3 +43,8 @@ INSERT INTO user (input_id, input_password, name, level, main_language, sub_lang
 ('testUser3', 'password3', 'Test User 3', 3, 'ko', 'en', false),
 ('testUser4', 'password4', 'Test User 4', 4, 'ko', 'en', true),
 ('testUser5', 'password5', 'Test User 5', 5, 'ko', 'en', false);
+
+-- readbook
+INSERT INTO readbook(user_id, book_id, limit_num, offset_value) VALUES
+(1, 1, 2, 2),
+(1, 2, 2, 2);
