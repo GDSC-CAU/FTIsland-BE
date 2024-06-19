@@ -27,6 +27,10 @@ public class User extends BaseEntity {
     private String subLanguage;
     private boolean isParent;
 
+    @ManyToOne
+    @JoinColumn
+    private ReadEntity readEntity;
+
     @Builder
     public User(Integer id, String inputId, String inputPassword, String name, int level, String mainLanguage, String subLanguage, boolean isParent) {
         this.id = id;
