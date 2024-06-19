@@ -1,5 +1,6 @@
 package com.FTIsland.BE.service;
 
+import com.FTIsland.BE.book.progress.dto.IslandBooksRequest;
 import com.FTIsland.BE.dto.IslandBooksDTO;
 import com.FTIsland.BE.dto.ReadDTO;
 import com.FTIsland.BE.entity.ReadEntity;
@@ -59,16 +60,16 @@ public class ReadService {
         return readRepository.findByBookId(nowId);
     }
 
-    public List<ReadDTO> progress(IslandBooksDTO islandBooksDTO) {
+    public List<ReadDTO> getProgress(IslandBooksRequest islandBooksRequest) {
         List<ReadDTO> readDTOS = new ArrayList<>();
 
         // islandid에서 힌트를 얻어서 바로 검색
-        int startNum = (islandBooksDTO.getIslandId() - 1) * 4 + 1;
+        int startNum = (islandBooksRequest.getIslandId() - 1) * 4 + 1;
         for(int i = 0; i < 4; i++) {
             int nowId = startNum + i;
-            Optional<ReadEntity> readEntityOptional = readRepository.findByUserIdAndBookId(islandBooksDTO.getUserId(), nowId);
+            Optional<ReadEntity> readEntityOptional = readRepository.findByUserIdAndBookId(islandBooksRequest.getUserId(), nowId);
             if(readEntityOptional.isPresent()) {
-                ReadDTO readDTO = new ReadDTO(islandBooksDTO.getUserId(), readEntityOptional.get().getBookId(),
+                ReadDTO readDTO = new ReadDTO(islandBooksRequest.getUserId(), readEntityOptional.get().getBookId(),
                         readEntityOptional.get().getOffset_value(), readEntityOptional.get().getLimitNum(),
                         readEntityOptional.get().getOffset_value() * readEntityOptional.get().getLimitNum());
                 readDTOS.add(readDTO);
