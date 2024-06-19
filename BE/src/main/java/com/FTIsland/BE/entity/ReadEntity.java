@@ -1,5 +1,6 @@
 package com.FTIsland.BE.entity;
 
+import com.FTIsland.BE.base.BaseEntity;
 import com.FTIsland.BE.dto.ReadDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @Table(name = "readbook")
-public class ReadEntity {
+public class ReadEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
