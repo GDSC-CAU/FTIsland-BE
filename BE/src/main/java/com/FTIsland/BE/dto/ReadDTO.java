@@ -16,7 +16,6 @@ public class ReadDTO {
     private Integer bookId;
     private Integer offset_value;
     private Integer limitNum;
-    // private Float progress;
     private Integer lastPage;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
