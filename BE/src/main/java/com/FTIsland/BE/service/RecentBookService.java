@@ -17,27 +17,27 @@ import java.util.Optional;
 public class RecentBookService {
     private final ReadRepository readRepository;
     private final BookInfoRepository bookInfoRepository;
-    public List<RecentBookDTO> findByUserId(RecentBookDTO requestDTO){
-        // var byUserId = readRepository.findByUserId(requestDTO.getUserId());
-        var byUserId = readRepository.findAllByUserIdOrderByUpdatedAtDesc(requestDTO.getUserId());
-
-        List<RecentBookDTO> responseDTOs = new ArrayList<>();
-        for (ReadEntity ent : byUserId){
-            RecentBookDTO recentBookDTO = new RecentBookDTO();
-            recentBookDTO.setUserId(ent.getUserId());
-            recentBookDTO.setBookId(ent.getBookId());
-            recentBookDTO.setUpdatedAt(ent.getUpdatedAt());
-            Optional<BookInfoEntity> bookInfoEntity = bookInfoRepository.findById(ent.getBookId());
-            if(bookInfoEntity.isPresent()){
-                recentBookDTO.setTitle(bookInfoEntity.get().getTitle());
-                recentBookDTO.setDescription(bookInfoEntity.get().getDescription());
-                recentBookDTO.setImage(bookInfoEntity.get().getImage());
-            } else{
-             //
-            }
-            responseDTOs.add(recentBookDTO);
-
-        }
-        return responseDTOs;
-    }
+//    public List<RecentBookDTO> findByUserId(RecentBookDTO requestDTO) {
+//        var byUserId = readRepository.findByUserId(requestDTO.getUserId());
+//        var byUserId = readRepository.findAllByUserIdOrderByUpdatedAtDesc(requestDTO.getUserId());
+//
+//        List<RecentBookDTO> responseDTOs = new ArrayList<>();
+//        for (ReadEntity ent : byUserId){
+//            RecentBookDTO recentBookDTO = new RecentBookDTO();
+//            recentBookDTO.setUserId(ent.getUserId());
+//            recentBookDTO.setBookId(ent.getBookId());
+//            recentBookDTO.setUpdatedAt(ent.getUpdated_at());
+//            Optional<BookInfoEntity> bookInfoEntity = bookInfoRepository.findById(ent.getBookId());
+//            if(bookInfoEntity.isPresent()){
+//                recentBookDTO.setTitle(bookInfoEntity.get().getTitle());
+//                recentBookDTO.setDescription(bookInfoEntity.get().getDescription());
+//                recentBookDTO.setImage(bookInfoEntity.get().getImage());
+//            } else{
+//             //
+//            }
+//            responseDTOs.add(recentBookDTO);
+//
+//        }
+//        return responseDTOs;
+//    }
 }
