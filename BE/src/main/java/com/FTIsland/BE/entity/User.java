@@ -28,7 +28,7 @@ public class User extends BaseEntity {
     private boolean isParent;
 
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name="userId", referencedColumnName = "id")
     private ReadEntity readEntity;
 
     @Builder
