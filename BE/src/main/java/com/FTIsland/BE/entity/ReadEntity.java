@@ -5,10 +5,6 @@ import com.FTIsland.BE.dto.ReadDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Setter
@@ -31,13 +27,6 @@ public class ReadEntity extends BaseEntity {
     @Column
     private Integer limitNum;
 
-    @CreationTimestamp
-    @Column
-    private LocalDateTime createdAt;
-
-    @UpdateTimestamp
-    @Column
-    private LocalDateTime updatedAt;
 
     public static ReadEntity toReadEntity(ReadDTO readDTO){
         ReadEntity readEntity = new ReadEntity();
@@ -45,8 +34,6 @@ public class ReadEntity extends BaseEntity {
         readEntity.setBookId(readDTO.getBookId());
         readEntity.setOffset_value(readDTO.getOffset_value());
         readEntity.setLimitNum(readDTO.getLimitNum());
-        // readEntity.setCreatedAt(readDTO.getCreatedAt());
-        // readEntity.setUpdatedAt(readDTO.getUpdatedAt());
 
         return readEntity;
     }
