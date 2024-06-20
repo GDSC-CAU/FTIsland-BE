@@ -1,5 +1,6 @@
 package com.FTIsland.BE.book.info.entity;
 
+import com.FTIsland.BE.base.BaseEntity;
 import com.FTIsland.BE.island.entity.IslandInfoEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -9,7 +10,7 @@ import lombok.*;
 @Table(name = "bookinfo")
 @NoArgsConstructor
 @ToString
-public class BookInfoEntity {
+public class BookInfoEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
