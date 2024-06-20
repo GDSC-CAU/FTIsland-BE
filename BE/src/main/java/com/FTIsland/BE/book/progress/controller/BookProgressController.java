@@ -1,6 +1,7 @@
 package com.FTIsland.BE.book.progress.controller;
 
 import com.FTIsland.BE.book.progress.dto.BookProgressRequest;
+import com.FTIsland.BE.book.progress.dto.BookProgressResponse;
 import com.FTIsland.BE.dto.ReadDTO;
 import com.FTIsland.BE.service.ReadService;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +20,7 @@ public class BookProgressController {
     private final ReadService readService;
 
     @GetMapping("/book/progress")
-    public List<ReadDTO> getBookInfoWithRead(@RequestBody BookProgressRequest bookProgressRequest) {
+    public List<BookProgressResponse> getBookInfoWithRead(@RequestBody BookProgressRequest bookProgressRequest) {
         return readService.getProgress(bookProgressRequest);
     }
 }
