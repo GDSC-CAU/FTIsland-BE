@@ -1,5 +1,6 @@
 package com.FTIsland.BE.island.entity;
 
+import com.FTIsland.BE.base.BaseEntity;
 import com.FTIsland.BE.book.info.entity.BookInfoEntity;
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,7 +12,7 @@ import java.util.List;
 @Getter
 @Table(name = "islandinfo")
 @NoArgsConstructor
-public class IslandInfoEntity {
+public class IslandInfoEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -26,5 +27,7 @@ public class IslandInfoEntity {
     }
 
     @OneToMany(mappedBy = "islandInfoEntity")
-    private List<BookInfoEntity> bookInfos = new ArrayList<>();
+    private List<BookInfoEntity> bookInfoEntities = new ArrayList<>();
+
+
 }
