@@ -17,8 +17,6 @@ public class ReadDTO {
     private Integer offset_value;
     private Integer limitNum;
     private Integer lastPage;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 
     public ReadDTO(Integer userId, Integer bookId, Integer offsetvalue, Integer limitNum, Integer lastPage){
         this.userId = userId;
