@@ -18,4 +18,7 @@ public interface ReadRepository extends JpaRepository<ReadEntity, Integer> {
     Optional<ReadEntity> findByUserIdAndBookId(Integer userId, Integer bookId);
 
     Optional<ReadEntity> findByBookId(int nowId);
+
+    List<ReadEntity> findByUserId(Integer userId);
+    List<ReadEntity> findAllByUserIdOrderByUpdatedAtDesc(Integer userId);
 }
