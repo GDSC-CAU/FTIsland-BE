@@ -17,8 +17,7 @@ import java.util.Optional;
 public class RecentBookService {
     private final ReadRepository readRepository;
     private final BookInfoRepository bookInfoRepository;
-    public List<RecentBookDTO> findByUserId(RecentBookDTO requestDTO){
-        // var byUserId = readRepository.findByUserId(requestDTO.getUserId());
+    public List<RecentBookDTO> findByUserId(RecentBookDTO requestDTO) {
         var byUserId = readRepository.findAllByUserIdOrderByUpdatedAtDesc(requestDTO.getUserId());
 
         List<RecentBookDTO> responseDTOs = new ArrayList<>();

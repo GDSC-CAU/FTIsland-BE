@@ -1,5 +1,6 @@
 package com.FTIsland.BE.book.content.entity;
 
+import com.FTIsland.BE.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -7,7 +8,7 @@ import lombok.*;
 @Getter
 @Table(name = "bookcontent")
 @NoArgsConstructor
-public class BookContentEntity {
+public class BookContentEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

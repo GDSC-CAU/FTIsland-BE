@@ -1,10 +1,12 @@
 package com.FTIsland.BE.service;
 
-import com.FTIsland.BE.dto.IslandBooksDTO;
+import com.FTIsland.BE.book.progress.dto.BookProgressRequest;
+import com.FTIsland.BE.book.progress.dto.BookProgressResponse;
 import com.FTIsland.BE.dto.ReadDTO;
 import com.FTIsland.BE.entity.ReadEntity;
 import com.FTIsland.BE.repository.ReadRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,6 +17,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class ReadService {
     private final ReadRepository readRepository;
 
@@ -59,21 +62,16 @@ public class ReadService {
         return readRepository.findByBookId(nowId);
     }
 
-    public List<ReadDTO> progress(IslandBooksDTO islandBooksDTO) {
-        List<ReadDTO> readDTOS = new ArrayList<>();
+    public List<BookProgressResponse> getProgress(BookProgressRequest bookProgressRequest) {
+        List<BookProgressResponse> bookProgressResponseList = new ArrayList<>();
 
-        // islandid에서 힌트를 얻어서 바로 검색
-        int startNum = (islandBooksDTO.getIslandId() - 1) * 4 + 1;
-        for(int i = 0; i < 4; i++) {
-            int nowId = startNum + i;
-            Optional<ReadEntity> readEntityOptional = readRepository.findByUserIdAndBookId(islandBooksDTO.getUserId(), nowId);
-            if(readEntityOptional.isPresent()) {
-                ReadDTO readDTO = new ReadDTO(islandBooksDTO.getUserId(), readEntityOptional.get().getBookId(),
-                        readEntityOptional.get().getOffset_value(), readEntityOptional.get().getLimitNum(),
-                        readEntityOptional.get().getOffset_value() * readEntityOptional.get().getLimitNum());
-                readDTOS.add(readDTO);
-            }
+        for(ReadEntity readEntity : readRepository.findByUserIdAndIslandInfoEntityIslandId(bookProgressRequest.getUserId(), bookProgressRequest.getIslandId())){
+            bookProgressResponseList.add(new BookProgressResponse().builder()
+                    .userId(readEntity.getUserId())
+                    .bookId(readEntity.getBookId())
+                    .lastPage(readEntity.getOffset_value() * readEntity.getLimitNum()).build());
         }
-        return readDTOS;
+
+        return bookProgressResponseList;
     }
 }

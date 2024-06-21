@@ -1,19 +1,19 @@
 package com.FTIsland.BE.entity;
 
+import com.FTIsland.BE.base.BaseEntity;
 import com.FTIsland.BE.dto.ReadDTO;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Setter
 @Getter
+@NoArgsConstructor
 @Table(name = "readbook")
-public class ReadEntity {
+public class ReadEntity extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -30,13 +30,13 @@ public class ReadEntity {
     @Column
     private Integer limitNum;
 
-    @CreationTimestamp
-    @Column
-    private LocalDateTime createdAt;
-
-    @UpdateTimestamp
-    @Column
-    private LocalDateTime updatedAt;
+    @Builder
+    public ReadEntity(Integer userId, Integer bookId, Integer offset_value, Integer limitNum) {
+        this.userId = userId;
+        this.bookId = bookId;
+        this.offset_value = offset_value;
+        this.limitNum = limitNum;
+    }
 
     public static ReadEntity toReadEntity(ReadDTO readDTO){
         ReadEntity readEntity = new ReadEntity();
@@ -44,8 +44,6 @@ public class ReadEntity {
         readEntity.setBookId(readDTO.getBookId());
         readEntity.setOffset_value(readDTO.getOffset_value());
         readEntity.setLimitNum(readDTO.getLimitNum());
-        // readEntity.setCreatedAt(readDTO.getCreatedAt());
-        // readEntity.setUpdatedAt(readDTO.getUpdatedAt());
 
         return readEntity;
     }
