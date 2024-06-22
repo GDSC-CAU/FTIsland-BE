@@ -2,6 +2,7 @@ package com.FTIsland.BE.entity;
 
 import com.FTIsland.BE.base.BaseEntity;
 import com.FTIsland.BE.dto.SignUpDTO;
+import com.FTIsland.BE.user.dto.UserLanguageRequest;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
@@ -67,5 +68,10 @@ public class User extends BaseEntity {
 
     public void updateLevel(int level) {
         this.level = level;
+    }
+
+    public void updateLanguage(final UserLanguageRequest userLanguageRequest) {
+        this.mainLanguage = userLanguageRequest.getMainLanguage();
+        this.subLanguage = userLanguageRequest.getSubLanguage();
     }
 }
