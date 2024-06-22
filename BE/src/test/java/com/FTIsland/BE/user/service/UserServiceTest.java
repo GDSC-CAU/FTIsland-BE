@@ -1,8 +1,9 @@
 package com.FTIsland.BE.user.service;
 
-import com.FTIsland.BE.entity.User;
-import com.FTIsland.BE.repository.UserRepository;
+import com.FTIsland.BE.user.entity.User;
+import com.FTIsland.BE.user.repository.UserRepository;
 import com.FTIsland.BE.user.dto.UserLanguageRequest;
+import com.FTIsland.BE.user.exception.UserException;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -11,8 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static com.FTIsland.BE.user.exception.UserExceptionType.USER_NOT_FOUND;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
@@ -60,13 +61,10 @@ class UserServiceTest {
             // when
             when(userRepository.findById(userId)).thenReturn(Optional.empty());
 
-            RuntimeException exception = assertThrows(RuntimeException.class, () -> {
-                userService.patchUserLanguage(userLanguageRequest);
-            });
-
             // Then
-            assertEquals("User Not Found", exception.getMessage());
-            verify(userRepository).findById(userId);
+            assertThatThrownBy(() -> userService.patchUserLanguage(userLanguageRequest))
+                    .isInstanceOf(UserException.class)
+                    .hasMessage(USER_NOT_FOUND.getMessage());
         }
     }
 }
