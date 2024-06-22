@@ -11,7 +11,7 @@ import com.FTIsland.BE.user.service.UserService;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-public class UserLanguageController {
+public class UserController {
 
     private final UserService userService;
 
