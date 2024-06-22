@@ -1,6 +1,4 @@
 package com.FTIsland.BE.repository;
-import com.FTIsland.BE.dto.UserLanguageDTO;
-import com.FTIsland.BE.entity.SocialType;
 import com.FTIsland.BE.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
