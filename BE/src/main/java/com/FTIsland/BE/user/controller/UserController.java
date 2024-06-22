@@ -21,6 +21,6 @@ public class UserController {
     public ResponseEntity updateUserLanguage(@RequestBody UserLanguageRequest userLanguageRequest){
         userService.patchUserLanguage(userLanguageRequest);
 
-        return ResponseEntity.builder().status(StatusCode.OK).data(userLanguageRequest.getUserId()).build();
+        return ResponseEntity.builder().status(StatusCode.OK).build();
     }
 }
