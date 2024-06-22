@@ -2,8 +2,8 @@ package com.FTIsland.BE.book.feedback.service;
 
 import com.FTIsland.BE.book.feedback.dto.BookFeedbackRequest;
 import com.FTIsland.BE.dto.ResponseDTO;
-import com.FTIsland.BE.entity.User;
-import com.FTIsland.BE.repository.UserRepository;
+import com.FTIsland.BE.user.entity.User;
+import com.FTIsland.BE.user.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.http.HttpServletResponse;
 import org.junit.jupiter.api.AfterEach;
@@ -14,9 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static com.FTIsland.BE.book.feedback.entity.Feedback.FEEDBACK_MINUS_ONE;
-import static net.bytebuddy.implementation.bytecode.constant.IntegerConstant.MINUS_ONE;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class BookFeedbackServiceTest {

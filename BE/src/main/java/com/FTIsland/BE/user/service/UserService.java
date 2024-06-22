@@ -1,10 +1,9 @@
 package com.FTIsland.BE.user.service;
 
 import com.FTIsland.BE.user.dto.UserLanguageRequest;
-import com.FTIsland.BE.entity.User;
-import com.FTIsland.BE.repository.UserRepository;
+import com.FTIsland.BE.user.entity.User;
+import com.FTIsland.BE.user.repository.UserRepository;
 import com.FTIsland.BE.user.exception.UserException;
-import com.FTIsland.BE.user.exception.UserExceptionType;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
