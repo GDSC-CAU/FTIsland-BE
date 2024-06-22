@@ -3,10 +3,12 @@ package com.FTIsland.BE.user.service;
 import com.FTIsland.BE.user.dto.UserLanguageRequest;
 import com.FTIsland.BE.entity.User;
 import com.FTIsland.BE.repository.UserRepository;
+import com.FTIsland.BE.user.exception.UserException;
+import com.FTIsland.BE.user.exception.UserExceptionType;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import static com.FTIsland.BE.user.exception.UserExceptionType.USER_NOT_FOUND;
 
 import java.util.Optional;
 
@@ -39,7 +41,7 @@ public class UserService { // 자체 로그인 회원 가입 시 사용하는 �
     @Transactional
     public void patchUserLanguage(UserLanguageRequest userLanguageRequest) {
         User user = userRepository.findById(userLanguageRequest.getUserId())
-                .orElseThrow(() -> new RuntimeException("User Not Found"));
+                .orElseThrow(() -> new UserException(USER_NOT_FOUND));
 
         user.updateLanguage(userLanguageRequest);
     }
