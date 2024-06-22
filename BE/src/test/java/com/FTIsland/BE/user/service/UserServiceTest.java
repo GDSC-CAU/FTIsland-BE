@@ -2,61 +2,71 @@ package com.FTIsland.BE.user.service;
 
 import com.FTIsland.BE.entity.User;
 import com.FTIsland.BE.repository.UserRepository;
-import com.FTIsland.BE.response.ResponseEntity;
 import com.FTIsland.BE.user.dto.UserLanguageRequest;
-import org.apache.coyote.Response;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 class UserServiceTest {
 
-    User user = new User().builder()
-            .name("테스트 회원")
-            .inputId("testId")
-            .inputPassword("testPassword")
-            .mainLanguage("ko")
-            .subLanguage("en")
-            .level(4)
-            .build();
-
-    @Autowired
+    @InjectMocks
     private UserService userService;
 
-    @Autowired
+    @Mock
     private UserRepository userRepository;
 
-    @BeforeEach
-    void setUp() {
-        userRepository.save(user);
-    }
+    @Nested
+    class 사용자_언어_설정_업데이트 {
+        @Test
+        void 정상적으로_사용자_언어_설정_업데이트() {
+            // given
+            Integer userId = 1;
+            String afterMainLanguage = "jn";
+            String afterSubLanguage = "ch";
 
-    @AfterEach
-    void tearDown() {
-        userRepository.delete(user);
-    }
+            UserLanguageRequest userLanguageRequest = new UserLanguageRequest().builder()
+                    .userId(userId).mainLanguage(afterMainLanguage).subLanguage(afterSubLanguage).build();
 
-    @Test
-    @DisplayName("사용자 언어 설정 서비스 테스트")
-    void 사용자_언어_설정_업데이트() {
-        // given
-        Integer userId = user.getId();;
-        String afterMainLanguage = "jn";
-        String afterSubLanguage = "ch";
+            User user = mock(User.class);
 
-        UserLanguageRequest userLanguageRequest = new UserLanguageRequest().builder()
-                .userId(userId).mainLanguage(afterMainLanguage).subLanguage(afterSubLanguage).build();
+            // when
+            when(userRepository.findById(userId)).thenReturn(Optional.of(user));
 
-        // when
-        userService.patchUserLanguage(userLanguageRequest);
+            userService.patchUserLanguage(userLanguageRequest);
 
-        // then
+            // then
+            verify(userRepository).findById(userId);
+            verify(user).updateLanguage(userLanguageRequest);
+        }
 
+        @Test
+        void 사용자가_없는_경우_예외처리() {
+            // given
+            Integer userId = 200000;
+            String afterMainLanguage = "jn";
+            String afterSubLanguage = "ch";
+            UserLanguageRequest userLanguageRequest = new UserLanguageRequest()
+                    .builder().userId(userId).mainLanguage(afterMainLanguage).subLanguage(afterSubLanguage).build();
+
+            // when
+            when(userRepository.findById(userId)).thenReturn(Optional.empty());
+
+            RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+                userService.patchUserLanguage(userLanguageRequest);
+            });
+
+            // Then
+            assertEquals("User Not Found", exception.getMessage());
+            verify(userRepository).findById(userId);
+        }
     }
 }
