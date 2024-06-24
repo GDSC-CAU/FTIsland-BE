@@ -2,11 +2,11 @@ package com.FTIsland.BE.service;
 
 import com.FTIsland.BE.dto.*;
 import com.FTIsland.BE.book.info.entity.BookInfoEntity;
-import com.FTIsland.BE.entity.User;
+import com.FTIsland.BE.user.entity.User;
 import com.FTIsland.BE.entity.UserVocaEntity;
 import com.FTIsland.BE.entity.VocaEntity;
 import com.FTIsland.BE.repository.BookInfoRepository;
-import com.FTIsland.BE.repository.UserRepository;
+import com.FTIsland.BE.user.repository.UserRepository;
 import com.FTIsland.BE.repository.UserVocaRepository;
 import com.FTIsland.BE.repository.VocaRepository;
 import lombok.RequiredArgsConstructor;

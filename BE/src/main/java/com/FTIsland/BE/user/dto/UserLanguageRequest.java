@@ -1,21 +1,20 @@
-package com.FTIsland.BE.dto;
+package com.FTIsland.BE.user.dto;
 
-import com.FTIsland.BE.entity.User;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
 @Getter
-@Setter
 @NoArgsConstructor
 @ToString
-public class UserLanguageDTO {
+public class UserLanguageRequest {
     private Integer userId;
     private String mainLanguage;
     private String subLanguage;
 
-    public UserLanguageDTO(Integer userId, String mainLanguage, String subLanguage) {
+    @Builder
+    public UserLanguageRequest(Integer userId, String mainLanguage, String subLanguage) {
         this.userId = userId;
         this.mainLanguage = mainLanguage;
         this.subLanguage = subLanguage;

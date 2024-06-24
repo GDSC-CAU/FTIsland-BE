@@ -2,8 +2,8 @@ package com.FTIsland.BE.book.feedback.service;
 
 import com.FTIsland.BE.book.feedback.dto.BookFeedbackRequest;
 import com.FTIsland.BE.dto.ResponseDTO;
-import com.FTIsland.BE.entity.User;
-import com.FTIsland.BE.repository.UserRepository;
+import com.FTIsland.BE.user.entity.User;
+import com.FTIsland.BE.user.repository.UserRepository;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

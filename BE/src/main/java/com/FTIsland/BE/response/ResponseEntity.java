@@ -10,7 +10,6 @@ import lombok.Data;
 @Builder
 public class ResponseEntity {
     @Enumerated(EnumType.STRING)
-    public Status status;
-
+    public Integer status;
     public Object data;
 }

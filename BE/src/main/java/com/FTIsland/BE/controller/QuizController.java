@@ -6,6 +6,7 @@ import com.FTIsland.BE.book.content.service.BookContentService;
 import com.FTIsland.BE.dto.ChatGptResponse;
 import com.FTIsland.BE.dto.QuizDTO;
 import com.FTIsland.BE.service.*;
+import com.FTIsland.BE.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
